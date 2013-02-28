@@ -1,0 +1,953 @@
+
+/************************************************
+TOC
+-----
+1 asp.net elements
+2 ajax/other toolkit related classes
+3 page specific classes
+4 cms classes
+5 html elements
+6 misc.
+7 not rel.
+************************************************/
+
+/*
+
+===========================
+JK.COM CSS UPDATED 7/1/08 |
+===========================
+
+
+++++++++
+Palette+
+------------------------------------------------
+#557D00 = DARK DARK GREEN (BODY FORECOLOR)	|
+#669900 = DARK GREEN  (FORE COLOR)		|
+#E3FF91 = LITE GREEN (BACKCOLOR)		|
+#CAFEB8 = VERY LITE GREEN			|
+#a5d7e9 = LIGHT BLUE				|
+#f5fdfd = AZURE AKA VERY PALE BLUE		|
+#fbfdfe = 2% GREY				|
+------------------------------------------------
+
+*/
+
+
+/************************************************
+ 1.  ASP.Net Elements Markup
+************************************************/
+.CheckboxBorder {
+border:solid 2px #000;
+padding:3px
+}
+
+/* default forms label */
+
+/* addl label types */
+
+.Login-Checkbox {
+display:block;
+float:left;
+height:20px;
+margin-left:150px;
+margin-top:2px;
+width:30px
+}
+
+.Login-ErrorMessage {
+clear:left;
+color:red
+}
+
+.Login-Label {
+color:#444;
+
+display:inline;
+float:left;
+font-size:13px;
+letter-spacing:1pt;
+padding-top:2px;
+width:150px
+}
+
+.Login-Rbl {
+color:#444;
+font-size:8pt
+}
+
+.Login-Textbox {
+background-color:#F5F5F5;
+border:1px solid #E3FF91;
+color:#666;
+font-size:14pt;
+padding:2px 0
+}
+
+.Textbox {
+background-color:#F5F5F5;
+border:1px solid #E3FF91;
+color:#690;
+font-family:Arial, Helvetica, sans-serif;
+font-size:15px;
+padding:2px 4px
+}
+
+
+.Login-TitleText {
+background-image:url( 'http://mediasvr.dankauffman.com/mediaobjects/Icons/Figure-White-32x32_jpg_' );
+background-position:top left;
+background-repeat:no-repeat;
+border-bottom:1px solid #EEE;
+color:#333;
+font-size:18pt;
+height:32px;
+margin-bottom:5px;
+padding-left:40px;
+padding-top:2px;
+vertical-align:middle
+}
+
+
+/************************************************
+2. AJAX / Other Toolkits Markup 
+************************************************/
+
+.accordionContent {
+background-color:#D3DEEF;
+border:1px dashed #2F4F4F;
+border-top:none;
+padding:10px 5px 5px
+}
+
+.accordionHeader {
+background-color:#2E4d7B;
+border:1px solid #2F4F4F;
+color:#FFF;
+cursor:pointer;
+font-family:Arial, Sans-Serif;
+font-size:12px;
+font-weight:700;
+margin-top:5px;
+padding:5px
+}
+
+/************************************************
+3. Page Specific Elements
+************************************************/
+
+
+/*Subtitle for section on all pages*/
+
+/*Section Of Page Heading*/
+
+/*Articles*/
+
+/*Calendar*/
+/*Event List (Calendar)*/
+
+/* Paging on Events and Announcements lists */
+
+/*Horiz Divider*/
+
+/*Header on view details type pages */
+
+/************************************************
+4.	CMS
+************************************************/
+
+/*tag popup */
+/*for onmouseclick fired events*/
+/*CMS Page Reference When Page Hasn't Be Created*/
+
+/*Content Icons*/
+/* Page Title */
+/* Content Search Page & Results */
+
+/************************************************
+5. HTML Elements
+************************************************/
+
+
+/* base button - all buttons use or are derived from this */
+A.LinkButton {
+background-color:#F5F5F5;
+border:1px solid #003466;
+color:#690;
+font-size:11px;
+font-weight:600;
+margin-bottom:1px;
+margin-top:1px;
+padding:2px 3px;
+text-align:center;
+text-decoration:none;
+vertical-align:middle
+}
+
+a:hover.LinkButton {
+background-color:#E3FF91;
+border:1px solid #003466;
+color:#00509D;
+font-size:11px;
+font-weight:600;
+padding:2px 3px;
+text-align:center;
+text-decoration:none;
+vertical-align:middle
+}
+
+/* variations on button */
+
+A.Login-Button,A.submitbuttonbutton {
+background-color:#F5F5F5;
+border:1px solid #003466;
+color:#690;
+display:block;
+float:none;
+font-size:12pt;
+font-weight:600;
+height:24px;
+margin-left:150px;
+margin-top:30px;
+padding-top:4px;
+text-align:center;
+text-decoration:none;
+vertical-align:middle;
+width:100px
+}
+
+a:hover.Login-Button, a:hover.submitbutton {
+background-color:#E3FF91;
+border:1px solid #003466;
+color:#00509D;
+display:block;
+float:none;
+font-size:12pt;
+font-weight:600;
+height:24px;
+margin-left:150px;
+margin-top:30px;
+padding-top:4px;
+text-align:center;
+text-decoration:none;
+vertical-align:middle;
+width:100px
+}
+
+A.TextLinkButton {
+background-color:#F5F5F5;
+border:1px solid #003466;
+color:#690;
+font-size:12pt;
+font-weight:600;
+margin-bottom:1px;
+margin-top:1px;
+padding:2px 15px;
+text-align:center;
+text-decoration:none;
+vertical-align:middle
+}
+
+a:hover.TextLinkButton {
+background-color:#DFEFFF;
+border:2px solid #003466;
+color:#00509D;
+font-size:12pt;
+font-weight:600;
+padding:2px 15px;
+text-align:center;
+text-decoration:none;
+vertical-align:middle
+}
+
+a.ContextMenuItem {
+color:#039;
+cursor:pointer;
+display:block;
+margin:1px 0;
+padding:4px 19px 4px 33px;
+text-decoration:none;
+white-space:nowrap
+}
+
+body {
+background-color:#FFF;
+color:#557D00;
+font-family:Arial;
+font-size:12px
+}
+
+
+/* not used at this time */
+
+h1 {
+color:#000;
+font-size:23px;
+font-weight:600;
+line-height:30px
+}
+
+/* not used at this time */
+
+h2 {
+color:#690;
+font-size:19px;
+font-weight:500
+}
+
+/* largest heading in use - used for page title*/
+h3 {
+color:#690;
+font-size:17px
+}
+
+h4 {
+color:#690;
+font-size:14px
+}
+
+h5 {
+color:#690;
+font-size:12px
+}
+
+h6 {
+color:#690;
+font-size:10px
+}
+
+small {
+font-family:Times New Roman;
+font-size:10px
+}
+
+
+/*used by events list web part */
+
+strong.evlist {
+color:#fff
+}
+
+table.evlist {
+border-collapse:collapse;
+margin:10px 15px
+}
+
+td.evlist {
+border-bottom:solid 1px #fff;
+border-left:1px solid #FFF;
+padding-left:11px;
+padding-right:11px
+}
+
+td.first,th.first {
+border-bottom:solid 1px #fff;
+border-left:1px solid #FFF;
+padding-right:11px
+}
+
+th.evlist {
+background:#74A846;
+border-bottom:solid 2px #FFF;
+border-left:1px solid #B6D59A;
+color:#fff;
+height:29px;
+padding-left:11px;
+padding-right:11px;
+text-align:left
+}
+
+tr.row-a {
+background:#F8F8F8;
+border-bottom:solid 1px #fff;
+border-left:1px solid #FFF;
+height:30px;
+padding-left:11px;
+padding-right:11px
+}
+
+tr.row-b {
+background:#EFEFEF;
+border-bottom:solid 1px #fff;
+border-left:1px solid #FFF;
+height:30px;
+padding-left:11px;
+padding-right:11px
+}
+
+
+/************************************************
+6.  MISC
+************************************************/
+
+/*Screen Overlay while ajax panel is refreshed*/
+#InnerProgressOverlay {
+-moz-opacity:1px;
+/background-color:#eee;
+border:1px solid #000;
+color:blue;
+filter:alpha(opacity=100);
+padding:10px;
+text-align:center;
+width:444px;
+z-index:998
+}
+
+#OuterProgressOverlay {
+-moz-opacity:0.85px;
+background-color:#FFF;
+filter:alpha(opacity=85);
+height:2000px;
+left:0;
+padding-left:33%;
+padding-top:20%;
+position:absolute;
+top:0;
+width:99%;
+z-index:999
+}
+
+/* img slideshow container */ 
+
+.showContainer
+{
+
+   width: 210px;
+   text-align: center;
+   padding-top: 1px;
+   vertical-align:middle
+   height: 299px;
+}
+
+
+/************************************************
+7.  Leaf Design + Layout that you won't need
+************************************************/
+
+
+
+.down {
+font-size:11px;
+margin-left:650px;
+padding-bottom:5px;
+text-align:left
+}
+
+.down a {
+color:#5a5551
+}
+
+.down2 {
+margin-left:600px;
+padding-bottom:10px
+}
+
+.down2 img {
+border:0
+}
+
+
+.emptydata td {
+color:#aeaeae;
+padding:50px
+}
+
+
+.fieldname {
+text-align:right;
+vertical-align:top
+}
+
+.formlabel {
+vertical-align:top;
+width:120px
+}
+
+
+.menu_bold {
+color:#767879;
+font-weight:700;
+text-decoration:none
+}
+
+.menu_header_left {
+background:url("../../img/bac_menu_gif_") top left repeat-x;
+float:left;
+height:31px;
+width:169px
+}
+
+.menu_header_right {
+background:url("../../img/ornament_menu_gif_") top left no-repeat;
+float:right;
+height:31px;
+width:46px
+}
+
+/*LI-BG_gif_*/
+.menu_item {
+   background: url('../../images/LI-BG_gif_') no-repeat left
+center;
+   color: #8d9395;
+   line-height: 18px;
+   margin-left: 5px;
+   padding-left: 18px;
+   text-decoration: none;
+}
+.menu_item2 
+{
+   background-position: left center;
+   background: url('../../images/bullet-arrow_gif_') no-repeat left
+center;
+   color: #8d9395;
+   font-size: 10px;
+   padding-left: 25px;
+   margin-left: 5px;
+   text-decoration: none;
+}
+
+.menu_normal {
+color:#8d9395;
+line-height:25px;
+text-decoration:none
+}
+
+.menu_text {
+font-weight:700;
+line-height:31px;
+padding-left:14px;
+text-decoration:none
+}
+
+.newscrumbs a {
+font-weight:700;
+padding-right:2px
+}
+
+
+.unselected {
+background-color:transparent;
+border:solid 1px #E2ECF5
+}
+
+/* value column */
+.formvalue {
+vertical-align:top
+}
+
+.gray {
+color:#a6acae;
+font-size:14px;
+font-weight:700;
+line-height:18px
+}
+
+.green {
+color:#7e9b1e;
+font-size:14px;
+font-weight:700
+}
+
+.hidden {
+visibility:hidden
+}
+
+.highlight {
+background-color:#fefbd2;
+color:navy
+}
+
+.highlightcity {
+background-color:#df2e05
+}
+
+.highlightcountry {
+background-color:#818689
+}
+
+.highlightstate {
+background-color:#f4c977
+}
+
+.selected {
+background:#E3FF91;
+border:solid 1px #2172A1
+}
+
+.selected,.unselected {
+height:100px;
+padding:2px;
+text-align:center;
+width:80px
+}
+
+
+.view {
+margin-left:auto;
+margin-right:auto;
+margin-top:0;
+text-align:left;
+width:inherit
+}
+
+.view .PostedBy {
+color:#999
+}
+
+.view .photo-frame {
+margin-left:auto;
+margin-right:auto
+}
+
+.view h5 {
+font-family:Trebuchet MS, Verdana, MS Sans Serif
+}
+
+.blue {
+color:#0e88af
+}
+
+.blue2 {
+color:#0e88af;
+font-size:16px;
+font-weight:700;
+line-height:45px
+}
+
+.cleaner {
+clear:both
+}
+
+.clearlist {
+clear:right;
+font-size:0;
+height:0;
+line-height:0;
+margin:0;
+padding:0
+}
+
+
+.contacthl {
+margin-left:18px
+}
+
+
+
+
+
+
+
+.actionbuttons {
+padding:1px;
+position:relative;
+text-align:right
+}
+
+.alternatebackground {
+background-color:#B5C7D6;
+color:#000
+}
+
+/* ids */
+#Bottom {
+float:left;
+margin-top:5px;
+width:900px
+}
+
+#Container {
+margin:0 auto;
+width:900px
+}
+
+#Head {
+background:url("../../img/bac_logo_jpg_") top left repeat-x;
+height:212px;
+width:900px
+}
+
+#Head_left {
+float:left;
+height:212px;
+width:324px
+}
+
+#Head_right {
+clear:right;
+float:right;
+height:212px;
+width:576px
+}
+
+#Informations {
+color:#4F7500;
+font-size:15px;
+padding-left:92px
+}
+
+#Inner {
+margin-top:15px
+}
+
+#Leaf_bottom {
+background:url("../../img/leaf2_gif_") top left no-repeat;
+float:left;
+height:51px;
+width:324px
+}
+
+#Leaf_bottom a {
+color:#6b9c22;
+font-size:11px;
+font-weight:700;
+line-height:58px;
+text-decoration:none
+}
+
+#Leaf_bottom a:hover {
+color:#8ac92c
+}
+
+#Leaf_top {
+background:url("../../img/leaf_gif_") top left no-repeat;
+float:left;
+height:161px;
+width:324px
+}
+
+#LeftPart {
+background-color:#fbfdfe;
+float:left;
+margin-top:-12px;
+width:215px
+}
+
+#Logo {
+height:161px;
+width:576px
+}
+
+#Menu,#Menu_Link_header {
+float:left;
+width:215px
+}
+
+#MenuBottom {
+float:left;
+margin-top:5px
+}
+
+#MenuBottom_content {
+float:left;
+padding:5px 5px 5px 12px;
+width:203px
+}
+
+#MenuBottom_header {
+float:left;
+height:31px;
+width:215px
+}
+
+#Menu_content {
+float:left;
+padding:1px;
+width:205px
+}
+
+#Menu_content a:hover,#MenuBottom_content a:hover {
+color:#0e88af;
+text-decoration:underline
+}
+
+#Menu_header {
+height:31px;
+width:215px
+}
+
+#Menu_header a,#MenuBottom_header a {
+color:#666;
+font-weight:700;
+line-height:31px;
+padding-left:14px;
+text-decoration:none
+}
+
+#Menu_header a:hover,#MenuBottom_header a:hover {
+color:#999;
+font-weight:700;
+line-height:31px;
+padding-left:14px;
+text-decoration:underline
+}
+
+#Menu_header a:visited,#Menu_header a:active,#MenuBottom_header a:visited,#MenuBottom_header a:active {
+color:#999;
+font-weight:700;
+line-height:31px;
+padding-left:14px
+}
+
+#Name {
+color:#989d9e;
+font-size:34px;
+padding-left:70px;
+padding-top:48px
+}
+
+
+
+#Page_header a
+{
+   color: #0000FF;
+   font-weight: bold;
+   text-decoration:none;
+}
+
+#Page_header a:hover
+{
+   color: #FF4300;
+   text-decoration:none;
+   font-weight: bold;
+}
+
+
+
+
+#Page {
+padding:3px 0 3px 4px;
+width:705px
+}
+
+#Page_center {
+width:699px
+}
+
+#Page_center tr {
+margin-bottom:5px;
+width:669px
+}
+
+#Page_header {
+background-color:#FFF;
+padding:8px 0;
+width:669px
+}
+
+#Page_header tr {
+width:670px
+}
+
+#Page_header .collapsePanelHeader a {color:#FFF;}
+#Page_header .collapsePanelHeader a:hover {text-decoration:none;background:none;}
+
+
+#Page_top {
+background-color:#CAFEB8;
+color:#2A2A2A;
+margin-bottom:4px;
+margin-top:4px;
+width:669px
+}
+
+#Page_top a {
+color:#074d64
+}
+
+#RightPart {
+clear:left;
+float:right;
+margin-top:-12px;
+width:680px
+}
+
+#Top_menu {
+background:url("../../img/bac_button_gif_") top left repeat-x;
+height:51px;
+vertical-align:middle;
+width:650px
+}
+
+#Top_menu .home,#Top_menu .help,#Top_menu .contact,#Top_menu .orders,#Top_menu .kart {
+background:url("../../img/home_jpg_") top left no-repeat
+}
+
+
+#Top_menu a {
+color:#690;
+cursor:pointer;
+float:left;
+font-size:11px;
+font-weight:700;
+height:30px;
+padding-top:20px;
+text-align:center;
+text-decoration:none;
+vertical-align:middle;
+white-space:nowrap;
+width:161px
+}
+
+#Top_menu a:hover {
+background-image:url('http://afroweekly.com/EasyMenu/Styles/Horizontal1/mid_over_gif_');
+background-position:center center;
+background-repeat:repeat-x;
+color:#666
+}
+
+#greg {
+background:#ccc
+}
+
+#links {
+clear:both;
+font-size:.9em;
+margin:0;
+padding-right:25px;
+text-align:right
+}
+
+#links a {
+color:#787878;
+text-decoration:none
+}
+
+#links a:hover {
+color:#369;
+text-decoration:none
+}
+
+#loginbannerlink {
+color:#666;
+font-size:11px;
+padding-left:200px;
+text-decoration:none
+}
+
+#loginbannerlink a {
+color:#666;
+font-size:11px;
+text-decoration:none
+}
+
+#loginbannerlink a:hover {
+color:#666;
+font-size:11px;
+text-decoration:underline
+}
+
+#smoothie a
+{
+   font: 12px Verdana;
+   color: #315686;
+}
+
+#smoothie a:hover
+{
+   color: crimson;
+   text-decoration: none;
+}
+
+#yellow {
+background:#ff0
+}

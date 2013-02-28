@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Pop Up Window Example</title>
+    <script type="text/javascript">
+      function popUp(URL,high){
+        //x=window.open(URL);
+		x=window.open(URL,"exp", "width=500, height="+high+
+		  ", top=20,left=20, menubar=no, status=no, toolbar=no, scrollbars=yes, resizable=yes");
+        x.focus();  // deals with the problem whereby the window is already open but behind 
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Starter Package</h1>
+    <p> The Starter Package includes: 
+    Web Site Maintenance means updating the content or look of your Web Site.
+        If you want your business to continue growing, you need to update  your
+        web site to keep it looking fresh and generating excitement.
+        <ul>
+          <li>Web Host and Domain Name for one year 
+              <a href="javascript:popUp('domain_popup.html','400')" >learn more</a>... </li>
+          <li>One Year of Site Maintenance 
+              <a href="javascript:popUp('maint_popup.html','220')" >learn more</a>... </li>
+       </ul>
+       NOTE: the pop-ups can be slow.  You might have to wait 5-7 seconds...
+    </p>
+  </body>
+</html>

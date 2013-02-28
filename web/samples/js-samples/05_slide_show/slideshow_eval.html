@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>Javascript Cat Show</title>
+<script type="text/javascript">
+		
+		    var folder="images/"; // name of folder that holds the pics
+			
+		    /*  The straight forward approach, setting up image1, image2, etc.
+			    Note the pattern...
+				
+            var image1=new Image();
+            image1.src=folder+"pic1.png";
+			
+            var image2=new Image();
+            image2.src=folder+"pic2.png";
+			
+            var image3=new Image();
+            image3.src=folder+"pic3.png";
+            // and so on...             */
+		
+		    // Or we would use a loop to build each statement then "eval" it.
+			// and we still are setting up image1, image2, etc....
+            var numImages=20;
+            var statement1=" ";
+            var statement2=" ";
+            for (i=1; i<=numImages; i++) {
+                statement1="var image"+i+" = new Image();";
+                //alert ("statement1 is this [["+statement1+"]]");
+                eval(statement1);
+                statement2="image"+i+".src='"+folder+"pic"+i+".png';";
+                //alert ("statement2 is this [["+statement2+"]]");
+                eval(statement2);
+            }
+			
+			// Global variable that will increment through the images
+            var step=1;
+			
+            function slideit(){
+                //if browser does not support the image object, exit.
+                if (!document.images)
+                    return;
+                document.images.slide.src=eval("image"+step+".src");
+                if (step<numImages)
+                    step++;
+                else
+                    step=1;
+                //call function "slideit()" every 1.5 seconds
+                setTimeout("slideit()",1500);
+            }
+
+        </script>
+</head>
+<body onLoad="slideit()">
+  <!-- Initialize the first picture -->
+  <img src="images/pic1.png" name="slide"/>
+</body>
+</html>

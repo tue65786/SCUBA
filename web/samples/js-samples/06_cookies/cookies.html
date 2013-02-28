@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cookie Example</title>
+        <style type="text/css">
+		body{ background-color:beige;
+                }
+        </style>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            function createCookie(name,value,days) {
+                alert ("Creating a cookie with name "+name+" and value "+value+" that will last "+days+ " days");
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime()+(days*24*60*60*1000));
+                    var expires = "; expires="+date.toGMTString();
+                }
+                else var expires = "";
+                document.cookie = name+"="+value+expires+"; path=/";
+            }
+
+            function readCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0;i < ca.length;i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                }
+                return null;
+            }
+
+            function eraseCookie(name) {
+                createCookie(name,"",-1);
+            }
+            function showCookie(name) {
+                var cookieVal = readCookie(name);
+                if (cookieVal == null) {
+					alert ("No cookie value was stored with name " + name);
+				} else {
+					alert ("The cookie named " + name + " has value " + cookieVal);
+				}
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <div>
+            <form name="myForm">
+              <table border="1">
+              <tr>
+                <td><p>&nbsp;</p>
+                  <p>Name:
+                  <input type="text" name="cookieName">
+                  &nbsp;&nbsp;
+                Value:
+                <input type="text" name="cookieValue">
+
+&nbsp;&nbsp;
+                Days (to live):
+                <input type="text" name="cookieDays" size="5">
+                &nbsp;&nbsp;&nbsp;
+                <input type="button" value="Add Name/Value Pair to Cookie" 
+                       onClick="javascript:createCookie(document.myForm.cookieName.value,
+                           document.myForm.cookieValue.value,
+                           document.myForm.cookieDays.value)">
+                  </p>
+                <p>&nbsp; </p></td>
+              </tr>
+              <tr>
+                <td><p>&nbsp;</p>
+                  <p>Name:
+                  <input type="text" name="cookieName2">
+&nbsp;&nbsp;
+<input type="button" value="Show Value of Given Name" 
+                       onClick="javascript:showCookie(document.myForm.cookieName2.value)">
+                </p>
+                <p>&nbsp;</p></td>
+
+              </tr>
+              <tr>
+                <td><p>&nbsp;
+                  </p>
+                  <p>
+                    <input type="button" value="Show Entire Cookie-all Name/Value Pairs" 
+                       onClick="alert ('cookie is: ' +document.cookie);">
+                </p>
+                <p>&nbsp;</p></td>
+              </tr>
+            </table>
+            </form>
+        </div>
+    </body>
+</html>
+

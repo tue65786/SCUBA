@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>My Javascript Calculator</title>
+<style>
+body {
+	text-align: center;
+	background-color: tan;
+}
+</style>
+<script>
+      function hello()   {
+        alert("hello");
+      }
+
+
+      function add() { // this version checks that the user input is a number "NaN" means "Not a Number"
+
+        if (isNaN(document.calculator.leftside.value)) {
+	      alert ("If you don't put a number in the left side, how can I add up the numbers for you?");
+	      return;
+	    }
+	    if (isNaN(document.calculator.rightside.value)) {
+	     alert ("You have to put a number in the right side too - Duh !");
+	     return;
+	    }
+	
+        var ans = Number(document.calculator.leftside.value) +  
+          Number(document.calculator.rightside.value); 
+		alert ("answer is "+ans);
+		var answerSpan = document.getElementById("answerHere");
+		answerSpan.innerHTML=ans;
+      }
+ 
+    </script>
+</head>
+<body onload="hello()">
+<form name="calculator">
+  <input name="leftside" id="leftside" value="12" type="text">
+  +
+  <input name="rightside" id="rightside" value="34" type="text">
+  <input name="" value="=" onclick="add()" type="button">
+  <span id="answerHere"></span>
+</form>
+</body>
+</html>

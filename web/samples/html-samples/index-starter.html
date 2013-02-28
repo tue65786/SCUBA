@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Put your Site title then your page title here</title>
+<style>
+body {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.container {
+	border:medium solid green;
+	width:85%;
+	margin:auto;  /* this means center the container div (itself, not its contents) */
+}
+.title {
+	border:medium solid brown;
+}
+.newLine {
+	clear:both;
+}
+.tab {
+	border:medium solid blue;
+	width:22%;
+	float:left;
+         border-top: thin solid rgb(20,112,156);
+                border-left: thin solid rgb(20,112,156);
+                border-right: thin solid rgb(20,112,156);
+                margin:0px;/* 1px 3% 0px 0px; *//*top right bottom left*/
+                width:20%;
+                float:left;
+                font-size: larger;
+                background-color:lightblue;
+               border-top-left-radius: 5px;
+              -moz-border-top-left-radius:5px;
+              border-top-right-radius: 5px;
+              -moz-border-top-right-radius: 5px;
+}
+.content {
+	border:medium solid purple;
+}
+.selected {
+	background-color:gray;
+}
+.footer {
+	border:medium solid gold;
+}
+</style>
+</head>
+<body>
+<br/>
+<div class="container">
+  <div class="title">Title of Your Web Site
+    <div class="newLine"></div>
+    <div class="tab selected"><a href="index.html">Home</a></div>
+    <div class="tab"><a href="tab2page.html">Tab 2</a></div>
+    <div class="tab"><a href="tab3page.html">Tab 3</a></div>
+    <div class="tab"><a href="tab4page.html">Tab 4</a></div>
+    <div class="newLine"></div>
+  </div>  <!-- finishes off the title div -->
+  <div class="content selected">
+    <p> This is content of your first paragraph. 
+      This is content of your first paragraph.
+      This is content of your first paragraph.
+      This is content of your first paragraph.
+      This is content of your first paragraph. </p>
+    <p> This is content of your second paragraph.
+      This is content of your second paragraph.
+      This is content of your second paragraph.
+      This is content of your second paragraph.
+      This is content of your second paragraph.
+      This is content of your second paragraph. </p>
+  </div>
+  <div class="footer">Your Name - copyright 2011</div>
+</div> <!-- finishes off the container div -->
+</body>
+</html>

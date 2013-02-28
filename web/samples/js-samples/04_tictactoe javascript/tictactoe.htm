@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <style>
+      body { background-color:tan;  text-align:center }    
+    </style>
+    <script>
+      function say_hi( ) {
+        alert("hi");
+      }
+      function set(cell)  {
+          if (cell.value==null || cell.value=="") {
+            cell.value=document.tform.player.value;
+            how_won = check_win( );
+            if (how_won == "")
+              change_player( );
+            else
+              alert ("You WON (" + how_won + ") !!!"
+                + "  Click on the URL and hit enter to play again.");
+          }
+          else
+            alert ("Sorry you can't move there.");
+        }
+      function check_win ( )  { 
+          winner=""; 
+          if  (document.tform.a1.value==document.tform.b1.value
+           && document.tform.b1.value==document.tform.c1.value
+           && document.tform.c1.value==document.tform.player.value) 
+             winner = "Row 1";
+          else if (document.tform.a2.value==document.tform.b2.value
+               && document.tform.b2.value==document.tform.c2.value 
+               && document.tform.c2.value==document.tform.player.value)
+             winner = "Row 2";
+          else if (document.tform.a3.value==document.tform.b3.value
+               && document.tform.b3.value==document.tform.c3.value 
+               && document.tform.c3.value==document.tform.player.value)
+             winner = "Row 3";
+          else if (document.tform.a1.value==document.tform.a2.value
+               && document.tform.a2.value==document.tform.a3.value 
+               && document.tform.a3.value==document.tform.player.value)
+             winner = "Column A";
+          else if (document.tform.b1.value==document.tform.b2.value
+               && document.tform.b2.value==document.tform.b3.value 
+               && document.tform.b3.value==document.tform.player.value)
+             winner = "Column B";
+          else if (document.tform.c1.value==document.tform.c2.value
+               && document.tform.c2.value==document.tform.c3.value 
+               && document.tform.c3.value==document.tform.player.value)
+           winner = "Column C";
+    else if (document.tform.a1.value==document.tform.b2.value
+           && document.tform.b2.value==document.tform.c3.value
+           && document.tform.c3.value==document.tform.player.value)
+        winner = "Top Left to Bottom Right";
+    else if (document.tform.a3.value==document.tform.b2.value
+          && document.tform.b2.value==document.tform.c1.value
+          && document.tform.c1.value==document.tform.player.value)
+        winner = "Bottom Left to Top Right";
+    return winner;
+    }
+   function change_player( )  {
+       if (document.tform.player.value == "X")
+         document.tform.player.value="O"
+       else
+         document.tform.player.value="X";
+   }
+    </script>
+  </head>
+  <body>
+    <h1>Tic Tac Toe </h1>
+   Click on a cell to make your move !
+  <br>
+    <form name="tform">
+      <table border="1">
+        <tr>
+          <td><input name="a1" size="3" onclick="set(this)"></td>
+          <td><input name="b1" size="3" onclick="set(this)"></td>
+          <td><input name="c1" size="3" onclick="set(this)"></td>
+        </tr>
+        <tr>
+          <td><input name="a2" size="3" onclick="set(this)"></td>
+          <td><input name="b2" size="3" onclick="set(this)"></td>
+          <td><input name="c2" size="3" onclick="set(this)"></td>
+        </tr>
+        <tr>
+          <td><input name="a3" size="3" onclick="set(this)"></td>
+          <td><input name="b3" size="3" onclick="set(this)"></td>
+          <td><input name="c3" size="3" onclick="set(this)"></td>
+        </tr>
+       </table>
+       <br>       Player: <input name="player" size="1" value="X">
+    </form>
+  </body>
+</html>
+

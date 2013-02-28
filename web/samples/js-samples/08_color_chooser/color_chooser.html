@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+        <title>Title of your Web Site - Title of Page (change for every page)</title>
+        <style>
+            body {
+                font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+                font-size: 11pt;
+                margin-top: 0;
+                color: darkslategray;
+            }
+            .containerDiv {
+                width: 1000px;
+                margin: auto;
+            }
+            .padDiv {
+                width: 1000px;
+                height: 25px;
+                float: left;
+            }
+            #headerDiv {
+                width: 1000px;
+                float: left;
+                text-align: center;
+                font-family: Georgia, "Times New Roman", Times, serif;
+                font-size: 36px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                font-weight: bold;
+                /* The rest is for rounded corners. */
+                -moz-border-radius-topleft:      8px;    /* for Firefox, rounded cornerrs */
+                -moz-border-radius-topright:     8px;
+                -webkit-border-top-left-radius:  8px;    /* for Safari, rounded cornerrs */
+                -webkit-border-top-right-radius: 8px;
+                border-top-width: medium;
+                border-right-width: medium;
+                border-bottom-width: medium;
+                border-left-width: medium;
+                border-top-style: solid;
+                border-right-style: solid;
+                border-bottom-style: none;
+                border-left-style: solid;
+                border-top-color: darkslategray;
+                border-right-color: darkslategray;
+                border-bottom-color: darkslategray;
+                border-left-color: darkslategray;
+            }
+
+            #navBarDiv {
+                background: lightgrey;
+                width: 1000px;
+                float: left;
+                border-top-width: medium;
+                border-right-width: medium;
+                border-bottom-width: medium;
+                border-left-width: medium;
+                border-top-style: none;
+                border-right-style: solid;
+                border-bottom-style: none;
+                border-left-style: solid;
+                border-top-color: darkslategray;
+                border-right-color: darkslategray;
+                border-bottom-color: darkslategray;
+                border-left-color: darkslategray;
+            }
+            .tabDiv {
+                font-weight: bold;
+                width: 242px;
+                background: cadetblue;
+                float: left;
+                text-align: center;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                border-top-width: medium;
+                border-right-width: medium;
+                border-left-width: medium;
+                border-top-style: outset;
+                border-right-style: outset;
+                border-left-style: outset;
+                border-top-color: darkcyan;
+                border-right-color: darkcyan;
+                border-left-color: darkcyan;
+                /* The rest is for rounded corners. */
+                -moz-border-radius-topleft:      6px;    /* for Firefox, rounded cornerrs */
+                -moz-border-radius-topright:     6px;
+                -webkit-border-top-left-radius:  8px;    /* for Safari, rounded cornerrs */
+                -webkit-border-top-right-radius: 8px;
+                font-size: 12px;
+                letter-spacing: 2px;
+            }
+
+            .tabDiv a:link {
+                color: darkslategray;
+                text-decoration: none;
+            }
+            .tabDiv a:visited {
+                text-decoration: none;
+                color: purple;
+            }
+            .tabDiv a:hover {
+                text-decoration: none;
+                color: gold;
+            }
+            .selected {
+                background-color: lightgoldenrodyellow;
+                color: black;
+            }
+            .contentDiv {
+                margin: auto;
+                width: 980px;
+                float: left;
+                padding: 10px;
+                text-align: left;
+                vertical-align: top;
+                border-top-width: medium;
+                border-right-width: medium;
+                border-bottom-width: medium;
+                border-left-width: medium;
+                border-top-style: none;
+                border-right-style: solid;
+                border-bottom-style: none;
+                border-left-style: solid;
+                border-top-color: darkslategray;
+                border-right-color: darkslategray;
+                border-bottom-color: darkslategray;
+                border-left-color: darkslategray;
+            }
+            #footerDiv {
+                margin: auto;
+                width: 1000px;
+                float: left;
+                text-align: center;
+                font-size: 11px;
+                padding-top: 6px;
+                padding-bottom: 6px;
+                font-weight: bold;
+                /* The rest is for rounded corners. */
+                -moz-border-radius-bottomleft:      8px;    /* for Firefox, rounded cornerrs */
+                -moz-border-radius-bottomright:     8px;
+                -webkit-border-bottom-left-radius:  8px;    /* for Safari, rounded cornerrs */
+                -webkit-border-bottom-right-radius: 8px;
+                border: medium solid darkslategray;
+                letter-spacing: 3px;
+            }
+            #colorTable {
+                border:thin solid black;
+                text-align:center
+            }
+        </style>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <script>
+
+            function decToHex(d) {
+                var hex = d.toString(16);
+                if (hex.length < 2)
+                    hex="0"+hex;
+                return hex;
+            }
+
+            function hexToDec(h) {
+                return parseInt(h,16);
+            }
+
+            function changeIt(colorValue,upOrDown) {
+                var newColorValue=hexToDec(colorValue.toUpperCase());
+                //alert ("colorValue is " + colorValue);
+                var changeRate=hexToDec(document.colorForm.showChangeRate.value);
+                //alert ("changeRate is "+changeRate);
+                var newColorValue=newColorValue+(changeRate*upOrDown);
+                // alert ("newColorValue is "+newColorValue);
+                if (newColorValue<0) {
+                    //alert ("Can't go less than that!");
+                    newColorValue=0;
+                }
+                if (newColorValue>255){
+                    //alert ("Can't go more than that!");
+                    newColorValue=255;
+                }
+                return decToHex(newColorValue);
+            }
+            function redChange(upOrDown) {
+                document.colorForm.showRed.value=changeIt(document.colorForm.showRed.value,upOrDown);
+                setRGB();
+            }
+            function greenChange(upOrDown) {
+                document.colorForm.showGreen.value=changeIt(document.colorForm.showGreen.value,upOrDown);
+                setRGB();
+            }
+            function blueChange(upOrDown) {
+                document.colorForm.showBlue.value=changeIt(document.colorForm.showBlue.value,upOrDown);
+                setRGB();
+            }
+            function setRGB() {
+                var hexColor=getHexColor();
+                document.colorForm.showRGB.value=hexColor;
+                document.getElementById("colorTable").style.backgroundColor = document.colorForm.showRGB.value;
+            }
+            function setBackgroundColor() {
+                var hexColor=getHexColor();
+                document.bgColor=hexColor;
+            }
+            function getHexColor() {
+                return "#"+document.colorForm.showRed.value+document.colorForm.showGreen.value+document.colorForm.showBlue.value;
+            }
+            function setHeaderFooterColor() {
+                document.getElementById("headerDiv").style.backgroundColor = document.colorForm.showRGB.value;
+                document.getElementById("navBarDiv").style.backgroundColor = document.colorForm.showRGB.value;
+                document.getElementById("footerDiv").style.backgroundColor = document.colorForm.showRGB.value;
+            }
+        </script>
+    </head>
+
+    <body onload="javascript:setRGB()">
+        <div class="padDiv"> </div>
+        <div class="clear"> </div>
+        <div class="containerDiv">
+            <div id="headerDiv">Web Site Header</div>
+            <div class="clear"> </div>
+            <div id="navBarDiv">
+
+                <div class="tabDiv"><a href="https://blackboard.temple.edu/bbcswebdav/pid-2727780-dt-content-rid-38182349_2/courses/12201285108/index.html">Home </a></div>
+                <div class="tabDiv selected"><a href="https://blackboard.temple.edu/bbcswebdav/pid-2727780-dt-content-rid-38182349_2/courses/12201285108/tab2page.html">Color Chooser</a></div>
+                <div class="tabDiv"><a href="https://blackboard.temple.edu/bbcswebdav/pid-2727780-dt-content-rid-38182349_2/courses/12201285108/tab3page.html">Tab 3</a><a href="#"> </a></div>
+                <div class="tabDiv"><a href="https://blackboard.temple.edu/bbcswebdav/pid-2727780-dt-content-rid-38182349_2/courses/12201285108/tab4page.html">Tab 4 </a></div>
+                <div class="clear"> </div>
+            </div> <!-- end of navBarDiv -->
+
+            <div class="contentDiv selected">
+                <form name="colorForm">
+                    <br>
+                    <table style="background-color: rgb(128, 128, 128);" id="colorTable">
+                        <tbody><tr>
+                            <td>
+                                <br>
+                                <input value="Up" onclick="javascript:redChange(1);" type="button">
+                                <br>
+
+                                Red
+                                <br>
+                                <input name="showRed" size="1" value="80" maxlength="2" type="text">
+                                <br>
+                                <input value="Down" onclick="javascript:redChange(-1);" type="button">
+                                <br>
+                                <br>
+                            </td>
+                            <td>
+
+                                <br>
+                                <input value="Up" onclick="javascript:greenChange(1);" type="button">
+                                <br>
+                                Green
+                                <br>
+                                <input name="showGreen" size="1" value="80" type="text">
+                                <br>
+                                <input value="Down" onclick="javascript:greenChange(-1);" type="button">
+                                <br>
+
+                                <br>
+                            </td>
+                            <td>
+                                <br>
+                                <input value="Up" onclick="javascript:blueChange(1);" type="button">
+                                <br>
+                                Blue
+                                <br>
+                                <input name="showBlue" size="1" value="80" type="text">
+
+                                <br>
+                                <input value="Down" onclick="javascript:blueChange(-1);" type="button">
+                                <br>
+                                <br>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <br>
+                    <br>
+
+                    Change Rate:<input name="showChangeRate" size="3" value="10" type="text">
+                    RGB:<input value="#808080" name="showRGB" size="6" type="text">
+                    <input value="Set Header/Footer Color" onclick="javascript:setHeaderFooterColor();" type="button">
+                    <input value="Set Background Color" onclick="javascript:setBackgroundColor();" type="button">
+
+                </form>
+
+            </div>  <!-- end of Content Div -->
+
+            <div class="clear"> </div>
+            <div id="footerDiv"> FOOTER </div>
+            <div class="clear"> </div>
+        </div> <!-- end of Container Div -->
+    
+
+</body></html>

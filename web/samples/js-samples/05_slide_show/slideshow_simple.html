@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Javascript Cat Show</title>
+<script type="text/javascript">
+		
+		    var folder="images/"; // name of folder that holds the pictures: pic1.png, pic2.png, ..., pic20.png
+  			
+			// Global variable that will increment through the images
+            var step=1;
+			var numImages=20;
+			
+            function slideit(){
+                
+                if (!document.images)  //if browser does not support the image object, exit.
+                    return;
+								
+				// change the src attribute of the image element on the page (to be pic1.png, or pic2.png, etc)				
+				document.getElementById('pic').src = folder + "pic"+step+".png";
+
+                // increment the picture counter.
+                if (step<numImages)
+                    step++; 
+                else
+                    step=1;
+                
+                setTimeout("slideit()",1500); //call function "slideit()" every 1.5 seconds
+            }
+
+        </script>
+</head>
+<body onLoad="slideit()">
+  <!-- Initialize the first picture -->
+  <img src="images/pic1.png" id="pic"/>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿body {
+}
+
+
+p.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+
+   			
+			.contentbody
+			{
+				height: auto !important;
+				margin: 0px;
+				padding: 0px;
+			}

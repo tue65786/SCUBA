@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Put your Site title then your page title here</title>
+        <style type="text/css">
+            body {
+                font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+                background-color:#CD853F;
+                text-align:center;
+            }
+            .container {
+                /*border:    0.25em solid black; */
+                width:     85%;
+                margin:    auto;  /* center the container div (not its contents)     */
+                min-width: 42em;  /* prevent narrow container from wrapping the tabs */
+                border:  1px solid gray;
+                /* The rest is for rounded corners. */
+                -moz-border-radius-topleft:         8px;  /* for Firefox */
+                -moz-border-radius-topright:        8px;
+                -moz-border-radius-bottomleft:      8px;
+                -moz-border-radius-bottomright:     8px;
+                -webkit-border-top-left-radius:     8px;  /* for Safari */
+                -webkit-border-top-right-radius:    8px;
+                -webkit-border-bottom-left-radius:  8px;
+                -webkit-border-bottom-right-radius: 8px
+            }
+            .title-nav {/*border:0.25em solid red; */
+                width:100%;
+                font-size:36px;
+                font-weight:bold;
+                background-color:#F96;
+                background-color:#DEB887;
+                /* The rest is for rounded corners. */
+                -moz-border-radius-topleft:      8px;  /* for Firefox */
+                -moz-border-radius-topright:     8px;
+                -webkit-border-top-left-radius:  8px;  /* for Safari */
+                -webkit-border-top-right-radius: 8px;
+            }
+            .title-area {/*border:0.25em solid brown; */
+                padding: 5px;
+            }
+            .content-footer {/*border:0.25em solid orange; */
+                width:100%;
+            }
+            .tab {
+                background-color: #b7ad80;
+                font-size: 12px;
+                border-left:  1px solid gray;
+                border-top:   1px solid gray;
+                border-right: 1px solid gray;
+                width:110px;  /* "em" is a measurement, the size of a capital letter "M" */
+                float:left;
+                padding: 5px;
+                /* The rest is for rounded corners. */
+                -moz-border-radius-topleft:      6px;    /* for Firefox, rounded cornerrs */
+                -moz-border-radius-topright:     6px;
+                -webkit-border-top-left-radius:  6px;    /* for Safari, rounded cornerrs */
+                -webkit-border-top-right-radius: 6px;
+            }
+            .tab a {
+                text-decoration:none;
+                color:black;
+            }
+            .newLine {
+                clear:both;
+            }
+            .content {
+                padding: 5px;
+                text-align:center;
+            }
+            .selected {
+                background-color:#EEE8AA;
+            }
+            .footer {
+                padding: 5px;
+                background-color:BurlyWood;
+                font-size:11px;
+                letter-spacing: 1.2px;
+                /* The rest is for rounded corners. */
+                -moz-border-radius-bottomleft:      8px;    /* for Firefox, rounded cornerrs */
+                -moz-border-radius-bottomright:     8px;
+                -webkit-border-bottom-left-radius:  8px;    /* for Safari, rounded cornerrs */
+                -webkit-border-bottom-right-radius: 8px;    /*border:0.25em solid pink; */
+            }
+            table, th, td {
+                text-align: center;
+            }
+            table {
+                border:thin solid black;
+            }
+            .selectTable td {
+                border:thin solid black;
+                padding:5px;
+            }
+        </style>
+        <script type="text/javascript">
+            function decToHex(d) {
+                var hex = d.toString(16);
+                if (hex.length < 2) {
+                    hex="0"+hex;
+                }
+                return hex;
+            }
+
+            function hexToDec(h) {
+                return parseInt(h,16);
+            }
+
+            function changeIt(colorValue,upOrDown) {
+                var newColorValue=hexToDec(colorValue.toUpperCase());
+                //alert ("colorValue is " + colorValue);
+                var changeRate=hexToDec(document.colorForm.showChangeRate.value);
+                //alert ("changeRate is "+changeRate);
+                var newColorValue=newColorValue+(changeRate*upOrDown);
+                // alert ("newColorValue is "+newColorValue);
+                if (newColorValue<0) {
+                    //alert ("Can't go less than that!");
+                    newColorValue=0;
+                }
+                if (newColorValue>255){
+                    //alert ("Can't go more than that!");
+                    newColorValue=255;
+                }
+                return decToHex(newColorValue);
+            }
+            function redChange(upOrDown) {
+                document.colorForm.showRed.value=changeIt(document.colorForm.showRed.value,upOrDown);
+                setColorOfChooser();
+            }
+            function greenChange(upOrDown) {
+                document.colorForm.showGreen.value=changeIt(document.colorForm.showGreen.value,upOrDown);
+                setColorOfChooser();
+            }
+            function blueChange(upOrDown) {
+                document.colorForm.showBlue.value=changeIt(document.colorForm.showBlue.value,upOrDown);
+                setColorOfChooser();
+            }
+            function lighterOrDarker(upOrDown) { 
+                document.colorForm.showRed.value   = changeIt(document.colorForm.showRed.value,  upOrDown);
+                document.colorForm.showGreen.value = changeIt(document.colorForm.showGreen.value,upOrDown);
+                document.colorForm.showBlue.value  = changeIt(document.colorForm.showBlue.value, upOrDown);
+                setColorOfChooser();
+            }
+            function setColorOfChooser() {
+                //alert("Setting");
+                document.getElementById("colorTable").style.backgroundColor = "#"+
+                    document.colorForm.showRed.value+document.colorForm.showGreen.value+document.colorForm.showBlue.value;
+            }
+            function initColorOfChooser(r, g, b) {
+                document.colorForm.showRed.value=r;
+                document.colorForm.showGreen.value=g;
+                document.colorForm.showBlue.value=b;
+            }
+            function getColorOfChooser() {
+                return "#"+document.colorForm.showRed.value+document.colorForm.showGreen.value+document.colorForm.showBlue.value;
+            } 
+            function setBackgroundColor() {
+                document.colorForm.bgRed.value=document.colorForm.showRed.value;
+                document.colorForm.bgGreen.value=document.colorForm.showGreen.value;
+                document.colorForm.bgBlue.value=document.colorForm.showBlue.value;
+                var colorCode=getColorOfChooser();
+                document.getElementById("bodyId").style.backgroundColor = colorCode;
+                document.getElementById("showBgColor").innerHTML = colorCode;
+            }
+            function setHeaderFooterColor() {
+                document.colorForm.hfRed.value=document.colorForm.showRed.value;
+                document.colorForm.hfGreen.value=document.colorForm.showGreen.value;
+                document.colorForm.hfBlue.value=document.colorForm.showBlue.value;
+                var colorCode=getColorOfChooser();
+                document.getElementById("headerId").style.backgroundColor = colorCode;
+                document.getElementById("footerId").style.backgroundColor = colorCode;
+                document.getElementById("showHfColor").innerHTML = colorCode;
+            }
+            function setSelectedTabColor() {
+                document.colorForm.selRed.value=document.colorForm.showRed.value;
+                document.colorForm.selGreen.value=document.colorForm.showGreen.value;
+                document.colorForm.selBlue.value=document.colorForm.showBlue.value;
+
+                var colorCode=getColorOfChooser();
+                document.getElementById("tabSelectedId").style.backgroundColor = colorCode;
+                document.getElementById("contentId").style.backgroundColor = colorCode; 
+                document.getElementById("showStColor").innerHTML = colorCode;
+            }
+            function setUnselectedTabColor() {
+                document.colorForm.unselRed.value=document.colorForm.showRed.value;
+                document.colorForm.unselGreen.value=document.colorForm.showGreen.value;
+                document.colorForm.unselBlue.value=document.colorForm.showBlue.value;
+                var colorCode=getColorOfChooser();
+                document.getElementById("tab2Id").style.backgroundColor = colorCode;
+                document.getElementById("tab3Id").style.backgroundColor = colorCode;
+                document.getElementById("tab4Id").style.backgroundColor = colorCode;
+                document.getElementById("showUtColor").innerHTML = colorCode;
+            }
+            function getBackgroundColor() {
+                document.colorForm.showRed.value=document.colorForm.bgRed.value;
+                document.colorForm.showGreen.value=document.colorForm.bgGreen.value;
+                document.colorForm.showBlue.value=document.colorForm.bgBlue.value;
+                setColorOfChooser();
+            }
+            function getHeaderFooterColor() {
+                document.colorForm.showRed.value=document.colorForm.hfRed.value;
+                document.colorForm.showGreen.value=document.colorForm.hfGreen.value;
+                document.colorForm.showBlue.value=document.colorForm.hfBlue.value;
+                setColorOfChooser();
+            }
+						
+            function getUnselectedTabColor() {
+                //alert("hello");
+                document.colorForm.showRed.value=document.colorForm.unselRed.value;
+                document.colorForm.showGreen.value=document.colorForm.unselGreen.value;
+                document.colorForm.showBlue.value=document.colorForm.unselBlue.value;
+                setColorOfChooser();
+            }
+            function getSelectedTabColor() {
+                document.colorForm.showRed.value=document.colorForm.selRed.value;
+                document.colorForm.showGreen.value=document.colorForm.selGreen.value;
+                document.colorForm.showBlue.value=document.colorForm.selBlue.value; 
+                setColorOfChooser();
+            }
+
+            function init() {
+                initColorOfChooser("CD", "85", "3F");
+                setBackgroundColor();
+
+                initColorOfChooser("DE", "B8", "87");
+                setHeaderFooterColor();
+
+                initColorOfChooser("EE", "E8", "AA");
+                setSelectedTabColor();
+				
+                initColorOfChooser("B7", "AD", "A0");
+                setUnselectedTabColor();
+				
+                initColorOfChooser("80", "80", "80");
+                setColorOfChooser();
+            }
+
+        </script>
+    </head>
+    <body id="bodyId" onLoad="init();">
+        <br/>
+        <div class="container">
+            <div id="headerId" class="title-nav">
+                <div class="title-area">Title of Your Web Site</div>
+                <div class="newLine"></div>
+                <div id="tabSelectedId" class="tab selected"><a href="#">Home</a></div>
+                <div id="tab2Id" class="tab"><a href="#">Tab 2</a></div>
+                <div id="tab3Id" class="tab"><a href="#">Tab 3</a></div>
+                <div id="tab4Id" class="tab"><a href="#">Tab 4</a></div>
+                <div class="newLine"></div>
+            </div>
+            <!-- end of title-nav  -->
+            <div class="content-footer">
+                <div id="contentId" class="content selected">
+                    <form name="colorForm">
+                        <div align="center"><br/>
+                            <table id="colorTable" style="font-size: 11px; background-color: rgb(128, 128, 128);">
+                                <tr>
+                                    <td colspan="3" style="font-weight: bold; font-size: 14px; border-bottom: medium solid black;">Color Chooser</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">Change Rate:
+                                        <input name="showChangeRate" size="4" value="5" type="text"/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><input value="Lighter" onClick="javascript:lighterOrDarker(1);" type="button"></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: thin solid black;"><input value="More" onClick="javascript:redChange(1);" type="button"/>
+                                        <br/>
+                                        <span style="font-weight:bold; font-size:12px; letter-spacing:0.5ex; color:red;">Red </span> <br/>
+                                        <input name="showRed" size="2"  type="text"/>
+                                        <br>
+                                            <input value="Less" onClick="javascript:redChange(-1);" type="button"/></td>
+                                    <td style="border: thin solid black;"><input value="More" onClick="javascript:greenChange(1);" type="button"/>
+                                        <br/>
+                                        <span style="font-weight:bold; font-size:12px; letter-spacing:0.5ex; color:green;"> Green </span> <br/>
+                                        <input name="showGreen" size="2"  type="text"/>
+                                        <br/>
+                                        <input value="Less" onClick="javascript:greenChange(-1);" type="button"/></td>
+                                    <td style="border: thin solid black;"><input value="More" onClick="javascript:blueChange(1);" type="button"/>
+                                        <br/>
+                                        <span style="font-weight:bold; font-size:12px; letter-spacing:0.5ex; color:blue;"> Blue </span> <br/>
+                                        <input name="showBlue" size="2" type="text"/>
+                                        <br/>
+                                        <input value="Less" onClick="javascript:blueChange(-1);" type="button"/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><input value="Darker" onClick="javascript:lighterOrDarker(-1);" type="button"/></td>
+                                </tr>
+                            </table>
+                            <br/>
+                            <table class="selectTable">                                                                                                                                        <tr>
+                                    <td>&nbsp;</td>
+                                    <td>Page Background <br/>
+                                        <span id="showBgColor"></span></td>
+                                    <td>Header Footer <br/>
+                                        <span id="showHfColor"></span></td>
+                                    <td>Selected Tab <br/>
+                                        <span id="showStColor"></span></td>
+                                    <td>Unselected Tabs <br/>
+                                        <span id="showUtColor"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td><input name="bgRed"   size="2" type="text"/>
+                                        <input name="bgGreen" size="2" type="text"/>
+                                        <input name="bgBlue"  size="2" type="text"/></td>
+                                    <td><input name="hfRed"   size="2" type="text"/>
+                                        <input name="hfGreen" size="2" type="text"/>
+                                        <input name="hfBlue"  size="2" type="text"/></td>
+                                    <td><input name="selRed"   size="2" type="text"/>
+                                        <input name="selGreen" size="2" type="text"/>
+                                        <input name="selBlue"  size="2" type="text"/></td>
+                                    <td><input name="unselRed"   size="2" type="text"/>
+                                        <input name="unselGreen" size="2" type="text"/>
+                                        <input name="unselBlue"  size="2" type="text"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Set&nbsp;Color</td>
+                                    <td><input value=" " onClick="javascript:setBackgroundColor();"   type="button"/></td>
+                                    <td><input value=" " onClick="javascript:setHeaderFooterColor();" type="button"/></td>
+                                    <td><input value=" " onClick="javascript:setSelectedTabColor();"  type="button"/></td>
+                                    <td><input value=" " onClick="javascript:setUnselectedTabColor();" type="button"/></td>
+                                </tr>
+                                <tr>
+                                    <td>Get&nbsp;Color</td>
+                                    <td><input value=" " onClick="javascript:getBackgroundColor();"    type="button"/></td>
+                                    <td><input value=" " onClick="javascript:getHeaderFooterColor();"  type="button"/></td>
+                                    <td><input value=" " onClick="javascript:getSelectedTabColor();"   type="button"/></td>
+                                    <td><input value=" " onClick="javascript:getUnselectedTabColor();"  type="button"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </form>
+                </div> <!-- end of content div -->
+            </div> <!-- end of content-footer div -->
+
+            <div id="footerId" class="footer">Your Name - copyright 2011</div>
+        </div> <!-- end of container div -->
+    </body>
+</html>

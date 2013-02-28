@@ -1,0 +1,79 @@
+<html>
+  <head>
+
+    <style>
+
+      body {
+         background-color:pink;
+         font-family: Arial;
+         font-weight: 900;
+      }
+
+    </style>
+
+    <script type="text/javascript">
+
+
+      function hide(list){
+        var listStyle=document.getElementById(list).style;
+        listStyle.display="none";
+      }
+
+      function toggle(list){
+        var listStyle=document.getElementById(list).style;
+        if (listStyle.display=="none") {
+          listStyle.display="block";
+        }
+        else {
+          listStyle.display="none";
+        }
+      }
+
+      function hide_both(){  //simple version
+        hide('menu-webmaster');
+        hide('menu-tutorials');
+      } // function hide_both
+
+      function hide_all(menu){
+        //alert("hide_all");
+        var menu_element = document.getElementById(menu);
+ 
+        child_list = menu_element.childNodes;
+        for (i=0; i<child_list.length; i++) {
+          if(child_list[i].nodeName=="LI") {
+            //alert("id is li:" + child_list[i].id);
+            //alert ("length of child id is " + child_list[i].id.length);
+            if (child_list[i].id.length > 0) {
+              //alert ("hiding");
+              child_list[i].style.display="none";
+            }
+          } 
+        } // for
+      } // function hide_all
+
+    </script>
+
+  </head>
+
+<body onload="javascript:hide_all('main-menu')">
+  <ul id="main-menu" style="menustyle">
+ 
+    <li> <a href="javascript:toggle('menu-webmaster')">For Web Masters</a> </li> 
+    <li id="menu-webmaster">
+        <ul>
+          <li><a href="http://www.tutorio.com/webmaster/1-Announcements">Announcements</a></li>
+          <li><a href="http://www.tutorio.com/webmaster/5-Featured">Featured</a> </li>
+        </ul>
+    </li>
+
+    <li> <a href="javascript:toggle('menu-tutorials')">Tutorials</a></li> 
+    <li id="menu-tutorials" style="collapsing">
+        <ul>
+          <li><a href="http://www.tutorio.com/free/11-Clientside-tutorials">Clientside</a></li>
+          <li><a href="http://www.tutorio.com/free/8-Photoshop-tutorials">Photoshop</a></li>
+          <li><a href="http://www.tutorio.com/free/9-Serverside-tutorials">Serverside</a></li>
+        </ul>
+    </li>
+  </ul>
+</body>
+</html>

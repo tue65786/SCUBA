@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>My Javascript Calculator</title>
+
+    <script>
+      function hello()   {
+        alert("hello");
+      }
+
+      function add_v1() { // this version does not convert the input values to numbers, so the result is concatenation, not addition.
+        document.calculator.answer.value = 
+          document.calculator.leftside.value +  
+          document.calculator.rightside.value;
+      }
+
+      function add_v2() { // this version converts to numbers then adds, but it doesnt check to make sure the values are valid numbers.
+        document.calculator.answer.value = 
+          Number(document.calculator.leftside.value) +  
+          Number(document.calculator.rightside.value);
+      }
+
+      function add_v3() { // this version checks that the user input is a number "NaN" means "Not a Number"
+
+        if (isNaN(document.calculator.leftside.value)) {
+	  alert ("You are too funny!  If you don't put a number in the left side, how can I add up these numbers for you?");
+	  return;
+	}
+	if (isNaN(document.calculator.rightside.value)) {
+	  alert ("Now, you know that you have to put a number in the right side too - Duh !");
+	  return;
+	}
+	
+        document.calculator.answer.value = 
+          Number(document.calculator.leftside.value) +  
+          Number(document.calculator.rightside.value); 
+      }
+ 
+    </script>
+
+  </head>
+  <body style="text-align: center; background-color: tan;">
+
+    <form name="calculator">
+      <input name="leftside" id="leftside" value="12" type="text">
+       +
+      <input name="rightside" id="rightside" value="34" type="text">
+      <input name="" value="= (v1)" onclick="add_v1()" type="button">
+      <input name="" value="= (v2)" onclick="add_v2()" type="button">
+      <input name="" value="= (v3)" onclick="add_v3()" type="button">
+      <input value="46" name="answer" id="answer" type="text">
+    </form>
+
+  </body>
+</html>

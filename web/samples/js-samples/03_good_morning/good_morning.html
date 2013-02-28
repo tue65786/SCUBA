@@ -1,0 +1,37 @@
+<html xmlns = "http://www.w3.org/1999/xhtml">
+   <head>
+      <title>Using Relational Operators</title>
+      <script type = "text/javascript">
+
+         var name; // string entered by the user
+         var now = new Date(); // current date and time
+         var hour = now.getHours(); // current hour (0-23)
+         var min = now.getMinutes();
+         var thedate=now.getDate();  
+
+         // read the name from the prompt box as a string
+         name = window.prompt( "Please enter your name","" );
+
+         // determine whether it is morning
+         if ( hour < 12 ) {
+            document.write("<h1>Good Morning, ");
+         }
+
+         // It's not morning...
+         else {
+
+               document.write( "<h1>Hello There, " );
+
+         } 
+
+         document.writeln( name + ", and welcome to JavaScript!</h1>");
+         document.writeln("It's " + now.toLocaleString());
+
+      </script>
+
+   </head>
+
+   <body>
+      <p>Click Refresh (or Reload) to run this script again.</p>
+   </body>
+</html>

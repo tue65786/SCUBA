@@ -1,0 +1,1543 @@
+
+.cbFormSelect
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+	border-color: #D2D6D9 #EEEEEE #EEEEEE #D2D6D9;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
+	padding: 3px ;
+ 
+}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Sample_Contact_Us Web Form</title>
+<style type="text/css"> 
+<!--
+h1
+{
+ 
+	
+	color: #000000;
+	font-size: 22px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: bold;
+	margin: 14px 0px 7px 0px;
+	padding: 0px;
+ 
+}
+h2
+{
+ 
+	
+	color: #000000;
+	font-size: 20px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: bold;
+	padding: 0px;
+	margin: 14px 0px 7px 0px;
+ 
+}
+h3
+{
+ 
+	
+	color: #000000;
+	font-size: 14px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: bold;
+	padding: 0px;
+	margin: 14px 0px 7px 0px;
+ 
+}
+p
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 130%;
+	margin: 7px 0px 7px 0px;
+ 
+}
+ul
+{
+ 
+	
+	list-style-position: inside;
+	list-style-type: square;
+	margin: 7px 0px 7px 0px;
+	
+	padding: 0px;
+ 
+}
+li
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+	margin: 1px 0px 1px 0px;
+	
+	padding: 0px;
+ 
+}
+a
+{
+ 
+	
+	color: #0000ff;
+	text-decoration: underline;
+ 
+}
+a:hover
+{
+ 
+	
+	color: #0000ff;
+	text-decoration: none;
+ 
+}
+.cbFormLabel
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+ 
+}
+.cbFormLabelError
+{
+ 
+	
+	color: #ff0000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: bold;
+ 
+}
+.cbFormError
+{
+ 
+	
+	color: #ff0000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: bold;
+	text-align: left;
+	vertical-align: middle;
+	
+	margin-left: 5px;
+ 
+}
+.cbFormTable
+{
+ 
+	
+	border-collapse: collapse;
+	width: 100%;
+ 
+}
+.cbFormTableRow
+{
+ 
+	
+	background-color: #FFFFFF;
+	padding: 7px;
+ 
+}
+.cbFormTableRow:hover
+{
+ 
+	
+	background-color: #FFFFFF;
+ 
+}
+.cbFormTableEvenRow
+{
+ 
+	
+	background-color: #FFFFFF;
+ 
+}
+.cbFormTableEvenRow:hover
+{
+ 
+	
+	background-color: #FFFFFF;
+ 
+}
+.cbFormLabelCell
+{
+ 
+	
+	text-align: left;
+	vertical-align: top;
+	width: auto;
+	padding: 3px 7px;
+	white-space: normal;
+ 
+}
+.cbFormTextField
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+	border-color: #D2D6D9 #EEEEEE #EEEEEE #D2D6D9;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
+	padding: 3px ;
+ 
+}
+.cbFormTextArea
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+	border-color: #D2D6D9 #EEEEEE #EEEEEE #D2D6D9;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
+	padding: 3px ;
+ 
+}
+.cbFormTextAreaHint
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+	border-color: #D2D6D9 #EEEEEE #EEEEEE #D2D6D9;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
+	padding: 3px ;
+ 
+}
+.cbFormPassword
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+	border-color: #D2D6D9 #EEEEEE #EEEEEE #D2D6D9;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
+	padding: 3px ;
+ 
+}
+.cbFormFieldCell
+{
+ 
+	
+	text-align: left;
+	vertical-align: top;
+	padding: 3px 7px;
+	white-space: nowrap;
+ 
+}
+.cbFormDataCell
+{
+ 
+	
+	text-align: left;
+	vertical-align: top;
+	width: auto;
+	padding: 3px 7px;
+	white-space: normal;
+ 
+}
+.cbFormDataCellNumberDate
+{
+ 
+	
+	text-align: left;
+	vertical-align: top;
+	width: auto;
+	padding: 3px 7px;
+	white-space: normal;
+ 
+}
+.cbHTMLBlockContainer
+{
+ 
+	
+	text-align: left;
+	vertical-align: top;
+	padding: 7px;
+ 
+}
+.cbFormNestedTable
+{
+ 
+	
+	height:100%;
+	border-collapse:collapse;
+	padding: 0px;
+	border: none;
+ 
+}
+.cbFormNestedTableContainer
+{
+ 
+	
+	text-align: left;
+	vertical-align: top;
+	padding: 0px;
+ 
+}
+.cbFormLabelRequired
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+ 
+}
+.cbFormRequiredMarker
+{
+ 
+	
+	color: #FF0000;
+	font-size: 12px;
+	font-family: Arial ;
+	
+	margin-left: 2px;
+ 
+}
+.cbFormData
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+ 
+}
+.cbFormCalendar
+{
+ 
+	
+	padding-left:5px;
+ 
+}
+.cbFormErrorMarker
+{
+ 
+	
+	margin-right:5px;
+ 
+}
+.cbFormExpandLink
+{
+ 
+	
+	color: #0000ff;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+	cursor: pointer;
+ 
+}
+.cbFormExpandLink:hover
+{
+ 
+	
+	color: #0000ff;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+	cursor: pointer;
+ 
+}
+.cbFormAutoCompleteList
+{
+ 
+	
+	border-color: #EEEEEE ;
+	border-width: 1px;
+	border-style: solid;
+	box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3) ;
+	-moz-box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3) ;
+	-webkit-box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3) ;
+ 
+}
+.cbFormAutoCompleteOption
+{
+ 
+	
+	padding: 3px;
+	background-color: #FFFFFF;
+ 
+}
+.cbFormAutoCompleteOption_hover
+{
+ 
+	
+	padding: 3px;
+	background-color: #B0C4DE ;
+ 
+}
+.cbFormAutoCompleteOptionText
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+ 
+}
+.cbFormAutoCompleteOptionText_hover
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+ 
+}
+.cbFormAutoCompleteOptionRemainder
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: bold;
+ 
+}
+.cbFormAutoCompleteOptionRemainder_hover
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: bold;
+ 
+}
+.cbFormSearchAgainContainer
+{
+ 
+	
+	text-align: left;
+	vertical-align: middle;
+	padding: 0px;
+	white-space: nowrap;
+ 
+}
+.cbFormSearchAgainLink
+{
+ 
+	
+	color: #1959C3;
+	font-family: Arial ;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+ 
+}
+.cbFormSearchAgainLink:hover
+{
+ 
+	
+	color: #1959C3;
+	font-family: Arial ;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: underline;
+ 
+}
+.cbFormNavigationTable
+{
+ 
+	
+	margin: 0px;
+	width: 100%;
+	white-space:nowrap;
+ 
+}
+.cbFormNavigationCell
+{
+ 
+	
+	text-align: center;
+	vertical-align: middle;
+	padding: 7px 10px;
+	white-space:nowrap;
+	border: none ;
+ 
+}
+.cbFormNavigationMessage
+{
+ 
+	
+	color:#000000;
+	font-size:12px;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+ 
+}
+.cbFormNavigationLinks
+{
+ 
+	
+	color: #1959C3;
+	font-size:12px;
+	font-family: Arial ;
+	font-weight: bold;
+	font-style: normal;
+	text-decoration: none;
+	
+	margin: 0 5px;
+ 
+}
+.cbFormNavigationLinks:hover
+{
+ 
+	color: #1959C3;
+	font-size:12px;
+	font-family: Arial ;
+	font-weight: bold;
+	font-style: normal;
+	text-decoration: underline;
+	
+	margin: 0 5px;
+ 
+}
+.cbFormActionsContainer
+{
+ 
+	
+	padding: 5px 0px;
+	white-space: nowrap;
+	width: 100%;
+ 
+}
+.cbFormJumpToTextField
+{
+ 
+	
+	color:#000000;
+	font-size:12px;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	text-align: right;
+ 
+}
+.cbFormSelect
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+	border-color: #D2D6D9 #EEEEEE #EEEEEE #D2D6D9;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
+	padding: 3px ;
+ 
+}
+.cbFormFile
+{
+ 
+	
+	color: #000000;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+	border-color: #D2D6D9 #EEEEEE #EEEEEE #D2D6D9;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	-webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
+	padding: 3px ;
+ 
+}
+.cbFormDataLink
+{
+ 
+	
+	color: #0000ff;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: none;
+ 
+}
+.cbFormDataLink:hover
+{
+ 
+	
+	color: #0000ff;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: underline;
+ 
+}
+.cbSubmitButton
+{
+ 
+	
+	color: #FFFFFF;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	border-color: #CCCCCC #999999 #999999 #CCCCCC;
+	border-style: solid;
+	border-width: 1px;
+	background-color: #1959C3;
+	width: auto;
+	height: auto;
+	margin: 0px 3px;
+	padding: 4px 15px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-o-border-radius: 4px;
+ 
+}
+.cbSubmitButton_hover
+{
+ 
+	color: #1959C3;
+	font-size: 12px;
+	font-family: Arial ;
+	font-style: normal;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	border-color: #999999 #CCCCCC #CCCCCC #999999;
+	border-style: solid;
+	border-width: 1px;
+	background-color: #B0C4DE ;
+	width: auto;
+	height: auto;
+	margin: 0px 3px;
+	padding: 4px 15px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-o-border-radius: 4px;
+	cursor: pointer ;
+ 
+}
+.cbSubmitButtonContainer
+{
+ 
+	
+	padding: 10px 7px;
+	text-align: center;
+	vertical-align: middle;
+ 
+}
+.cbPasswordResetButtonContainer{}
+-->
+</style>
+</head>
+
+<body>
+
+<script type="text/javascript" language="javascript"> function cbButtonHover(obj,CSSclass) {try { obj.className=CSSclass; } catch (e) {}}</script>
+<form style="margin: 0px;" action="https://b4.caspio.com/dp.asp" method="post" id="caspioform">
+<input type="hidden" name="AppKey" value="977030006261621cf01d4b9ea4e7" />
+<input type="hidden" name="cbUniqueFormId" id="cbUniqueFormId_6E141E3757" value="_6E141E3757" />
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="right" valign="bottom">
+<table cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<table name="cbTable" id="cbTable_6E141E3757" cellspacing="0" class="cbFormTable">
+<tr class="cbFormTableRow">
+<td class="cbFormLabelCell  cbFormLabelRequired">
+<label for="InsertRecordFirst_Name">Full Name<span class="cbFormRequiredMarker">*</span></label></td>
+<td class="cbFormFieldCell">
+<input type="text" class="cbFormTextField" size="25" maxlength="255" name="InsertRecordFirst_Name" id="InsertRecordFirst_Name" value /></td>
+</tr>
+<tr class="cbFormTableEvenRow">
+<td class="cbFormLabelCell  cbFormLabelRequired">
+<label for="InsertRecordEmail">Email<span class="cbFormRequiredMarker">*</span></label></td>
+<td class="cbFormFieldCell">
+<input type="text" class="cbFormTextField" size="25" maxlength="255" name="InsertRecordEmail" id="InsertRecordEmail" value /></td>
+</tr>
+<tr class="cbFormTableRow">
+<td class="cbFormLabelCell  cbFormLabel">
+<label for="InsertRecordStatus">Category</label></td>
+<td class="cbFormFieldCell">
+<select id="InsertRecordStatus" name="InsertRecordStatus" size="1" class="cbFormSelect">
+<option value="General Inquiry" selected="selected">General Inquiry</option>
+<option value="Your_Account">Your Account</option>
+<option value="Looking for a Dive Buddy">Looking for a Dive Buddy</option>
+<option value="Something Else">Something Else</option>
+</select></td>
+</tr>
+<tr class="cbFormTableEvenRow">
+<td class="cbFormLabelCell  cbFormLabel" height="51">
+<label for="InsertRecordNewsletter">Which organization(s) are you certified with?</label></td>
+<td colspan="1" class="cbFormNestedTableContainer" height="51">
+<table class="cbFormNestedTable" cellspacing="0">
+<tr>
+<td class="cbFormFieldCell">
+<span class="cbFormData">
+<input type="checkbox" name="InsertRecordNewsletter" id="InsertRecordNewsletter" value="Y" /> 
+PADI</span></td>
+<td colspan="2" class="cbFormFieldCell">
+<span class="cbFormData">
+<input type="checkbox" name="InsertRecordLast_Name" id="InsertRecordLast_Name" value="NAUI" /> 
+NAUI</span></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="cbFormTableRow">
+<td class="cbFormLabelCell  cbFormLabel">
+<label for="InsertRecordInternal_Comments">How often do you dive?</label>
+<input type="radio" name="InsertRecordInternal_Comments" id="InsertRecordInternal_Comments0" value="Never been" /><label for="InsertRecordInternal_Comments0">Never 
+been</label>
+<input type="radio" name="InsertRecordInternal_Comments" id="InsertRecordInternal_Comments1" value="Less than once a year" /><label for="InsertRecordInternal_Comments1">Less 
+than once a year</label>
+<input type="radio" name="InsertRecordInternal_Comments" id="InsertRecordInternal_Comments2" value="Atleast Once A Year" /><label for="InsertRecordInternal_Comments2">Atleast 
+Once A Year</label>
+<input type="radio" name="InsertRecordInternal_Comments" id="InsertRecordInternal_Comments3" value="Couple times a year" /><label for="InsertRecordInternal_Comments3">Couple 
+times a year</label>
+<input type="radio" name="InsertRecordInternal_Comments" id="InsertRecordInternal_Comments4" value="Couple times a month" /><label for="InsertRecordInternal_Comments4">Couple 
+times a month</label> </span>
+</td>
+</tr>
+<tr class="cbFormTableEvenRow">
+<td class="cbFormLabelCell  cbFormLabel">
+<label for="InsertRecordComments">Comments</label>
+<input type="text" class="cbFormTextField" size="25" maxlength="64000" name="InsertRecordComments" id="InsertRecordComments" value /></td>
+</tr>
+<tr class="cbFormTableRow">
+<td colspan="2" class="cbSubmitButtonContainer">
+<input id="Submit" type="submit" name="Submit" class="cbSubmitButton" onmouseover="cbButtonHover(this,'cbSubmitButton_hover');" onmouseout="cbButtonHover(this,'cbSubmitButton');" value="Submit" /><input type="hidden" name="Mod0InsertRecord" value="1" /></td>
+</tr>
+</table>
+<input type="hidden" name="Mod0InsertRecordPageID" value="3" />
+</td>
+</tr>
+</table>
+<script> 
+function f_cbOpenForm(evt) {
+       var v_cbFound = false ;
+       var v_cbForm = evt.target ? evt.target : window.event.srcElement ;
+       while (!v_cbFound) {
+              v_cbForm = v_cbForm.parentNode ;
+              if (v_cbForm.id == "caspioform") {
+                     v_cbFound = true ;
+              }
+              
+       }
+       var v_cbFormKey = v_cbForm.childNodes[0].value ;
+       var v_cbFormLocation  = "http://bridge.caspio.net/dp.asp?AppKey=e8f40000dac6615af93544cca6ae&key=" + v_cbFormKey + "&url=" + escape(document.location) ;
+       window.open(v_cbFormLocation,'Report_Abuse','width=300, height=200, titlebar=0, toolbar=0, top=100, left=300, resizable=0, menubar=0, location=0, scrollbars=1','') ;
+}
+</script>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" style="background: transparent none repeat scroll 0% 0%;">
+<tr class="cbFormTableRow" style="background: transparent none repeat scroll 0% 0%;">
+<td class="cbFormData" valign="bottom" style="text-align: left !important; line-height: 2em !important; padding: 0 !important;">
+<a class="cbFormDataLink" style="font-family:Arial, Verdana !important; font-size:11px !important;" href="#" onclick="f_cbOpenForm(event); return false;">
+Report Abuse</a>
+</td>
+<td class="cbFormData" valign="bottom" style="text-align: right !important; line-height: 2em !important; padding: 0 !important;">
+<a href="http://www.caspio.com/l/default.ashx?s=172" target="_blank" class="cbFormDataLink" style="font-family:Arial, Verdana !important; font-size:11px !important;">
+Trial App Created with Caspio</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<input type="hidden" name="PrevPageID" value="3" />
+</form>
+<script type="text/javascript" language="javascript">
+/*
+ Copyright (c) 2012, Caspio Inc. All Rights Reserved. Use of this code by anyone other than Caspio is not permitted.
+*/
+var v_cbConditionalFields_6E141E3757 = null;
+function f_hookCaspioForm_6E141E3757(){
+    
+    var v_actions = new f_cbActionsManagerObj();
+        v_actions.useClasses = (cbStyleAttributeName_6E141E3757 || '').toLowerCase() == 'class';
+        v_actions.uniqueId = '_6E141E3757';
+        v_actions.init(cbConditionalCriteria_6E141E3757);
+        v_cbConditionalFields_6E141E3757 = v_actions;
+        setTimeout(function(){v_actions.recalcAll();}, 1);
+}
+ 
+function f_cbActionsManagerObj(){
+	var v_manager = this;
+	this.uniqueId = '';
+    this.useClasses  = !1;
+	this.actionFields   = {};
+    this.criteriaFields = {};
+	this.actions = [];
+	this.init = function(v_criteria){
+        for(var i = 0; i < v_criteria.length; i++){
+			this.addAction(v_criteria[i]);
+		}
+	};
+	this.recalcAll = function(){
+	    for(var i = 0; i < this.actions.length; i++)
+            this.actions[i].execute();
+	};
+    this.addAction = function(v_action){
+		var v_actionObj = new f_cbActionObj();
+		
+        this.actions.push(v_actionObj);
+        v_actionObj.uniqueId = this.uniqueId;
+        v_actionObj.useClasses = this.useClasses;
+		v_actionObj.name = 'Action' + this.actions.length;
+        v_actionObj.manager = this;
+		v_actionObj.init(v_action);
+	};
+}
+ 
+function f_cbActionObj(){
+	///<field name="criteria" type="Array" elementType="f_cbCriteria"></field>
+	///<field name="manager" type="f_cbActionsManagerObj"></field>
+    ///<field name="rootForm" type="HTMLFormElement"></field>
+    ///<field name="rootTable" type="HTMLTableElement"></field>
+    
+    
+	this.uniqueId    = '';
+    this.name        = '';
+	this.action      = '';
+    this.operator    = "or";
+	this.matchAll    = false;
+    this.isSection   = !1;
+    this.useClasses  = !1;
+	this.controlIds  = []
+ 
+    //this.actionNodes = [];
+    //this.manager   = null;
+    //this.criteria  = [];
+    //this.rootForm  = null;
+    //this.rootTable = null;
+    
+	this.init = function(v_action){
+		var i;
+ 
+        this.action     = (v_action.action||'').toLowerCase();
+		this.operator   = v_action.operator;
+		this.isSection  = v_action.isSection;
+		this.matchAll   = (v_action.operator||'').toLowerCase() == 'and';
+        this.criteria   = [];
+		this.controlIds  = v_action.controls;
+		
+        this.initRootNodes();
+        
+        for(i = 0; i < this.controlIds.length; i++){
+            var v_id = this.controlIds[i];
+            if(!this.manager.actionFields[v_id]){
+                this.manager.actionFields[v_id] = new f_actionFieldObj(v_id);
+            }
+        }
+		for(i = 0; i < v_action.criteria.length; i++)
+			this.addCiteria(v_action.criteria[i]);
+		
+	};
+ 
+	this.addCiteria = function(v_criteria){
+		var v_criteriaObj = new f_cbCriteria();
+		v_criteriaObj.actionObj = this;
+		v_criteriaObj.init(v_criteria);
+		this.criteria.push(v_criteriaObj);
+	};
+ 
+	this.onCriteriaChanged = function(){
+		this.execute();
+	};
+	this.execute = function(){
+        var result;
+		for(var i = 0; i < this.criteria.length; i++){
+			result = this.criteria[i].execute();
+			if(this.matchAll != result) break;
+		}
+		this.doAction(result)
+	};
+ 
+	this.doAction = function(result){
+		var v_action = null, v_id, v_nodeList;
+        switch(this.action){
+		    case 'hide':     v_action = 'hide';     break;
+		    case 'disable':  v_action = 'disable';  break;
+		    case 'static':   v_action = 'static';   break;
+		    case 'required': v_action = 'required'; break;
+		}
+        if(v_action){
+            for(var i = 0; i < this.controlIds.length; i++){
+                try{
+                    v_id = this.controlIds[i];
+                    v_nodeList = this.getField(v_id)
+                    if(!v_nodeList) continue;
+                    this[v_action](v_nodeList, this.manager.actionFields[v_id], result);
+                }catch(e){}
+            }
+        }
+	}
+ 
+    this.hide     = function(v_nodeList, v_actionFieldObj, v_result){
+        ///<param name="v_nodeList" type="Array" elementType="HTMLElement"></param>
+        ///<param name="v_actionFieldObj" type="f_actionFieldObj"></param>
+        ///<param name="v_result" type="Boolean"></param>
+        var v_display = v_result ? 'none' : '', v_node = v_nodeList[0];
+        var v_rootRow = this.getRootRow(v_node);
+        
+        if(this.isSection){
+            //hide or show each section row
+            v_actionFieldObj.sectionHidden = v_result;
+            if(!v_result && v_actionFieldObj.fieldHidden) return;
+            
+            if(v_rootRow){
+                f_cbHideRow(this.rootTable, v_rootRow, v_result);
+            }
+        }else{
+            v_actionFieldObj.fieldHidden = v_result;
+            
+            var v_label = this.getLabel(v_rootRow, v_node.name);
+                
+            //show hide controlls
+            //v_node.style.display = v_display;
+            var v_nodesToHide = this.getParentCell(v_node).childNodes;
+            for(var i = 0; i < v_nodesToHide.length; i++)
+                try{v_nodesToHide[i].style.display = v_display;}catch(e){}
+ 
+            try{
+                //15904
+                if(v_node.nodeName.toLowerCase() == 'textarea'){
+                    var v_table = this.getParentTable(v_node);
+                    if(v_table != this.rootTable && v_table.rows[1].cells[0].id.search(v_node.id) != -1)
+                        v_table.style.display = v_display;
+                }
+            }catch(e){}
+ 
+            if(v_label)
+                v_label.style.display = v_display;
+ 
+ 
+            //return if plan to show field but section is hidden
+            if(!v_result && v_actionFieldObj.sectionHidden) return;
+            //check to show or hide row
+            if(v_label){
+                //label present
+                var v_labelRow = this.getParentRow(v_label),
+                    v_nodeRow = this.getParentRow(v_node);
+                
+                try{
+                    //15904
+                    if(v_node.nodeName.toLowerCase() == 'textarea' && v_nodeRow.nextSibling && v_nodeRow.nextSibling.cells[0].id.search(v_node.id) != -1){
+                        v_nodeRow = this.getParentRow(v_nodeRow);
+                    }
+                }catch(e){}
+ 
+                if(v_labelRow == v_nodeRow && v_nodeRow == v_rootRow){
+                    //simple layout, label on left
+                    if(v_labelRow.cells.length == 2 && this.getParentTable(v_labelRow))
+                        f_cbHideRow(this.rootTable, v_rootRow, v_result);
+ 
+                }else if(v_labelRow.nextSibling == v_nodeRow){
+                    //simple layout, label on top
+                        
+                    var v_parentTable = this.getParentTable(v_labelRow);
+                    if(this.getParentTable(v_parentTable) == this.rootTable && v_rootRow.cells.length == 1){
+                        //field with label on top presents in directly in root table not in "KeepWithNext" nested table, and section column count = 1
+                        f_cbHideRow(this.rootTable, v_rootRow, v_result);
+                    }
+                }
+            }else{
+                //no label selected
+                if(this.getParentRow(v_node) == v_rootRow && v_rootRow.cells.length == 1){
+                    f_cbHideRow(this.rootTable, v_rootRow, v_result);
+                }
+            }
+ 
+        }
+    };
+    this.disable  = function(v_nodeList, v_actionFieldObj, v_result){
+        ///<param name="v_nodeList" type="Array" elementType="HTMLElement"></param>
+        ///<param name="v_actionFieldObj" type="f_actionFieldObj"></param>
+        ///<param name="v_result" type="Boolean"></param>
+        
+        if(this.isSection){
+            v_actionFieldObj.sectionDisabled = v_result;
+            if(!v_result && v_actionFieldObj.fieldDisabled) return;
+        }else{
+            v_actionFieldObj.fieldDisabled = v_result;
+            if(!v_result && v_actionFieldObj.sectionDisabled) return;
+        }
+        
+        //var i, v_nodesToDisable = this.getParentCell(v_nodeList[0]).childNodes;
+        //for(i = 0; i < v_nodesToDisable.length; i++)
+        //    v_nodesToDisable[i].disabled = v_result;
+        
+        for(var i = 0; i < v_nodeList.length; i++){
+            v_nodeList[i].disabled = v_result;
+            try{
+                //15899
+                if(v_nodeList[i].type == 'file' && v_nodeList[i].nextSibling.firstChild.id.search(v_nodeList[i].id + 'Remove') != -1){
+                    v_nodeList[i].nextSibling.firstChild.disabled = v_result;
+                }
+            }catch(v_e){}
+        }
+    };
+    this.static   = function(v_nodeList, v_actionFieldObj, v_result){
+        ///<param name="v_nodeList" type="Array" elementType="HTMLElement"></param>
+        ///<param name="v_actionFieldObj" type="f_actionFieldObj"></param>
+        ///<param name="v_result" type="Boolean"></param>
+        
+        if(v_actionFieldObj.fieldRequired || this.isSection) return;
+        
+        var v_node = v_nodeList[0], 
+            v_id = v_node.id, 
+            span, 
+            v_cell = this.getParentCell(v_node), 
+            v_display = '',
+            v_value = '';
+            
+        if((v_node.type||'').toLowerCase() == 'radio'){
+            v_value = f_cbGetRadioValue(v_nodeList);
+        }else if((v_node.type||'').toLowerCase() == 'checkbox'){
+            v_value = v_node.checked ? v_node.value : '';
+        }else{
+            v_value = v_node.value;
+        }
+ 
+        if(v_result && v_actionFieldObj.fieldStatic && v_actionFieldObj.fieldStaticDataNode){
+            //15900
+            try{v_actionFieldObj.fieldStaticDataNode.textContent = v_value;}catch(e){}
+            try{v_actionFieldObj.fieldStaticDataNode.innerText = v_value;}catch(e){}
+        }
+        
+        if(v_result == v_actionFieldObj.fieldStatic) return;
+ 
+        v_actionFieldObj.fieldStatic = v_result;
+ 
+        
+ 
+        try{
+            //15904
+            if(v_node.nodeName.toLowerCase() == 'textarea'){
+                var v_table = this.getParentTable(v_cell);
+                if(v_table != this.rootTable && v_table.rows[1].cells[0].id.search(v_node.id) != -1)
+                    v_cell = v_table.parentNode;
+            }
+        }catch(e){}
+ 
+        if(!v_actionFieldObj.fieldCell_InitialCss)
+            v_actionFieldObj.fieldCell_InitialCss = this.useClasses ? v_cell.className : v_cell.style.cssText;
+ 
+        if(v_result){
+            //make static
+            span = document.createElement("span");
+ 
+            this.setStyle(v_cell, cbFormDataCellAttributeValue_6E141E3757);
+            this.setStyle(span, cbFormDataAttributeValue_6E141E3757);
+            
+            try{span.textContent = v_value;}catch(e){}
+            try{span.innerText = v_value;}catch(e){}
+ 
+            v_cell.insertBefore(span, v_cell.firstChild);
+            v_display = 'none';
+            
+            v_actionFieldObj.fieldStaticDataNode = span;
+        }else{
+            //remove static
+            if(v_actionFieldObj.fieldStaticDataNode)
+                v_actionFieldObj.fieldStaticDataNode.parentNode.removeChild(v_actionFieldObj.fieldStaticDataNode);
+ 
+            v_actionFieldObj.fieldStaticDataNode = null;
+ 
+            this.setStyle(v_cell, v_actionFieldObj.fieldCell_InitialCss);
+        }
+        var v_nodesToHide = v_cell.childNodes;
+        
+        for(var i = 0; i < v_nodesToHide.length; i++){
+            if(v_actionFieldObj.fieldStaticDataNode == v_nodesToHide[i]) continue;
+            if((v_node.type || '').toLowerCase() == 'file' && ((v_nodesToHide[i].src||v_nodesToHide[i].href||'').search(/dpImages\.aspx/i) != -1)){
+                //15974
+                if(v_actionFieldObj.fieldStaticDataNode)
+                    v_node.parentNode.insertBefore(v_actionFieldObj.fieldStaticDataNode, v_node);
+                continue;
+            }
+            v_nodesToHide[i].style.display = v_display;
+        }
+    };
+    this.required = function(v_nodeList, v_actionFieldObj, v_result){
+        ///<param name="v_nodeList" type="Array" elementType="HTMLElement"></param>
+        ///<param name="v_actionFieldObj" type="f_actionFieldObj"></param>
+        ///<param name="v_result" type="Boolean"></param>
+        
+        if(v_actionFieldObj.fieldStatic) return;
+        
+        if(v_actionFieldObj.sectionDisabled && v_result) v_result = !1;
+ 
+        var v_labelNode = this.getLabel(this.getRootRow(v_nodeList[0]), v_nodeList[0].name);
+        if(!v_labelNode) return;
+        
+        if(v_result == v_actionFieldObj.fieldRequired) return;
+        
+        v_actionFieldObj.fieldRequired = v_result;
+ 
+        var v_labelCell = v_labelNode.parentNode;
+        
+        if(!v_actionFieldObj.fieldRequiredLabelCell_InitialCss)
+            v_actionFieldObj.fieldRequiredLabelCell_InitialCss = this.useClasses ? v_labelCell.className : v_labelCell.style.cssText;
+        
+        if(v_result){
+            //apply class to cell
+ 
+            this.setStyle(v_labelCell, cbLabelRequiredAttributeValue_6E141E3757);
+ 
+            var v_markerNode = null;
+ 
+            if(cbRequiredMarkerType_6E141E3757 == 'TEXT'){
+                v_markerNode = document.createElement('span');
+                this.setStyle(v_markerNode, cbRequiredMarkerAttributeValue_6E141E3757);
+                v_markerNode.innerHTML = cbRequiredMarker_6E141E3757;
+            }else if(cbRequiredMarkerType_6E141E3757 == 'IMAGE'){
+                v_markerNode = document.createElement('img');
+                v_markerNode.src = cbRequiredMarker_6E141E3757;
+            }
+ 
+            if(v_markerNode){
+                v_labelNode.appendChild(v_markerNode);
+                v_actionFieldObj.fieldRequiredLabel_MarkerNode = v_markerNode;
+            }
+        }else{
+            //apply class to cell
+            this.setStyle(v_labelCell, v_actionFieldObj.fieldRequiredLabelCell_InitialCss);
+            
+            if(v_actionFieldObj.fieldRequiredLabel_MarkerNode)
+                v_actionFieldObj.fieldRequiredLabel_MarkerNode.parentNode.removeChild(v_actionFieldObj.fieldRequiredLabel_MarkerNode);
+ 
+            v_actionFieldObj.fieldRequiredLabel_MarkerNode = null;
+        }
+ 
+        
+    };
+ 
+    this.setStyle = function(v_node, v_value){
+        if(this.useClasses){
+            v_node.className = v_value;
+        }else{
+            v_node.style.cssText = v_value;
+        }
+    };
+ 
+    /******************************************/
+    this.initRootNodes = function(){
+        this.rootTable = document.getElementById('cbTable' + this.uniqueId);
+        
+        var v_anchorNode = this.rootTable.parentNode;
+        while(v_anchorNode && v_anchorNode.nodeName.toLowerCase() != 'form')
+            v_anchorNode = v_anchorNode.parentNode;
+        
+        this.rootForm = v_anchorNode;
+            
+    };
+    this.getParentTable = function(v_node){
+        v_node = v_node.parentNode;
+        while(v_node && v_node.nodeName.toLowerCase() != 'table')
+            v_node = v_node.parentNode;
+        return v_node;
+    };
+    this.getParentRow = function(v_node){
+        v_node = v_node.parentNode;
+        while(v_node && v_node.nodeName.toLowerCase() != 'tr')
+            v_node = v_node.parentNode;
+        return v_node;
+    };
+    this.getParentCell = function(v_node){
+        v_node = v_node.parentNode;
+        while(v_node && v_node.nodeName.toLowerCase() != 'td')
+            v_node = v_node.parentNode;
+        return v_node;
+    };
+    this.getRootRow = function(v_node){
+        ///<returns type="HTMLElement"></returns>
+        var v_rootRow = this.getParentRow(v_node);
+        while(v_rootRow && this.getParentTable(v_rootRow) != this.rootTable)
+            v_rootRow = this.getParentRow(v_rootRow);
+        return v_rootRow;
+    };
+    this.getLabel = function(v_node, v_id){
+        var labels = v_node.getElementsByTagName('label');
+        for (var i = 0; i < labels.length; i++) {
+            if(labels[i].htmlFor == v_id){
+                return labels[i];
+            }
+        }
+        return null;
+    };
+    this.getForm = function(v_node){
+        while(v_node && v_node.nodeName.toLowerCase() != 'form')
+            v_node = v_node.parentNode;
+        return v_node;
+    };
+    this.getField = function(v_id){
+        var v_node = this.rootForm[v_id];
+        if(!v_node) return null;
+        if(v_node.length && v_node[0] && v_node[0].type == 'radio')
+            return v_node;
+        return [v_node];
+        //var v_nodes = document.getElementsByName(v_id);
+        //for(var i = 0; i < v_nodes.length; i++){
+        //    var v_node = v_nodes[i];
+        //    if(this.getForm(v_node) == this.rootForm) return v_node;
+        //}
+        //return null;
+    };
+}
+ 
+function f_cbCriteria(){
+	///<field name="actionObj"  type="f_cbActionObj"></field>
+	///<field name="CType"  type="String">Conpare type</field>
+	///<field name="DType"  type="String">Compare DataType</field>
+	///<field name="LType"  type="Boolean">True if control</field>
+	///<field name="LValue" type="String">Control id if LType is true</field>
+	///<field name="RType"  type="Boolean">True if control</field>
+	///<field name="RValue" type="String">Control id if RType is true</field>
+	var v_this = this;
+	this.CType  = '';
+    this.DType  = "";
+    this.LType  = false;
+    this.LValue = "";
+    this.RType  = false;
+    this.RValue = "";
+	
+	this.isRange   = false;
+    this.RType2    = false;
+    this.RValue2   = "";
+	this.precision = '';
+    
+ 
+	this.getValue = function(v_type, v_value){
+		if(!v_type) return v_value || '';
+ 
+		var v_outVal = '';
+		try{
+            var nodeList = this.actionObj.getField(v_value), ctl = nodeList[0];
+			
+            if(ctl.disabled || ctl.style.display == 'none'){
+			}else if(ctl.type == 'radio'){
+				v_outVal = f_cbGetRadioValue(nodeList);
+			}else if(ctl.type == 'checkbox'){
+				if(ctl.checked) return 'checked';
+			}else if(ctl.type == 'select-multiple'){
+				var selected = [];
+				for(var i = 0; i < ctl.options.length; i++)
+					if(ctl.options[i].selected)
+						selected.push(ctl.options[i].value);
+				v_outVal = selected.join(';');
+			}else{
+				v_outVal = ctl.value;
+			}
+		}catch(e){
+			v_outVal = '';
+		}
+		return v_outVal;
+	};
+	
+	this.init = function(v_criteria){
+		this.CType  = (v_criteria.comparisonType||'=').toUpperCase();
+		this.DType  = (v_criteria.dataType||'STRING').toUpperCase();
+		this.LType  = (v_criteria.lvalueType||'').toLowerCase() == "control";
+		this.LValue = v_criteria.lvalue;
+		this.RType  = (v_criteria.rvalueType||'').toLowerCase() == "control";
+		this.RValue = v_criteria.rvalue;
+		
+        this.isRange   = this.CType.toUpperCase() == 'RANGE';
+		this.RType2    = (v_criteria.rvalue2Type||'').toLowerCase() == "control";
+		this.RValue2   = v_criteria.rvalue2;
+		this.precision = (v_criteria.precision||'').toUpperCase();
+ 
+		this.initEvents();
+	};
+	this.execute = function(){
+        var lValue  = this.getValue(this.LType, this.LValue),
+		    rValue  = this.getValue(this.RType, this.RValue),
+		    rValue2 = this.getValue(this.RType2, this.RValue2);
+ 
+		try {
+			var v_toType = (this.DType == 'NUMBER' ? 'getNumber' : (this.DType == 'DATE' ? 'getDate' : 'getString'));
+            lValue  = this[v_toType](lValue);
+			rValue  = this[v_toType](rValue);
+			rValue2 = this[v_toType](rValue2);
+		}catch(e){
+			this.DType = 'STRING';
+			lValue  = this.getString(lValue);
+			rValue  = this.getString(rValue);
+			rValue2 = this.getString(rValue2);
+		}
+		return this.compare(lValue, rValue, rValue2);
+ 
+	};
+	this.initEvents = function(){
+        this.addEvents(this.LType,  this.LValue);
+        this.addEvents(this.RType,  this.RValue);
+        this.addEvents(this.RType2, this.RValue2);
+	};
+    this.addEvents = function(v_type, v_name){
+        if(!v_type) return;
+        var v_nodeList = this.actionObj.getField(v_name);
+        if(!v_nodeList) return;
+        for(var i = 0; i < v_nodeList.length; i++)
+            this.addEvent(v_nodeList[i]);
+    };
+    this.addEvent = function(v_node){
+        ///<param name="v_node" type="HTMLElement"></param>
+ 
+        if(!v_node) return;
+        //if(v_criterionFieldObj.isEventAttached) return;
+        //v_criterionFieldObj.isEventAttached = !0;
+		var v_nodeName = v_node.nodeName.toLowerCase(), v_type = (v_node.type || '').toLowerCase();
+		
+		if(v_nodeName == 'select'){
+			f_hookListener(v_node, 'change', f_onChange);
+		}else if(v_nodeName == 'textarea'){
+			f_hookListener(v_node, 'keyup',  f_onChange);
+			f_hookListener(v_node, 'change', f_onChange);
+		}else if(v_nodeName == 'input' && (v_type == 'text' || v_type == 'hidden')){
+			f_hookListener(v_node, 'keyup',  f_onChange);
+			f_hookListener(v_node, 'change', f_onChange);
+            f_hookListener(v_node, 'input',  f_onChange);
+		}else if(v_nodeName == 'input' && (v_type == 'checkbox' || v_type == 'radio')){
+			f_hookListener(v_node, 'keyup',  f_onChange);
+			f_hookListener(v_node, 'change', f_onChange);
+			f_hookListener(v_node, 'click',  f_onChange);
+		}
+	};
+ 
+    this.getString = function(v_value){
+        return (String(v_value || '')).toLowerCase().replace(/^\s+|\s+$/g, '');
+    };
+    this.getNumber = function(v_value){
+        return Number(v_value);
+    };
+    this.getDate = function(v_value){
+        v_value = String(v_value).replace(/^\s+|\s+$/);
+        var v_outValue = new Date(v_value);
+        switch(this.precision){
+			case 'DATE':
+                v_outValue = new Date(v_outValue.getFullYear(), v_outValue.getMonth(), v_outValue.getDate(), 0, 0, 0, 0);
+            break;
+			case 'MONTHYEAR':
+                if(String(v_value).search(/^[0-9]+[\/][0-9]+$/) != -1){
+                    v_outValue = new Date(v_value.split('/')[1], parseInt(v_value.split('/')[0]) - 1, 1, 0, 0, 0, 0);
+                }else{
+                    v_outValue = new Date(v_outValue.getFullYear(), v_outValue.getMonth(), 1, 0, 0, 0, 0);
+                }
+            break;
+			case 'YEAR':
+                if(String(v_value).search(/^[0-9]+$/) != -1){
+                    v_outValue = new Date(v_value, 0, 1, 0, 0, 0, 0); 
+                }else{
+                    v_outValue = new Date(v_outValue.getFullYear(), 0, 1, 0, 0, 0, 0); 
+                }
+            break;
+		}
+        
+        return isNaN(v_outValue) ? null : v_outValue.valueOf();
+    };
+    this.compare = function(lValue, rValue, rValue2){
+        try{
+		    switch (this.CType){
+			    case '=':  return lValue == rValue;
+			    case '!=': return lValue != rValue;
+			    case '>':  return lValue >  rValue;
+			    case '>=': return lValue >= rValue;
+			    case '<':  return lValue <  rValue;
+			    case '<=': return lValue <= rValue;
+			    
+                case 'IS NULL':      return (lValue == null || lValue == '');
+			    case 'IS NOT NULL':  return (lValue != null && lValue != '');
+ 
+                case 'LIKE':        return String(lValue||'').indexOf(rValue, 0) > -1;
+	            case 'NOTLIKE':     return String(lValue||'').indexOf(rValue, 0) == -1;
+			    
+			    case 'BEGINWITH':
+                    if(lValue == null || rValue == null) return !1;
+                    //lValue = String(lValue).replace(/^\s+/, '');
+                    //rValue = String(rValue).replace(/^\s+/, '');
+                    return lValue.length >= rValue.length && lValue.indexOf(rValue, 0) == 0;
+ 
+			    case 'RANGE':       return (lValue >= rValue && lValue <= rValue2);
+		    }
+	    }catch(v_e){}
+        return !1;
+    };
+ 
+    function f_onChange(v_e){
+        v_e = v_e || window.event;
+        v_this.actionObj.onCriteriaChanged(v_e);
+        try{
+            //15895 - reposition aotocomplete suggest box
+            if(this.reposition)
+                this.reposition();
+        }catch(e){}
+	};
+}
+ 
+function f_actionFieldObj(v_id){
+    this.id = v_id;
+    this.sectionDisabled = false;
+    this.sectionHidden   = false;
+    this.fieldHidden     = false;
+    this.fieldDisabled   = false;
+    this.fieldStatic     = false;
+    this.fieldRequired   = false;
+    this.fieldRequiredLabelCell_InitialCss = '';
+    this.fieldRequiredLabel_MarkerNode = null;
+    this.fieldCell_InitialCss = '';
+    this.fieldStaticDataNode = null;
+}
+ 
+function f_hookListener(element, type, handler){
+    if(element.addEventListener){
+        element.addEventListener(type, handler, false);
+    }else{
+        element.attachEvent('on' + type, handler);
+    }
+}
+ 
+function f_cbGetRadioValue(nodeList) {
+    for(var i = 0; i < nodeList.length; i++)
+        if(nodeList[i].checked)
+            return nodeList[i].value;
+    return "";
+}
+ 
+function f_cbHideRow(v_tableNode, v_rowNode, v_hide){
+    var v_initValue = v_tableNode.style.borderCollapse;
+    v_tableNode.style.borderCollapse = 'separate';
+    v_rowNode.style.display = v_hide ? 'none' : '';
+    v_tableNode.style.borderCollapse = v_initValue;
+}
+var cbConditionalCriteria_6E141E3757=
+[{
+"action":"hide",
+"operator":"and",
+"isSection":false,
+"controls":["InsertRecordInternal_Comments"],"criteria":[{
+"comparisonType":"is null",
+"dataType":"string",
+"lvalueType":"control",
+"lvalue":"InsertRecordNewsletter","rvalueType":"constant",
+"rvalue":""},{
+"comparisonType":"is null",
+"dataType":"string",
+"lvalueType":"control",
+"lvalue":"InsertRecordLast_Name","rvalueType":"constant",
+"rvalue":""}]
+}];var cbStyleAttributeName_6E141E3757='class';var cbRequiredMarker_6E141E3757='*';var cbRequiredMarkerType_6E141E3757='TEXT';var cbRequiredMarkerAttributeValue_6E141E3757='cbFormRequiredMarker';var cbLabelRequiredAttributeValue_6E141E3757='cbFormLabelCell  cbFormLabelRequired';var cbFormDataAttributeValue_6E141E3757='cbFormData';var cbFormDataCellAttributeValue_6E141E3757='cbFormDataCell';f_hookCaspioForm_6E141E3757();</script>
+
+</body>
+
+</html>

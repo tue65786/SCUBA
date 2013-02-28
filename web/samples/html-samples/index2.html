@@ -1,0 +1,1644 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script language="javascript" type="text/javascript" src="datetimepicker.js"></script>
+<title>Untitled Document</title>
+<link href="css.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+
+/*NEW STYLES!!!  11.14.2006 */
+/*Reset styles*/
+input:disabled, textarea:disabled 
+{
+    cursor: default;
+}
+
+#TR_RadioButtonListPhones label {
+    display: inline-block;
+    padding-bottom: 5px;
+    zoom: 1;
+    display: inline;
+}
+
+#TR_RadioButtonListPhones label span a {
+    vertical-align: -3px;
+}
+
+#TR_RadioButtonListPhones input {
+    vertical-align: -2px;
+    *vertical-align: 3px;
+}
+
+/*Styles for Basic Elements (SS)*/
+body, table
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+}
+
+
+tr
+{
+    font-size: 8pt;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+    border-color: #999999;
+}
+
+td
+{
+    font-size: 8pt;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+blockquote
+{
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+}
+
+/*Styles for Master Page setup */
+.ContentSetup1
+{
+    background-color: #EAEAEA;
+    border-color: #323744;
+    border-style: solid;
+    border-top-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    padding: 0px;
+    margin: 0px;
+    vertical-align: top;
+}
+
+/*Styles for Mobile Page setup */
+.ContentSetupMob
+{
+    background-color: #FFFFFF;
+    border-collapse: collapse;
+    border-style: solid;
+    border-top-width: 0px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    padding: 0px;
+    margin: 0px;
+    vertical-align: top;
+}
+.ContentSetup2 /* Currently used by DemVotes only. */
+{
+    background-color: #EAEAEA;
+    border-color: #323744;
+    border-collapse: collapse;
+    border-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    padding: 0px;
+    margin: 0px;
+    vertical-align: top;
+}
+
+.ContentSetup3 /* Currently used by DemVotes only for sponsored images.  Background color is set for them.  */
+{
+    background-color: #DDDDE8;
+    border-color: #323744;
+    border-collapse: collapse;
+    border-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    padding: 0px;
+    margin: 0px;
+    vertical-align: top;
+}
+
+/*Styles for Breadcrumbs */
+.BreadCrumbs, .BreadCrumbs a
+{
+    font-size: 8pt;
+    font-weight: bold;
+    color: #666666;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.BreadCrumbs td {
+    vertical-align: bottom;
+    padding-left: 3px;
+    height: 20px;
+    white-space: nowrap;
+}
+
+A.BreadCrumbs:link, A.BreadCrumbs:visited, A.BreadCrumbs:active
+{
+    font-size: 8pt;
+    font-weight: bold;
+    color: #666666;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+A.BreadCrumbs:hover
+{
+    font-size: 8pt;
+    font-weight: bold;
+    color: #013334;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/*Styles for Headlines and Texts */
+.Headline1
+{
+    font-size: 12pt;
+    font-weight: bold;
+    color: #272727;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.Headline1_5  /* This is for mid-page headers, a half step between Headline1 and Headline2 */
+{
+    font-size: 12pt;
+    font-weight: normal;
+    color: #131313;
+    font-family: Arial, Helvetica, Sans-Serif;    
+}
+.Headline2
+{
+    font-size: 11pt;
+    font-style: normal;
+    font-weight: normal;
+    color: #272727;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.Headline2_5 /* This is for Medium - Large Popup headers, step inbetween Headline2 and Headline3 */
+{
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: bold;
+    color: #272727;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.Headline3
+{
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: normal;
+    color: #272727;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.LogInAlertBig
+{
+    font-size: 16pt;
+    font-weight: bold;
+    color: #CC0000;
+    text-align: left;
+}
+
+.HeadlineError
+{
+    font-size: 12pt;
+    font-weight: bold;
+    color: #FF0000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Text1
+{
+    font-size: 12pt;
+    font-style: normal;
+    font-weight: normal;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Text2
+{
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Text3
+{
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: lighter;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.CopyrightText
+{
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: lighter;
+    color: #878585;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.CopyrightText blockquote {
+    padding-top: 20px;
+}
+.validationRow, .validationRow td
+{
+    background-color: #F08080!important;
+}
+.Highlight
+{
+    color: #CC0000 !important;
+}
+
+.HighlightBold
+{
+    font-weight: bold;
+    color: #CC0000;
+}
+
+.HighlightOrange
+{
+    color: #F17421;
+}
+
+.HighlightGreen
+{
+    color: #138C1E;
+}
+
+.ActiveInactiveSelect
+{
+    color: #27279F;
+}
+
+/* Disabled style for text within spans */
+span.disabled
+{
+    color: #878787;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+    cursor:text;
+}
+
+/*Styles for Menus and Sections */
+.SectionHeading, .SectionHeadingBorder
+{
+    font-size: 8pt;
+    font-weight: bold;
+    color: #272727;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2px 0px 2px 5px;
+    background-color: #BDBCBD;
+    height: 18px;
+}
+
+.SectionHeadingBorder
+{
+    border-color: #999999;
+    border-width: 1px 1px 0px 1px;
+    border-style: solid solid solid solid;
+}
+
+table.SectionHeadingInnerTable
+{
+    padding: 1px 1px 1px 1px;
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+    border-collapse: collapse;
+}
+
+.MenuTableHeader
+{
+    font-size: 11px;
+    font-weight: bold;
+    color: #272727;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2px 4px 2px 4px;
+    background-color: #BDBCBD;
+}
+
+.MenuTable
+{
+    text-align: left;
+    background-color: #FFFFFF;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+    border-color: #999999;
+}
+
+.MenuTable a, .MenuTableNoBorder, .MenuTableNoBorder a
+{
+    font-size: 14px;
+    color: #3F3A3A;
+    text-align: left;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FFFFFF;
+    border-style: none none none none;
+}
+
+.SideBarCell
+{
+    font-size: 10px;
+    color: #3F3A3A;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    background-color: #DCDADB;
+    padding: 2px 2px 6px 8px;
+    margin: 0px 0px 0px 0px;
+    border-color: #BAB8B8;
+    border-width: 0px 0px 1px 0px;
+    border-style: solid solid solid solid;
+    cursor: pointer;
+}
+.SideBarCell a
+{
+    font-size: 10px;
+    color: #3F3A3A;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+.SideBarCellHeaderHover, .SideBarCellHeaderHover a
+{
+    font-size: 11px;
+    color: #3F3A3A;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: middle;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    border-color: #BAB8B8;
+    border-width: 0px 0px 1px 0px;
+    border-style: solid solid solid solid;
+    background-color: #FFFFFF;
+    padding: 2px 4px 2px 6px;
+    cursor: pointer;
+    display: block;
+}
+
+.SideBarCellHeaderHover:hover
+{
+    background-color: #BDBCBD;
+    color: #272727;
+}
+
+.SideBarCellHeader, .SideBarCellHeader a, .SideBarCellHeader:hover
+{
+    font-size: 11px;
+    color: #3F3A3A;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: middle;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    border-color: #BAB8B8;
+    border-width: 0px 0px 1px 0px;
+    border-style: solid solid solid solid;
+    background-color: #FFFFFF;
+    padding: 2px 4px 2px 3px;
+    /*padding: 2px 4px 2px 4px;*/
+    cursor: pointer;
+}
+
+A.SideBarContentLink:link, A.SideBarContentLink:visited, A.SideBarContentLink:active, A.SideBarContentLink:hover
+{
+    font-weight: bold;
+    color: #3F3A3A;
+    text-align: left;
+    vertical-align: middle;
+    background-color: Transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.SideBarContent:hover
+{
+    background-color: #FFFFFF;
+}
+
+A.SideBarLinkDisabled:link, A.SideBarLinkDisabled:visited, A.SideBarLinkDisabled:active, A.SideBarLinkDisabled:hover
+{
+    font-weight: lighter;
+    color: #3F3A3A;
+    text-align: left;
+    background-color: Transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.topborder
+{
+    font-size: 11pt;
+    padding: 5px 0px 0px 0px;
+    background-image: url( "/images/icons/spacer.gif" );
+    background-position: top;
+    background-repeat: repeat-x;
+    border-width: 0px 0px 0px 0px;
+}
+
+.menuborder
+{
+    font-size: 11pt;
+}
+
+.sideborder
+{
+    border-width: 0px 0px 0px 1px;
+    border-color: #989898;
+    border-style: solid solid solid solid;
+}
+
+.bottompadding
+{
+    padding-bottom: 5px;
+}
+
+.toppadding
+{
+    padding-top: 5px;
+}
+
+/*Style for all Buttons */
+.FormButton
+{
+    font-size: 8pt;
+    font-weight: bold;
+    color: #272727;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    cursor: pointer;
+    background-color: #F1F0F0;
+}
+.FormButtonDisabled, input:disabled, select:disabled, .rcbDisabled 
+{	font-size: 8pt;
+    color: #272727;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: default;
+    background-color: #F1F0F0;
+/* for IE */
+    filter:alpha(opacity=50);
+	opacity: 0.5;
+}
+.wikiFormButton 
+{
+    margin-left: -38px!important;
+}
+/*Styles for Input Variables*/
+.lbl /*TextBoxes, DropDownLists, and ListBoxes */
+{
+    font-size: 8pt;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FFFFEE;
+    padding-left: 2px;
+    /*padding-right: 2px;*/
+}
+.lbl option 
+{
+    min-height: 14px;
+}
+.fieldDisabled
+/*TextBoxes, DropDownLists, and ListBoxes */
+{
+    font-size: 8pt;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #EAEAEA;
+    padding-left: 2px;
+    /*padding-right: 2px;*/
+}
+.fieldDropDownDisabled
+/*Specifically to properly render DropDowns without data*/
+{
+    font-size: 8pt;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #EAEAEA;
+    min-width: 100px;
+    height: 20px;
+}
+.fieldUcase /*TextBoxes, DropDownLists, and ListBoxes with all letters in upper case (like State)*/
+{
+    font-size: 8pt;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FFFF00;
+    text-transform: uppercase;
+    padding-left: 2px;
+    /*padding-right: 2px;*/
+}
+.fieldCheckRadioPadLabel label
+{
+    padding-top: 3px;
+}
+.fieldCheckRadio label /*labels are typically only used in radio and checkboxes*/
+{
+    vertical-align: middle;
+}
+.fieldCheckRadio input /*labels are typically only used in radio and checkboxes*/
+{
+    vertical-align: middle;
+}
+/*Panels -Used for the ListSettings Drag and Drop and Custom Reports? */
+.PanelField
+{
+    background-color: #FFFFFF;
+    padding: 5px;
+    border-color: #989898;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+    border-collapse: separate;
+    border-spacing: 0px;
+    width: 710px;
+    min-height:60px;
+    height: auto;
+    overflow: hidden;
+    *zoom: 1;
+}
+/* mk 03092009 - login label for conversion from image to text */
+.LoginLabel {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #003366;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: smaller;
+	text-align: center;
+	vertical-align: middle;
+	padding: 4px 7px 4px 7px;
+	margin: 2px 5px 2px 5px;
+	letter-spacing: 1px;
+}
+.Login p
+{
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+.Login a 
+{
+    white-space: nowrap;
+}
+/*Styles for a Wizard and Filter Tables */
+body.Wizard
+{
+    margin: 0px;
+    background-image: none; 
+    background-color: #EAEAEA;
+
+}
+
+body.WizardSummary
+{
+    margin:0px;
+    background-image:none; 
+    background-color: #EAEAEA;
+    width: 100%;
+    margin-top: -16px;
+    margin-left: -16px;
+    margin-bottom: -16px;
+    
+}
+
+
+.WizardTable
+{
+    background-color: #989898;
+    border-color: #989898;
+    border-width: 0px 0px 0px 0px;
+    border-style: none none none none;
+}
+
+.WizardTableTerryBoxes
+{
+    background-color: #FFFFFF;
+    border-color: #999999;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+    border-collapse: separate !important;
+}
+
+.WizardTableSection
+{
+    background-color: #BDBCBD;
+    border-color: #999999;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+}
+
+.WizardTableFilters
+{
+    padding: 1px 1px 0px 1px;
+}
+
+.WizardTableSpecialRow
+{
+    padding: 1px 1px 1px 1px;
+}
+
+.WizardTableSpecialSpecialRow
+{
+    border-color: #999999;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid solid solid solid;
+    
+}
+
+.WizardBulkUploadSummaryStep2Results
+{
+    border-color: #999999;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+    width: 100%;
+    padding: 0px 0px 0px 0px;
+    background-color: #D2D2D2;
+}
+
+.WizardTableInnerTable
+{
+    border-color: #FFFFFF;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+}
+
+.WizardTableSpecialSpecialRow
+{
+    border-color: #CDCAAA;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid solid solid solid;
+}
+
+.WizardTableDetailsInnerTable
+{
+    background-color: #FFFFFF;
+    border-width: 0px 0px 0px 0px;
+}
+
+.WizardSpecialRow
+{
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: normal;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #C5C4C4;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 3px;
+    padding-left: 6px;
+}
+
+.WizardLabel, .WizardLabel td
+{
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: normal;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: right;
+    background-color: #E3E2E2;
+    padding:2px 4px;
+    /*white-space: nowrap;*/
+}
+
+.WizardResults, .WizardResults td
+{
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #323232;
+    background-color: #D2D2D2;
+    border-color: #D2D2D2;
+    padding-left: 4px;
+}
+
+.WizardInstructionText
+{
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #272727;
+    padding: 2px 0px 2px 0px;
+    background-color: #D2D2D2;
+    border-color: #D2D2D2;
+}
+/* Styles for Terry boxes, attempting to remove style from html */
+.TerryBox 
+{
+	border: solid 1px #999999;
+	margin-bottom: 10px;
+	width: 598px;
+}
+.TerryBoxBody 
+{
+	padding: 1px 0 2px 4px;
+	border: 1px solid #ffffff;
+}
+.TerryBoxBody .lbl 
+{
+	margin: 3px 0;
+	width: 284px
+}
+.WizardResults.TerryBoxBody 
+{
+/*	margin: 1px;   BOTH OF THESE STYLES ARE ALSO INLINE, AND MUST BE REMOVED */
+	position: relative;
+	padding-top: 3px;
+}
+.SectionHeading.TerryBoxHeader 
+{
+	padding: 4px 0 0 5px;
+}
+.TerryBoxAssigned
+{
+	width: 287px;
+	float: left;
+	clear: both;
+}
+.TerryBoxNotAssigned
+{
+	width: 287px;
+	float: right;
+}
+.TerryBoxBottom
+{
+	clear: both;
+}
+/* Medium Popups */
+.VANPopupInfo
+{
+    padding: 1px 6px;
+    font-size: 10pt;
+}
+
+/*Styles for Bulk Upload popup Wizard Tables */
+
+.WizardResultsBU, .WizardResultsBU td
+{
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #323232;
+    background-color: #D2D2D2;
+    border-color: #D2D2D2;
+    padding-left: 4px;
+    text-align: left;
+}
+
+.WizardLabelBU, .WizardLabelBU td
+{
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: normal;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: right;
+    background-color: #E3E2E2;
+    padding-left: 8px;
+    /*white-space: nowrap;*/
+}
+
+.WizardInstructionsBU
+{
+    background-color:#D2D2D2;
+    border-color:#D2D2D2;
+    color:#272727;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:10pt;
+    font-style:normal;
+    font-weight:normal;
+    padding:2px 0;
+}
+
+.SectionHeadingBU 
+{
+    background-color:#BDBCBD;
+    color:#272727;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:10pt; 
+    font-weight:bold;
+    height:30px;
+    padding:2px 0 2px 5px;
+}    
+ 
+.WizardTableBU
+{
+    background-color: #989898;
+    border: solid 5px #ffffff;
+}    
+
+table.ResultsGridViewControlStyleBU
+{
+    background-color: #989898;
+    border: none 1px #989898;
+}
+
+table.ResultsGridViewControlStyleIEBU
+{
+    background-color:#989898;
+    border-color:#989898;
+    border-style:none;
+    border-width:1px 1px 1px 0; 
+}
+
+/*Styles for a Contact Table */
+.ContactsFrame
+{
+    background-color: #FFFFFF;
+}
+
+.ContactsFrameBorder
+{
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+}
+
+.ContactsResultsDisabled
+{
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: normal;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #DDDDDD;
+}
+
+.ContactsDoStuff
+{
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: normal;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: #DDDDDD;
+}
+
+.ContactsLabel, .ContactsLabel td
+{
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: normal;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: right;
+    background-color: #E3E2E2;
+    padding-right: 4px;
+}
+
+.ContactsResults
+{
+    font-size: 8pt;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #D2D2D2;
+    border-color: #D2D2D2;
+}
+
+/*Used for tables within ContactDetails section */
+.TableHeadingMedium, .TableHeadingMedium td, .TableHeadingMedium th
+{
+    font-size: 8pt;
+    font-weight: normal;
+    color: #323232;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding-left: 5px;
+    background-color: #E3E2E2;
+    border-width: 0px 0px 0px 0px;
+    border-style: solid solid solid solid;
+    margin: 0px 0px 0px 0px;
+    border-color: #FFFFFF;
+    border-collapse: collapse;
+}
+
+.TemplateSplitRowStyle, .TemplateSplitRowStyle td, .TemplateSplitRowStyle th
+{
+    /*text-align: left;*/
+    padding-left: 5px;
+    border-color: #FFFFFF;
+    margin: 0px 0px 0px 0px;
+    border-style: solid solid solid solid;
+    border-collapse: collapse;
+    background-color: #D2D2D2;
+    height: 20;
+    white-space: nowrap;
+}
+
+/*Styles for GridViews */
+
+table.ResultsGridViewControlStyle
+{
+    background-color: #999999;
+    border-color: #999999;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+}
+
+table.ResultsGridViewControlStyleIE
+{
+    background-color: #999999;
+    border-color: #999999;
+    border-width: 1px 1px 1px 0px;
+    border-style: solid solid solid solid;
+}
+
+table.TemplateSplitGridViewControlStyle
+{
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+    border-width: 0px 0px 0px 0px;
+    border-style: solid solid solid solid;
+    margin: 0px 0px 0px 0px;
+}
+
+table.ResultsGridViewControlStyle td, table.ResultsGridViewControlStyleIE td
+{
+    border-left-width:1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-color: #999999;
+}
+
+table.TemplateSplitGridViewControlStyle td
+{
+    border-width: 0px 0px 0px 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0px 0px 0px 0px;
+}
+
+.ResultsHeaderStyle, .ResultsHeaderStyle th
+{
+    font-size: 8pt;
+    font-weight: normal;
+    text-align: center;
+    color: #272727;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 5px;
+    background-color: #CCCBCB;
+    border-color: #999999;
+    border-width: 0px 0px 0px 1px;
+    border-style: solid solid solid solid;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+.ResultsHeaderStyle a, .ResultsHeaderStyle a:visited, .ResultsHeaderStyle a:hover
+{
+    font-size: 8pt;
+    font-weight: bold;
+    color: #272727;
+    text-decoration: none;
+}
+
+.ResultsHeaderStyle01, .ResultsHeaderStyle01 th
+{
+    font-size: 8pt;
+    font-weight: normal;
+    text-align: center;
+    color: #272727;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 5px;
+    background-color: #E3E2E2;
+    border-color: #999999;
+    border-width: 0px 0px 0px 0px;
+    border-style: solid solid solid solid;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+.ResultsHeaderStyle01 a, .ResultsHeaderStyle01 a:visited, .ResultsHeaderStyle01 a:hover
+{
+    font-size: 8pt;
+    font-weight: bold;
+    color: #272727;
+    text-decoration: none;
+}
+
+.ResultsRowStyle
+{
+    background-color: #FFFFFF;
+    white-space: normal;
+}
+
+.ResultsCellStyleBr
+{
+    white-space: normal;
+}
+
+td.ResultsRowStyleGroup01,
+td.ResultsRowStyleGroup02,
+td.ResultsRowStyleGroup03,
+td.ResultsRowStyleGroup04,
+td.ResultsTotalColumnStyleGroup01,
+td.ResultsTotalColumnStyleGroup02,
+td.ResultsTotalColumnStyleGroup03,
+td.ResultsTotalColumnStyleGroup04
+{
+    white-space: normal;
+    border-bottom: 1px solid #BFBFBF;
+    border-top: 1px solid #BFBFBF;
+}
+
+td.EmptySpace
+{
+    background-color: #FFFFFF;
+}
+
+td.ResultsRowStyleGroup01
+{
+    background-color: #FFFFFF;
+}
+td.ResultsRowStyleGroup02
+{
+    background-color: #E4E4E4;
+}
+td.ResultsRowStyleGroup03
+{
+    background-color: #D8D8D8;
+}
+td.ResultsRowStyleGroup04
+{
+    background-color: #BFBFBF;
+}
+.ResultsTotalColumnStyleGroup01
+{
+    background-color: #C5D2E6;
+}
+.ResultsTotalColumnStyleGroup02
+{
+    background-color: #B0C4DE;
+}
+.ResultsTotalColumnStyleGroup03
+{
+    background-color: #A6B9D2;
+}
+.ResultsTotalColumnStyleGroup04
+{
+    background-color: #A0B4CF;
+}
+.ResultsAlternateRowStyle
+{
+    background-color: #E4E2E2;
+    white-space: normal;
+}
+
+.ResultsHighlightedCellStyle
+{
+    background-color: #D2D2D2;
+}
+
+.ResultsPagerStyle0, .ResultsPagerStyle0 td
+{
+    background-color: #B0C4DE;
+}
+
+.ResultsPagerStyle1, .ResultsPagerStyle1 td
+{
+    background-color: #A6B9D2;
+}
+
+table.SubTablePagerStyle, table.SubTablePagerStyle td
+{
+    font-size: 8pt;
+    color: #323232;
+    font-family: Arial, Helvetica, Sans-Serif;
+    text-decoration: none;
+    padding-right: 4px;
+    background-color: #B0C4DE;
+    border-width: 0px 0px 0px 0px;
+    border-style: none none none none;
+    border-collapse: separate;
+}
+/*Styles for Event Type links */
+A.EventLink:link,A.EventLink:visited,A.EventLink:active,A.EventLink:hover
+{
+    font-weight : normal;
+    text-decoration: none;
+}
+/*Styles for the popup calendar */
+#CalendarControlIFrame
+{
+    display: none;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    height: 250px;
+    width: 250px;
+    z-index: 99;
+}
+
+#CalendarControl
+{
+    position: absolute;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    z-index: 100001100  !important;
+    background-color: #F0F0F0;
+    display: none;
+}
+
+#CalendarControl th
+{
+    font-weight: normal;
+    text-align: center;
+}
+
+#CalendarControl th a
+{
+    color: #323232;
+    text-decoration: none;
+    font-weight: normal;
+    padding: 1px 1px 1px 1px;
+}
+
+#CalendarControl td
+{
+    text-align: center;
+}
+
+#CalendarControl .weekday, .weekday
+{
+    color: #323232;
+    background-color: #FFFFEE;
+}
+
+#CalendarControl .weekend, .weekend
+{
+    color: #323232;
+    background-color: #D0E0F5;
+}
+
+#CalendarControl .weekday, #CalendarControl .weekend, #CalendarControl .current
+{
+    text-decoration: none;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+    border-color: #000000;
+    width: 2em;
+    display: block;
+}
+
+.weekday, .weekend, .current
+{
+    text-decoration: none;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+    border-color: #000000;
+    padding: 2px 2px 2px 2px;
+}
+
+.previous
+{
+    text-align: right;
+    font-size: 10pt;
+}
+
+.next
+{
+    text-align: left;
+    font-size: 10pt;
+}
+
+#CalendarControl .previous, #CalendarControl .next
+{
+    font-size: 10pt;
+    padding: 1px 3px 1px 3px;
+}
+
+.previous a, .next a
+{
+    text-decoration: none;
+    font-weight: bold;
+    color: #323232;
+}
+
+#CalendarControl .previous a:hover, #CalendarControl .next a:hover, .previous a:hover, .next a:hover
+{
+    text-decoration: none;
+    font-weight: bold;
+    color: #FFCC33;
+}
+
+#CalendarControl .title
+{
+    text-align: center;
+    font-weight: bold;
+    color: #323232;
+}
+
+.title
+{
+    text-align: center;
+    font-weight: normal;
+    color: #323232;
+}
+
+#CalendarControl .empty, .empty
+{
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+    border-color: #FFFFFF;
+    background-color: #CCCCCC;
+}
+
+#CalendarControl .current
+{
+    color: #FFFFEE;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+    border-color: #000339;
+    background-color: #272727;
+}
+
+#CalendarControl .weekday:hover, #CalendarControl .weekend:hover, #CalendarControl .current:hover
+{
+    color: #323232;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid solid solid solid;
+    border-color: #999999;
+    background-color: #D2D2D2;
+}
+
+/*END NEW STYLES*/
+/* duplicated in VAN_MC/StyleSheet.css */
+/*Auto Complete Styles*/
+/* 030608 mk */
+div.auto_complete
+{
+    position: absolute;
+    width: 250px;
+    background-color: white;
+    border: 1px solid #888;
+    margin: 0px;
+    padding: 0px;
+}
+div.auto_complete ul
+{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+div.auto_complete ul li.selected
+{
+    background-color: #ffb;
+}
+div.auto_complete ul li
+{
+    list-style-type: none;
+    display: block;
+    margin: 0;
+    padding: 2px;
+    cursor: pointer;
+}
+/*End Auto Complete Styles */
+/*Validation Styles*/
+input.validation-failed, textarea.validation-failed, select.validation-failed
+{
+    /*border: 1px solid #FF3300;*/
+    background-color: #F08080;
+    color: White;
+    font-weight: bold;
+}
+
+.validation-advice ul
+{
+    padding-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 1px;
+}
+.validation-advice li
+{
+    list-style-type: none; /*margin: 5px 25px 5px 5px;*/
+    margin-right: 25px;
+    padding: 5px 5px 5px 5px;
+    background-color: #F08080;
+    color: #000;
+    font-weight: bold;
+}
+div.validation-advice-1
+{
+    background-color: #F08080;
+    padding: 5px 5px 5px 5px;
+    margin: 5px 5px 5px 5px;
+    border-style: none none none none;
+    border-collapse: separate;
+    border-spacing: 0px;
+    color: #000;
+    font-weight: bold;
+}
+.validation-advice-headline
+{
+    font-size: 11pt;
+    font-style: normal;
+    background-color: #F08080;
+    color: #000;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.custom-advice
+{
+    margin: 5px 0;
+    padding: 5px;
+    background-color: #C8AA00;
+    color: #FFF;
+    font-weight: bold;
+}
+.modalBackground
+{
+    background-color: Black;
+    filter: alpha(opacity=60);
+    opacity: 0.60;
+}
+
+.BlockPanelTable 
+{
+    /*border: 1px solid grey;*/
+    background-color:Gray;
+	margin: 3px;
+}
+
+.BlockPanelTable td
+{
+    background-color:#EAEAEA;
+	margin: 3px;
+}
+
+.VolunteerProfileTable
+{
+    margin-left: 25%;
+    margin-top: 15px;
+}
+
+.ResultsDraggableRowLight
+{
+    background-color: #E4E2E2;
+    white-space: normal;
+}
+
+.ResultsDraggableRowDark
+{
+    background-color: #D2D2D2;
+    white-space: normal;
+}
+
+.ListFilterPanel {
+    border: 1px solid #989898;
+    background-color: #989898;
+    margin-top: 5px;
+}
+
+.ListFilterPanelFilters {
+    background: #D2D2D2;
+    color: #323232;
+    border: solid 1px white;
+    margin-bottom: 1px;
+    padding: 3px 8px 3px 8px;
+}
+
+.ListFilterPanelButtons {
+    color: #000000;
+    background-color: #C5C4C4;
+    border: solid 1px white;
+    padding: 3px;
+    vertical-align: middle;
+}
+
+.ListFilter {
+    float: left;
+    padding-left: 4px;
+}
+
+.Block {
+    display: block;
+}
+
+
+select {
+	font-size: larger;
+	text-transform: capitalize;
+	border: thin dashed #CCC;
+}
+-->
+</style>
+</head>
+
+<body>
+
+<script language="JavaScript">
+<!--
+// Use this function to retrieve a cookie.
+function getCookie(name){
+var cname = name + "=";               
+var dc = document.cookie;             
+    if (dc.length > 0) {              
+    begin = dc.indexOf(cname);       
+        if (begin != -1) {           
+        begin += cname.length;       
+        end = dc.indexOf(";", begin);
+            if (end == -1) end = dc.length;
+            return unescape(dc.substring(begin, end));
+        } 
+    }
+return null;
+}
+
+// Use this function to save a cookie.
+function setCookie(name, value, expires) {
+document.cookie = name + "=" + escape(value) + "; path=/" +
+((expires == null) ? "" : "; expires=" + expires.toGMTString());
+}
+
+// Use this function to delete a cookie.
+function delCookie(name) {
+document.cookie = name + "=; expires=Thu, 01-Jan-70 00:00:01 GMT" +  "; path=/";
+}
+
+
+
+// Function to retrieve form element's value.
+function getValue(element) {
+var value = getCookie(element.name);
+    if (value != null) element.value = value;
+}
+
+// Function to save form element's value.
+function setValue(element) {
+setCookie(element.name, element.value, exp);
+}
+
+var exp = new Date();                                   
+exp.setTime(exp.getTime() + (1000 * 60 * 60 * 24 * 31));
+//--> xc
+</script>
+<script type="text/javascript"> 
+function updateTB() {
+var val =document.getElementsByName( "canvasser")[0];
+var cid =  document.getElementsByName( "cid")[0];
+//var myname =document.getElementsByName( "myname")[0];
+//var n=myname.value.split(" ");
+var lname= document.getElementsByName( "lname")[0];
+var fname = document.getElementsByName( "fname")[0];
+
+var who = val.value;
+
+switch(who){
+case "EID4ED5927M" :
+lname.value = "Remsen";
+fname.value = "Jim";
+cid.value = who;
+break;
+
+case "EID9B2B7N" :
+lname.value = "Grobstein";
+fname.value = "Jediah";
+cid.value = who;
+break;
+
+case "EIDDD347A6C" :
+lname.value = "Katz";
+fname.value = "Harriet";
+cid.value = who;
+break;
+case "EID7FAE727A" :
+lname.value = "Malkin";
+fname.value = "Carol";
+cid.value = who;
+break;
+
+case "EIDD7C5647F" :
+lname.value = "Oliner";
+fname.value = "Craig";
+cid.value = who;
+break;
+
+case "EID2382396F" :
+lname.value = "Kauffman";
+fname.value = "Dan";
+cid.value = who;
+break;
+
+
+default:
+lname.value = "";
+fname.value = "";
+cid.value =  "";
+break;
+}//case
+
+
+}
+function converturl() { 
+document.go.url.value = document.go.url.value.replace( /\s/g, ""); 
+var url = document.getElementsByName( "url")[0]; 
+var fullurl = document.getElementsByName( "fullurl")[0]; 
+var date = document.getElementsByName( "demo2")[0];
+var cid =  document.getElementsByName( "cid")[0];
+//var myname =document.getElementsByName( "myname")[0];
+//var n=myname.value.split(" ");
+var lname= document.getElementsByName( "lname")[0];
+var fname = document.getElementsByName( "fname")[0];
+cid.value = cid.value.toUpperCase();
+date.value = date.value.replace("/","%2f");
+date.value = date.	value.replace("/","%2f");
+fullurl.value = "http://www."+ url.value + "?CanvID=" + cid.value + "&Name=" + lname.value + "%2c+" + fname.value + "&Date=" + date.value + "&InputType=";
+//fullurl.value = encodeURI(fullurl.value);
+msg = document.go.url.value +"?";
+return confirm(msg); 
+} 
+</script>
+<div id="info">
+<form name="go" id="go" onsubmit="converturl();location.href=fullurl.value;return false">
+<fieldset id="personal">
+<legend>Canvasser Results</legend>
+<i>How?</i><ol>
+<li><u>Login to votebuilder</u>: In a separate tab, login to votebuilder and click 
+on the <b>my campaign tab</b> </li>
+<li><u>Canvasser</u>: Select name from dropdown list.</li>
+<li><u>Date</u>: Click calendar icon to choose date.</li>
+<li><u>Done</u>! Click GO! </li>
+</ol>
+<input name="url" type="hidden" value="votebuilder.com/CanvassResultsDailyLogList.aspx" title="read only" />
+<table>
+<tr>
+<td>
+<select name="canvasser" style="width:90%" id="canvasser" onchange="updateTB()">
+<option selected="selected" value>&lt;select a canvasser&gt;</option>
+<option value="EID4ED5927M">Jim R</option>
+<option value="EID9B2B7N">Jed G</option>
+<option value="EIDDD347A6C">Harriet K</option>
+<option value="EID7FAE727A">Carol M</option>
+<option value="EIDD7C5647F">Craig O</option>
+<option value="EID2382396F">Dan K</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>
+<label for="lname">Last name : </label>
+<input name="lname" type="text" id="lname" onfocus="getValue(this)" onblur="setValue(this)" /></td>
+</tr>
+<tr>
+<td>
+<label for="fname">First name : </label>
+<input name="fname" type="text" onfocus="getValue(this)" onblur="setValue(this)" /></td>
+</tr>
+<tr>
+<td>
+<label for="cid">CvID : </label>
+<input name="cid" id="cid" type="text" onfocus="getValue(this)" onblur="setValue(this)" /></td>
+</tr>
+<tr>
+<td>
+<label for="demo2">Date: (click_icon) </label>
+<input id="demo2" name="demo2" readonly="readonly" type="text" size="25" /><a href="javascript:NewCal('demo2','mmddyyyy')"><img src="cal.gif" width="22" align="texttop" height="22" border="0" alt="Pick a date" />
+</a>
+</td>
+</tr>
+</table>
+<input name="fullurl" type="hidden" />
+<div style="float:right; padding-right:50px;">
+<input type="submit" id="go" value=" Go " /> </div>
+</fieldset>
+</form>
+</div>
+
+</body>
+
+</html>
+<strong></strong>

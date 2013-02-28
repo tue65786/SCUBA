@@ -1,0 +1,144 @@
+/* 
+    Document   : main
+    Created on : Feb 15, 2013, 8:04:47 PM
+    Author     : Dan Kauffman
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+
+            /*
+            waves grey 207,237,248
+            lt blue 24 180 231
+            ocean 29 159 219
+                  
+            
+            */
+            body {
+                font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+                /*background-image: url('images/bg2.jpg');*/
+               /* background-image: url('images/bg-waves.png') ;*/
+                /*                opacity:0.3;
+                  filter:alpha(opacity=60);*/
+            }
+            h1
+            {
+                color: black;
+
+            }
+
+            .container {
+                /*border:medium solid green;*/
+                width:85%;
+                margin:auto;  /* this means center the container div (itself, not its contents) */
+                /* opacity: 1.0;
+                 filter:alpha(opacity=99);*/
+                color:rgb(29,159,219);
+            }
+            .centerText
+            {
+                text-align:center;
+            }
+            .title {
+                /*border:medium solid brown;
+                background-color:#FEFEFE;*/
+                /*background-color: transparent;*/
+                color: deeppink;
+            }
+            .newLine {
+                clear:both;
+            }
+
+            .tab {
+                color: white;
+                /*  border:thin solid darkgray;*/
+                border-top: thin solid rgb(20,112,156);
+                border-left: thin solid rgb(20,112,156);
+                border-right: thin solid rgb(20,112,156);
+                margin:0px;/* 1px 3% 0px 0px; *//*top right bottom left*/
+                width:20%;
+                float:left;
+                font-size: larger;
+                background-color:lightblue;
+                border-top-left-radius: 5px;
+                -moz-border-top-left-radius:5px;
+                border-top-right-radius: 5px;
+                -moz-border-top-right-radius: 5px;
+            }
+            .content {
+                /*border:thin solid rgb(207,237,248);
+                 border-radius: 5px;
+                -moz-border-radius: 5psx;*/
+            }
+            .selected {
+                background-color:lightgray;
+            }
+            .footer {
+                /*    border-radius: 50px 50px 50px 50px / 100px 50px 50px 50px;
+                    -moz-border-radius: 5px 10px 5px 10px / 10px 5px 10px 5px;*/
+                background: white;
+                text-align:right;
+                width: 95%;
+                margin: auto;
+            }
+
+
+
+            .tab a:link {
+                color: white;
+                font-weight: 700;
+               text-transform: fullwidth;
+               font-variant: small-caps;
+                text-decoration: none;
+            }
+            .tab a:visited {
+                text-decoration: none;
+                color: tan;
+            }
+            .tab a:hover {
+                text-decoration: none;
+                 border-top: thick solid rgb(20,112,156);
+                border-left: thick solid rgb(20,112,156);
+                border-right: thick solid rgb(20,112,156);
+            }
+
+
+            a {
+                color: blue;
+                text-decoration: none;
+            }
+            a:visited {
+                text-decoration: none;
+                color: blue;
+            }
+            a:hover {
+                color: darkorange;
+
+            }
+            .column {
+                /* min-height:400px;*/
+                float: left;
+                /*   width:22%;*/
+                /*word-spacing: 50px;*/
+            }
+            .center  {
+                margin:auto;
+            }     
+            /*            .outterContainerDiv {
+                            width: 80%;
+                            margin: auto;
+                            background-color: pink;
+                            border: thick solid blue;
+                        }
+                        .innerContainerDiv {
+                            width: 15%;
+                            float: left;
+                            background-color: tan;
+                            border: thick solid red;
+                            padding: 1%;
+                        }*/
+        
