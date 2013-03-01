@@ -18,8 +18,9 @@
         <title>SCUBA - Contact Us</title>
 
     </head>
-    <body onload="setSelectedTab('Diver');">
+    <body onload="setSelectedTab('Contact');">
         <%@ include file= "pre-content.html" %> 
+         <h1>Contact</h1>
         <form name="contact" method="post" action="http://www.temple.edu/cgi-bin/mail?tue65786@temple.edu">
             <fieldset>          
                 <legend>Please take a moment to let us know how were doing!</legend>
@@ -59,7 +60,7 @@
 
                     <tr><td colspan=2>
                             <!--                <p style="margin: 1em 0;s"/>-->
-                            <textarea type="textarea" class="field-500" rows="6" cols="60" maxlength="4000" name="comments"></textarea>
+                            <textarea   type="textarea" class="field-500"  rows="16" cols="60" maxlength="4000" name="comments" ></textarea>
                         </td>
                     </tr>
 

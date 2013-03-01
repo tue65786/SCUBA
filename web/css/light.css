@@ -167,7 +167,7 @@ body {
     border-left: thin solid rgb(20,112,156);
     border-right: thin solid rgb(20,112,156);
     margin: 1px 15px 0px 0px; /*top right bottom left*/
-    width:22%;
+    width:150px;
     float:left;
     height: 1.5em;
     text-align: left;
@@ -228,7 +228,7 @@ body {
     border-left: thin solid rgb(20,112,156);
     border-right: thin solid rgb(20,112,156);
     margin: 1px 15px 0px 0px; /*top right bottom left*/
-    width:22%;
+    width:150px;
     float:left;
     height: 1.5em;
     text-align: left;

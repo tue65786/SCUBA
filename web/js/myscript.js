@@ -5,7 +5,7 @@
  
 function setSelectedTab(elementId) {
     //Breadcrumbs
-    if (elementId == "Diver")
+    if (elementId == "Labs")
     {
         document.getElementById(elementId).className = "tab menu selected";
     }
@@ -22,11 +22,11 @@ function setSelectedTab(elementId) {
             htmlCrumbs = '> Home';
             break;
         //diver will be a drop down menu. so will need to append breadcrumbs.
-        case "DiverA" :
-            htmlCrumbs = refHome +  " >" +  elementId + "diveB" ;            
+        case "Contact" :
+            htmlCrumbs = refHome +  " >" +  elementId + "Contact Us" ;            
             break; 
-        case "DiverB" :
-            htmlCrumbs = refHome +  " >" +  elementId + "diveB" ;            
+        case "UserList" :
+            htmlCrumbs = refHome +  " >" +  elementId + "Members" ;            
         default:
             htmlCrumbs = refHome +  " >" +  elementId;
     }//eo switch
