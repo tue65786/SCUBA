@@ -4,22 +4,20 @@
     Author     : tue65786 
 --%>
 
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <link id ="cssLinkID" href="css/main.css" rel="stylesheet" type="text/css" /> 
-        <script src="js/myscript.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>SCUBA</title>
-
+       
+        <!--head-content cottains css and js links common to most pages-->
+        <%@ include file= "head-content.html" %> 
+        <title>SCUBA - Home</title> 
     </head>
     <body onload="setSelectedTab('Home')">
         <%@ include file= "pre-content.html" %> 
         <p>
         <h2>Welcome to the SCUBA Dive Log web site!</h2>
-    </p>
     Here you can:
     <ul>
         <li>keep track of your dives</li>
@@ -64,6 +62,8 @@
                     </div>  ends the columns  -->
     <%@ include file= "css-chooser.html" %> 
     <%@ include file= "post-content.html" %>         
+   
+    
     <!-- http://localhost:8080/Kauffman_Lab3/index.jsp 
       cis-linux2.temple.edu       
     /var/lib/tomcat6/webapps/SP13_2308_tue65786

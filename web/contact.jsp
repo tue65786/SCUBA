@@ -5,14 +5,11 @@
     Created on : Feb 6, 2013, 11:21:10 AM
     Author     : tue65786 
 --%>
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="js/myscript.js" type="text/javascript" ></script>
-        <link id ="cssLinkID" href="css/main.css" rel="stylesheet" type="text/css" /> 
+        <%@ include file= "head-content.html" %> 
         <script src="js/datetimepicker_css.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SCUBA - Contact Us</title>
@@ -20,7 +17,7 @@
     </head>
     <body onload="setSelectedTab('Contact');">
         <%@ include file= "pre-content.html" %> 
-         <h1>Contact</h1>
+        <h1>Contact</h1>
         <form name="contact" method="post" action="http://www.temple.edu/cgi-bin/mail?tue65786@temple.edu">
             <fieldset>          
                 <legend>Please take a moment to let us know how were doing!</legend>
@@ -58,9 +55,9 @@
                             <img src="images/images2/cal.gif"" alt="C;ick to set date" onclick="NewCssCal('date','yyyyMMdd','','','','','past')" style="cursor:pointer"/>
                         </td></tr>
 
-                    <tr><td colspan=2>
-                            <!--                <p style="margin: 1em 0;s"/>-->
-                            <textarea   type="textarea" class="field-500"  rows="16" cols="60" maxlength="4000" name="comments" ></textarea>
+                    <tr>
+                        <td colspan=2>
+                            <textarea  class="field-500"  rows="16" cols="60" maxlength="4000" name="comments" ></textarea>
                         </td>
                     </tr>
 
