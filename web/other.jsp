@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
-
-<%@page language="java" import="SQL.DbConn" %>
+<%@page language="java" import="model.DiveLocations.DiveLocationsMods"%>
+<%@page language="java"  import="SQL.DbConn" %>
 <%@page language="java" import="view.DiveLocations" %>
 
 <!DOCTYPE HTML>
@@ -33,6 +33,27 @@
                 text-align: center;
 
             } 
+            .it {
+                color:black;
+                padding:10px;
+                vertical-align: top;
+            }
+            .rt {
+                vertical-align: top;
+                color:  #010101; font-size:  10pt;font: 12px/18px Arial,Arial,Helvetica,sans-serif;
+
+
+            }
+            h2{
+
+                color:black;
+                font-variant: small-caps;
+                font-weight: bolder; font-size:  xx-large;
+            }
+            h3{    margin: 0px 0px 4px;
+                   font-weight: bold;
+                   color: black; border-bottom: 2px solid black;
+            }
             /*{border: medium solid brown; background-color:powderblue; padding:5px;}*/
             .resultSetFormat td.row-odd {
                 color: black; font-weight: 400; 
@@ -49,7 +70,7 @@
     <body onload="setSelectedTab('Locations');">
         <%@ include file= "pre-content.html" %> 
 
-        <%
+<!--        < %
             DbConn dbc = new DbConn();
             String dbErrorOrData = dbc.getErr();
             if (dbErrorOrData.length() == 0) { // got open connection
@@ -61,15 +82,53 @@
                 //    EVERY code path that opens a db connection, must also close it.
                 dbc.close();
             }
-        %>
+        % >-->
 
         <h1>Dive Locations</h1>
+          <form name="updateDelete" action="user.jsp" method="get">
+                            <input type="hidden" name="deletePK">
+                        </form>
         <div style="padding-left:240px; padding-bottom:150px;">
-            <!--<table style="border: black solid 1px"><tr><Td>-->
-            <% out.print(dbErrorOrData);%>
-            <!--                    </td>
-                            </tr>
-                        </table>-->
+
+             <%
+                            String dbDataOrError = "";
+                            // Get database connection and check if you got it.
+                            DbConn dbc = new DbConn();
+                            String dbError = dbc.getErr();
+                            if (dbError.length() == 0) {
+
+                                // got open connection, check to see if the user wants to delete a row.
+                                String delKey = request.getParameter("deletePK");
+                                if (delKey != null && delKey.length() > 0) {
+
+                                    // yep, they want to delete a row, instantiate objects needed to do the delete.
+                                    DiveLocationsMods sqlMods = new DiveLocationsMods(dbc);
+
+                                    // try to delete the row that has PK = delKey
+                                    String delMsg = sqlMods.delete(delKey);
+                                    if (delMsg.length() == 0) {
+                                        out.println("<h3>Dive Location " + delKey + " has been deleted</h3>");
+                                    } else {
+                                        out.println("<h3>Unable to delete Dive Location " + delKey + ". " + sqlMods.getErrorMsg() + "</h3>");
+                                    }
+                                }
+                                // delete processed (if necessary)
+
+                                // now print out the whole table
+                                dbDataOrError = DiveLocations.listAllUsers("resultSetFormat", "javascript:deleteRow", "./images/icons/delete.png", "#bcd8e9", dbc);
+                                if (!dbc.getConn().isClosed()) {
+                                    dbc.close();
+                                }
+                            } else {
+                                dbDataOrError = dbError;
+                            }
+                            if (!dbc.getConn().isClosed()) {
+                                dbc.close();
+                            }
+                            out.print(dbDataOrError);
+                        %>
+            
+            
         </div>
         <%@ include file= "css-chooser.html" %> 
         <%@ include file= "post-content.html" %> 

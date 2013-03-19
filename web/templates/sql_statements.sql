@@ -1,5 +1,20 @@
+
+
+
+INSERT INTO `web_user` (`user_email`, `user_password`, `birthday`, `membership_fee`, `user_role_id`) VALUES ('user@user.com', 'asdf', '1980-01-01', '0.00', '2');
+INSERT INTO `web_user` (`user_email`, `user_password`, `birthday`, `membership_fee`, `user_role_id`) VALUES ('user2@soemthing.com', 'asdf', '1971-01-01', '0', '2');
+INSERT INTO `web_user` (`user_email`, `user_password`, `birthday`, `membership_fee`, `user_role_id`) VALUES ('tuser@temple.edu', 'fads', '1990-11-01', '0', '2');
+INSERT INTO `web_user` (`user_email`, `user_password`, `birthday`, `membership_fee`, `user_role_id`) VALUES ('user1111@user.com', 'asdf', '1980-01-01', '0.00', '2');
+INSERT INTO `web_user` (`user_email`, `user_password`, `birthday`, `membership_fee`, `user_role_id`) VALUES ('user22222@soemthing.com', 'asdf', '1971-01-01', '0', '2');
+INSERT INTO `web_user` (`user_email`, `user_password`, `birthday`, `membership_fee`, `user_role_id`) VALUES ('tuser33333@temple.edu', 'fads', '1990-11-01', '0', '2');
+
+INSERT INTO `web_user` (`user_email`, `user_password`, `birthday`, `membership_fee`, `user_role_id`) VALUES ('user111@user.com', 'asdf', '1980-01-01', '0.00', '2');
+INSERT INTO `web_user` (`user_email`, `user_password`, `birthday`, `membership_fee`, `user_role_id`) VALUES ('user2222@soemthing.com', 'asdf', '1971-01-01', '0', '2');
+INSERT INTO `web_user` (`user_email`, `user_password`, `birthday`, `membership_fee`, `user_role_id`) VALUES ('tuser3333@temple.edu', 'fads', '1990-11-01', '0', '2');
+
 --assoc.js[
 SELECT web_user.user_email, user_role.user_role_title, dive_location.location_name,  dive_log.dive_date
+
 FROM web_user,user_role,dive_location,dive_log
 WHERE web_user.user_role_id = user_role.user_role_id AND web_user.web_user_id = dive_log.web_user_id
 AND dive_location.dive_location = dive_log.dive_location_id

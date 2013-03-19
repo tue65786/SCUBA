@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
-
+<%@page language="java" import="model.DiveLog.DiveLogMods" %>
 <%@page language="java" import="SQL.DbConn" %>
 <%@page language="java" import="view.DiverLogView" %>
 
@@ -15,10 +15,10 @@
             }
             .resultSetFormat table { 
                 max-width: 90%;
-                
+
                 margin: auto;
-                font-family: Calibri; 
-                font-size: 11pt;
+                font-family: Arial; 
+                font-size: 9pt;
                 border: 4px solid  black;
             }
             .resultSetFormat th{
@@ -33,40 +33,87 @@
                 text-align: center;
 
             } 
+
+            .resultSetFormat td{  
+                font-size: 9pt;
+            }
             /*{border: medium solid brown; background-color:powderblue; padding:5px;}*/
             .resultSetFormat td.row-odd {
                 color: black; font-weight: 400; 
-                font-style: normal; vertical-align: bottom; border-left: medium none; border-right: medium none; border-top: .5pt solid #92CDDC; 
+                font-style: normal; vertical-align: top; border-left: medium none; border-right: medium none; border-top: .5pt solid #92CDDC; 
                 border-bottom: .5pt solid #92CDDC; padding-left: 1px; padding-right: 1px; padding-top: 1px; background-color: #DAEEF3;
             }
             .resultSetFormat td.row-even {
-                color: black; font-weight: 400;  vertical-align: bottom;  border-left: medium none; border-right: medium none; border-top: .5pt solid #92CDDC; border-bottom: .5pt solid #92CDDC; padding-left: 1px; padding-right: 1px; padding-top: 1px; background-color:  white;
+                color: black; font-weight: 400;  vertical-align: top;  border-left: medium none; border-right: medium none; border-top: .5pt solid #92CDDC; border-bottom: .5pt solid #92CDDC; padding-left: 1px; padding-right: 1px; padding-top: 1px; background-color:  white;
 
+            }
+            .notes {
+                font-size:8pt;
+                min-width: 120px;
+
+            }
+            .sm {
+                font-size:8pt;
+
+            }
+            .bold {
+                font-weight: bold;
+                text-wrap:  none;
             }
         </style>
 
     </head>
     <body onload="setSelectedTab('Log');">
         <%@ include file= "pre-content.html" %> 
+        <h1>Dive Log</h1>
 
-        <%
+        <form name="updateDelete" action="assoc.jsp" method="get">
+            <input type="hidden" name="deletePK">
+        </form>
+
+        <%                            
+            String dbDataOrError = "";
             DbConn dbc = new DbConn();
-            String dbErrorOrData = dbc.getErr();
-            if (dbErrorOrData.length() == 0) { // got open connection
+            String dbError = dbc.getErr();
+            if (dbError.length() == 0) {
 
-                // this returns a string that contains a HTML table with the data in it
-                dbErrorOrData = DiverLogView.listAllUsers("resultSetFormat", dbc);
+                // got open connection, check to see if the user wants to delete a row.
+                String delKey = request.getParameter("deletePK");
+                if (delKey != null && delKey.length() > 0) {
 
-                // PREVENT DB connection leaks:
-                //    EVERY code path that opens a db connection, must also close it.
-                dbc.close();
+                    // yep, they want to delete a row, instantiate objects needed to do the delete.
+                    DiveLogMods sqlMods = new DiveLogMods(dbc);
+
+                    // try to delete the row that has PK = delKey
+                    String delMsg = sqlMods.delete(delKey);
+                    if (delMsg.length() == 0) {
+                        out.println("<h3>Dive Log " + delKey + " has been deleted</h3>");
+                    } else {
+                        out.println("<h3>Unable to delete Dive Log " + delKey + ". " + sqlMods.getErrorMsg() + "</h3>");
+                    }
+                }
+                // delete processed (if necessary)
+
+                // now print out the whole table
+                dbDataOrError = DiverLogView.listAllUsers("resultSetFormat", "javascript:deleteRow", "./images/icons/delete.png", "#bcd8e9", dbc);
+                if (!dbc.getConn().isClosed()) {                                    
+                    dbc.close();
+                }
+                                
+                                
+            } else {                                
+                if (!dbc.getConn().isClosed()) {                                    
+                    dbc.close();
+                }
+                dbDataOrError = dbError;
+                                
             }
+                            
+            out.println(dbDataOrError);
         %>
 
-        <h1>Dive Log</h1>
-        <div style="padding-left:20px; padding-bottom:150px;"> 
-            <% out.print(dbErrorOrData);%>
-        </div>
+
+
         <%@ include file= "css-chooser.html" %> 
         <%@ include file= "post-content.html" %> 
         <!-- Master page contains div tags: JUST ENTER CONTENT!-->

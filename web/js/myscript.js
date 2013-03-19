@@ -1,3 +1,11 @@
+
+            function deleteRow (primaryKey) {
+                if (confirm("Do you really want to delete item "+primaryKey+"?")) {
+                    document.updateDelete.deletePK.value=primaryKey;
+                    document.updateDelete.submit();
+                }
+            }
+
 /* x
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -22,9 +30,9 @@ function setSelectedTab(elementId) {
             htmlCrumbs = '> Home';
             break;
         //diver will be a drop down menu. so will need to append breadcrumbs.
-        case "Contact" :
-            htmlCrumbs = refHome +  " >" +  elementId + "Contact Us" ;            
-            break; 
+//        case "Contact" :
+//            htmlCrumbs = refHome +  " >" +  elementId + "Contact Us" ;            
+//            break; 
         case "UserList" :
             htmlCrumbs = refHome +  " >" +  elementId + "Members" ;            
         default:
@@ -94,5 +102,6 @@ function changeStyle(choice) {
         case "css/light.css" :
             document.getElementById('lightCSS').selected = true;
             break;
+                
     }
 }
