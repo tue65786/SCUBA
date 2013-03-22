@@ -25,6 +25,7 @@ public class WebUserView {
      else 
      {return "row-even";}
     }
+    
          public static String listAllUsers(String cssClassForResultSetTable, DbConn dbc) {
         StringBuilder sb = new StringBuilder("");
         PreparedStatement stmt = null;
@@ -135,14 +136,15 @@ public class WebUserView {
                 // we save this object so we reuse it.
                 Object primaryKeyObj = rst.getObject(1);
                 Integer primaryKeyInt = (Integer) primaryKeyObj;
+                String em = rst.getObject(2).toString();
                 sb.append("<tr>");
 
                 // this is the column with a delete icon that has a link to a javascript function.
                 // the input parameter to the delete javascript function is the PK of the user in this row.
-                sb.append(delStart + primaryKeyInt.toString() + delEnd);
+                sb.append(delStart + "\"" + em + "\"" + "," +primaryKeyInt.toString() + delEnd);
 
                 sb.append(FormatUtils.formatIntegerTd(tdCSS(oddRow), primaryKeyObj));
-                sb.append(FormatUtils.formatStringTd(tdCSS(oddRow), rst.getObject(2)));
+                sb.append(FormatUtils.formatStringTd(tdCSS(oddRow),em ));
                 sb.append(FormatUtils.formatStringTd(tdCSS(oddRow), rst.getObject(3)));
                 sb.append(FormatUtils.formatDollarTd(tdCSS(oddRow), rst.getObject(4)));
                 sb.append(FormatUtils.formatIntegerTd(tdCSS(oddRow), rst.getObject(5)));

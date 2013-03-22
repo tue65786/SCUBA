@@ -18,6 +18,7 @@
     <body onload="setSelectedTab('Contact');">
         <%@ include file= "pre-content.html" %> 
         <h1>Contact</h1>
+        <div class="newLine"></div>
         <form name="contact" method="post" action="http://www.temple.edu/cgi-bin/mail?tue65786@temple.edu">
             <fieldset>          
                 <legend>Please take a moment to let us know how were doing!</legend>
@@ -52,7 +53,7 @@
 
                     <tr><td align="right"><label for="date" class="lbl">When is your next trip? (click button))</label></td><td>
                             <input type="Text" id="date" class="field-300" onfocus="NewCssCal('date','yyyyMMdd','','','','','past');blur()"/>
-                            <img src="images/images2/cal.gif"" alt="C;ick to set date" onclick="NewCssCal('date','yyyyMMdd','','','','','past')" style="cursor:pointer"/>
+                            <img src="./images/icons/calendar_n.gif" alt="C;ick to set date" onclick="NewCssCal('date','yyyyMMdd','','','','','past')" style="cursor:pointer"/>
                         </td></tr>
 
                     <tr>
@@ -62,7 +63,7 @@
                     </tr>
 
                     <tr><td align="right">
-                            <input type="submit" value="Submit" name=syb"></td></tr></table>
+                            <input type="submit" value="Submit" style="cursor: pointer" class="field-300" ></td></tr></table>
             </fieldset>
 
 

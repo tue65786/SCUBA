@@ -9,16 +9,15 @@
         <%@ include file= "head-content.html" %> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SCUBA - Users</title>
-
         <style>        
             .resultSetFormat {
             }
             .resultSetFormat table { 
-                /*border-collapse:  collapse;*/
-                max-width: 90%;
+                   max-width: 95%;
+                border-collapse:collapse;
                 margin: auto;
-                font-family: Calibri; 
-                font-size: 12pt;
+                font-family: Arial Verdana Sans-serf;
+                font-size: 9pt;
                 border: 4px solid  black;
             }
             .resultSetFormat th{
@@ -44,28 +43,17 @@
 
             }
         </style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
 
     </head>
     <body onload="setSelectedTab('UserList');">
         <%@ include file= "pre-content.html" %> 
-
-        <!--        < %
-                    DbConn dbc = new DbConn();
-                    String dbErrorOrData = dbc.getErr();
-                    if (dbErrorOrData.length() == 0) { // got open connection
-        
-                        // this returns a string that contains a HTML table with the data in it
-                        dbErrorOrData = WebUserView.listAllUsers("resultSetFormat", dbc);
-        
-                        // PREVENT DB connection leaks:
-                        //    EVERY code path that opens a db connection, must also close it.
-                        dbc.close();
-                    }
-                % >-->
-
+        <div style="margin:auto ; padding-bottom:50px;">
         <h1>Web Users</h1>
-        <div style="margin:auto; padding-bottom:50px;">
+        <div class="newLine"></div>
             <table style="margin: auto; border: black solid 0px"><tr><Td>
+                             <input type="hidden" name="s">
                         <form name="updateDelete" action="user.jsp" method="get">
                             <input type="hidden" name="deletePK">
                         </form>
@@ -95,7 +83,7 @@
                                 // delete processed (if necessary)
 
                                 // now print out the whole table
-                                dbDataOrError = WebUserView.listAllUsers("resultSetFormat", "javascript:deleteRow", "./images/icons/delete.png", "#bcd8e9", dbc);
+                                dbDataOrError = WebUserView.listAllUsers("resultSetFormat", "javascript:deleteRowPretty", "./images/icons/delete.png", "#bcd8e9", dbc);
                                 if (!dbc.getConn().isClosed()) {
                                     dbc.close();
                                 }

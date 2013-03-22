@@ -1,6 +1,4 @@
 package view;
-
-// classes imported from java.sql.*
 import SQL.DbConn;
 import SQL.FormatUtils;
 import java.sql.PreparedStatement;
@@ -108,7 +106,7 @@ public class DiverLogView {
 
         // This is the first half of the HTML that defines a table cell that will hold the delete
         // icon which will be linked to a javascript function for deleting the current row.
-        String delStart = "<td style='border:none; text-align:center; background-color:" + bgColor + "'><a title=\"Delete\" href='" + delFn + "(";
+        String delStart = "<td style='border:none; text-align:center; background-color:" + bgColor + "'><a title=\"Delete This Row\" href='" + delFn + "(";
         // This is the HTML for the second half of that same HTML
         // In between the first half and the second half will be the actual PK of the current row
         // (input parameter to the javascript function).
@@ -129,7 +127,8 @@ public class DiverLogView {
 
             sb.append("<table class='" + cssClassForResultSetTable + "'>");
             sb.append("<tr>");
-            sb.append("<td style='vertical-align:middle;text-align:right; border:none; background-color:" + bgColor + "'>&nbsp;</td>");// extra column at left for delete icon
+            sb.append("<td style='vertical-align:middle;text-align:right; border:none; padding-right:2px; background-color:" 
+                    + bgColor + "'>&nbsp;</td>");// extra column at left for delete icon
             sb.append("<th style='text-align:left'>Email</th>");
             sb.append("<th style='text-align:left'>Role</th>");
             sb.append("<th style='text-align:left'>Location</th>");
@@ -138,7 +137,7 @@ public class DiverLogView {
             sb.append("<th style='text-align:center'>Date</th>");
             sb.append("<th style='text-align:right'>Dives</th>");
             sb.append("<th style='text-align:right'>Time</th>");
-            sb.append("<th style='text-align:left'>Air</th>");
+            // sb.append("<th style='text-align:left'>Air</th>");
             sb.append("<th style='text-align:right'>Depth</th>");
             sb.append("<th style='text-align:left'>Buddy</th>");
             sb.append("<th style='text-align:left'>Notes</th>");
@@ -169,10 +168,10 @@ public class DiverLogView {
                 sb.append(FormatUtils.formatDateTd(tdCSS(oddRow), rst.getObject("dive_date")));
                 sb.append(FormatUtils.formatIntegerTd(tdCSS(oddRow), rst.getObject("number_dives")));
                 sb.append(FormatUtils.formatIntegerTd(tdCSS(oddRow), rst.getObject("minutes_per_dive")));
-                sb.append(FormatUtils.formatStringTd(tdCSS(oddRow), rst.getObject("air_type")));
+                //   sb.append(FormatUtils.formatStringTd(tdCSS(oddRow), rst.getObject("air_type")));
                 sb.append(FormatUtils.formatIntegerTd(tdCSS(oddRow), rst.getObject("max_depth")));
                 sb.append(FormatUtils.formatStringTd(tdCSSops("sm", oddRow), rst.getObject("dive_buddy")));
-                sb.append(FormatUtils.formatStringTd(tdCSSops("sm", oddRow), rst.getObject("notes")));
+                sb.append(FormatUtils.formatStringTd(tdCSSops("notes", oddRow), rst.getObject("notes")));
                 sb.append("</tr>\n");
                 oddRow = !oddRow;
             }//while loop

@@ -15,6 +15,7 @@ import java.sql.*;
  * @ Temple
  */
 public class DiveLocationsMods {
+    
       private DbConn dbc;  // Open, live database connection
     private String errorMsg = "";
     private String debugMsg = "";
@@ -33,7 +34,7 @@ public class DiveLocationsMods {
     }
 
     public String delete(String primaryKey) {
-        this.errorMsg = "";  // clear any error message from before.
+   this.errorMsg =SQL.DbConn.SQL_ERROR_DIV_TAG;  // clear any error message from before.
         
         String sql = "DELETE FROM dive_location where dive_location=?";
         try {
@@ -43,32 +44,36 @@ public class DiveLocationsMods {
             int numRows = sqlSt.executeUpdate();
             if (numRows == 1) {
                 this.errorMsg = "";
-                return this.errorMsg; // all is GOOD
+                return " "; // all is GOOD
             } else {
-                this.errorMsg = new Integer(numRows).toString()
-                        + " records were deleted when only 1 expected for delete."; // probably never get here
+                this.errorMsg += new Integer(numRows).toString()
+                        + " records were deleted when only 1 expected for delete.\"</div>\""; // probably never get here
                 return this.errorMsg;
             }
         } // try
         catch (SQLException e) {
             this.errorMsg = "";
-            if (e.getSQLState().equalsIgnoreCase("S1000")) {
-                this.errorMsg = "Could not delete.";
+            if (e.getSQLState().equalsIgnoreCase(SQL.DbConn.SQL_ERROR_CODE_FK_VIOLATION)) {
+                this.errorMsg = "<b>ERROR: This row is referenced by rows in other tables. Deleting foreign references will resolve this error. <span style=\"font-size:7pt; font-style:italic;\">Details: [" + e.getMessage() + "]</span>";
+                return this.errorMsg+ "</div>";
             }
-
+            if (e.getSQLState().equalsIgnoreCase("S1000")) {
+                this.errorMsg += "Could not delete.";
+            }
+            
             this.errorMsg += "Problem with SQL in DiveLocationsSQL.delete: "
                     + "SQLState [" + e.getSQLState()
                     + "], error message [" + e.getMessage() + "]";
             System.out.println(this.errorMsg);
             //e.printStackTrace();
-            return this.errorMsg;
+            return this.errorMsg+ "</div>";
         } // catch
         catch (Exception e) {
-            this.errorMsg = "General Error in DiveLocationsSQL.delete: "
+            this.errorMsg += "General Error in DiveLocationsSQL.delete: "
                     + e.getMessage();
             System.out.println(this.errorMsg);
             //e.printStackTrace();
-            return this.errorMsg;
+            return this.errorMsg+ "</div>";
         } // catch
     }// method delete
 }

@@ -136,7 +136,7 @@ public class DiveLocations {
 
 
         StringBuilder sb = new StringBuilder("");
-        PreparedStatement stmt = null;
+        PreparedStatement stmt  = null;
         ResultSet results = null;
         final String imagePath = "http://cis-linux2.temple.edu:8080/SP13_2308_tue65786/images/locations/";
         boolean oddRow = true;
@@ -153,12 +153,16 @@ public class DiveLocations {
                     + "<td valign=\"top\" colspan=\"3\" height=\"53\">"
                     + "<h2 align=\"center\">"
                     + "[[[location_name]]]"
-                    + "</h2><div style=\"padding-left:30px; font-size:smaller; color:red;font-weight:bold;\">[[[city]]], [[[state]]]</div>"
+                    + "</h2>"
+//                    + "<div style=\"padding-left:30px; font-size:smaller; color:red;font-weight:bold;\"></div>"
                     + "</td>"
                     + "</tr>"
                     + "<tr>"
-                    + "<td rowspan=\"2\" style=\"text-align:right;border-bottom: medium dashed #92CDDC;vertical-align:top;\" width=\"275\">"
-                    + "<img  src=\"[[[picture_ref]]]\" style\"=max-height:\"250px\"; max-width:\"270px\"; border:\"0px\" vertical-align:  top; \"/>"
+                    + "<td rowspan=\"2\" style=\"text-align:right;border-bottom: medium dashed #92CDDC;vertical-align:top;\" width=\"150px\">"
+                    + "<div class=\"img\">"
+                    + "<img  src=\"[[[picture_ref]]]\" \"/>"
+                    + "<div class=\"location\"\">[[[city]]], [[[state]]]</div>"
+                    +"</div>"
                     + "</td>"
                     + "<td valign=\"top\" height=\"304\" width=\"70%\" class=\"it\">"
                     + "[[[features]]]"

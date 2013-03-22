@@ -12,26 +12,29 @@
 
         <style>        
             .resultSetFormat {
+                margin:auto;
             }
             .resultSetFormat table { 
-                max-width: 90%;
-
+                max-width: 95%;
+                border-collapse:collapse;
                 margin: auto;
-                font-family: Arial; 
+                font-family: Arial Verdana Sans-serf;
                 font-size: 9pt;
                 border: 4px solid  black;
             }
             .resultSetFormat th{
                 color: white; 
                 font-weight: 700; 
-                vertical-align: bottom; white-space: nowrap; border-left: .5pt solid #92CDDC; 
+                vertical-align: bottom; 
+                white-space: nowrap; 
+                border-left: .5pt solid #92CDDC; 
                 border-right: medium none; 
-                border-top: .5pt solid #92CDDC; border-bottom: .5pt solid #92CDDC; 
+                border-top: .5pt solid #92CDDC; 
+                border-bottom: .5pt solid #92CDDC; 
                 padding-left: 1px; padding-right: 1px; 
                 padding-top: 1px;  
                 background-color: #4BACC6;
                 text-align: center;
-
             } 
 
             .resultSetFormat td{  
@@ -53,7 +56,7 @@
 
             }
             .sm {
-                font-size:8pt;
+                font-size:7pt;
 
             }
             .bold {
@@ -71,7 +74,7 @@
             <input type="hidden" name="deletePK">
         </form>
 
-        <%                            
+        <%
             String dbDataOrError = "";
             DbConn dbc = new DbConn();
             String dbError = dbc.getErr();
@@ -96,19 +99,19 @@
 
                 // now print out the whole table
                 dbDataOrError = DiverLogView.listAllUsers("resultSetFormat", "javascript:deleteRow", "./images/icons/delete.png", "#bcd8e9", dbc);
-                if (!dbc.getConn().isClosed()) {                                    
+                if (!dbc.getConn().isClosed()) {
                     dbc.close();
                 }
-                                
-                                
-            } else {                                
-                if (!dbc.getConn().isClosed()) {                                    
+
+
+            } else {
+                if (!dbc.getConn().isClosed()) {
                     dbc.close();
                 }
                 dbDataOrError = dbError;
-                                
+
             }
-                            
+
             out.println(dbDataOrError);
         %>
 

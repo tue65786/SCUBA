@@ -382,7 +382,7 @@ padding-right:11px
 /*Screen Overlay while ajax panel is refreshed*/
 #InnerProgressOverlay {
 -moz-opacity:1px;
-/background-color:#eee;
+background-color:#eee;
 border:1px solid #000;
 color:blue;
 filter:alpha(opacity=100);

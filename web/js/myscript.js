@@ -6,11 +6,16 @@
                 }
             }
 
+            function deleteRowPretty (display, primaryKey) {
+                if (confirm("Do you really want to delete item "+display+"?")) {
+                    document.updateDelete.deletePK.value=primaryKey;
+                    document.updateDelete.submit();
+                }
+            }
 /* x
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
- 
 function setSelectedTab(elementId) {
     //Breadcrumbs
     if (elementId == "Labs")

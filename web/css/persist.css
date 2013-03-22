@@ -5,6 +5,13 @@
     Description:
         Purpose of the stylesheet follows.
 */
+
+
+.error {
+    color:red; 
+       font-weight: bold
+}
+
 div.fieldset {
     border: solid black thin;
     width: 90%;
@@ -147,6 +154,22 @@ root {
     
 }
 
+.content h1 {
+    
+    
+    float:right;
+    padding-right:20%;
+    margin-bottom:10px; 
+    width:20%; padding-left:15px;
+    background: white; 
+    color: white;
+    text-shadow: black 0px 0px 5px;
+    font-size: 22pt;
+    white-space: nowrap;
+    
+    
+
+}
 .title h1 {
     color:white;
      text-shadow:  3px 4px #FF0000;
@@ -277,6 +300,29 @@ root {
     
 }
 
+li .expand
+{
+    list-style-image:url("./images/icons/lftArrow.png");
+    list-style-position: outside;
+    display:inline;
+    
+    
+    
+    
+    direction: rtl;
+}
+button .openIns
+{
+     background-color: #ccffcc;
+     
+     
+    
+    background-image: url("./images/icons/create_users.png");
+    border: 4px grey;
+    
+    background-position: center center;
+    background-repeat: no-repeat;
+}
 .menu a:hover    /* changes the bg color when user hovers over a <a> link element in a html element with class="menu" */
 { 
  
