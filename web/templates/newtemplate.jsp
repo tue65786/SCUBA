@@ -9,14 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-       
+
         <!--head-content cottains css and js links common to most pages-->
         <%@ include file= "head-content.html" %> 
         <title>SCUBA - Home</title> 
     </head>
     <body onload="setSelectedTab('??????')">
         <%@ include file= "pre-content.html" %> 
-                     
-    <%@ include file= "css-chooser.html" %> 
-    <%@ include file= "post-content.html" %>         
-   
+
+        <%@ include file= "css-chooser.html" %> 
+        <%@ include file= "post-content.html" %>         

@@ -1,6 +1,6 @@
 package model.WebUser;
 
-import validationUtils.*;  
+import validationUtils.*;
 
 /* This class validates a WebUser object (bundle of pre-validated user entered string values)
  * and saves the validated data into a TypedData object (bundle of typed data values).
@@ -8,7 +8,7 @@ import validationUtils.*;
  * This class demonstrates the use of "object composition" and
  * "Single Responsibility" software design principles.
  */
-public class Validate { 
+public class Validate {
 
     // validation error messages, one per field to be validated
     private String userEmailMsg = "";
@@ -17,16 +17,13 @@ public class Validate {
     private String membershipFeeMsg = "";
     private String userRoleMsg = "";
     private String birthdayMsg = "";
-    
     private boolean isValidated = false; // true iff all fields validate ok.
     private String debugMsg = "";
-    
     // Web User data fields from form (all String, pre-validation), bundled in this object
     private StringData wu = new StringData();
-    
     // Web User data fields after validation (various data types), bundled into this object
     private TypedData wut = new TypedData();
-    
+
     // default constructor is good for first rendering 
     //   -- all error messages are set to "" (empty string).
     public Validate() {
@@ -37,7 +34,7 @@ public class Validate {
         // side effect of validationUtils method puts validated, converted typed value into TypedData object
         this.wu = wu;
 
-        if (wu.webUserId != null && wu.webUserId.length() != 0) {
+        if(wu.webUserId != null && wu.webUserId.length() != 0) {
             ValidateInteger vi = new ValidateInteger(wu.webUserId, true);
             wut.setWebUserId(vi.getConvertedInteger());
         }
@@ -45,15 +42,15 @@ public class Validate {
         ValidateEmailAddress vem = new ValidateEmailAddress(wu.userEmail, 45, true);
         wut.setUserEmail(vem.getConvertedString());
         this.userEmailMsg = vem.getError();
-        
-        
-        ValidateString vstr =  new ValidateString(wu.userPw, 45, true);
+
+
+        ValidateString vstr = new ValidateString(wu.userPw, 45, true);
         wut.setUserPw(vstr.getConvertedString());
         this.userPwMsg = vstr.getError();
 
         vstr = new ValidateString(wu.userPw2, 45, true);
         wut.setUserPw2(vstr.getConvertedString());
-        if (wut.getUserPw().compareTo(wut.getUserPw2()) != 0) {
+        if(wut.getUserPw().compareTo(wut.getUserPw2()) != 0) {
             this.userPw2Msg = "Both passwords must match.";
         }
 
@@ -63,7 +60,9 @@ public class Validate {
 
         ValidateInteger vi = new ValidateInteger(wu.userRoleId, true);
         wut.setUserRoleId(vi.getConvertedInteger());
-        this.userRoleMsg = vi.getError();
+        if(vi.getError().length() > 0) {
+            this.userRoleMsg = "Select a role from the drop down list";
+        }
 
         ValidateDate vdate = new ValidateDate(wu.birthday, false);
         wut.setBirthday(vdate.getConvertedDate());
@@ -96,16 +95,16 @@ public class Validate {
     public String getMembershipFeeMsg() {
         return this.membershipFeeMsg;
     }
-    
+
     public String getUserRoleMsg() {
         return this.userRoleMsg;
     }
 
     public String getBirthdayMsg() {
-        return this.birthdayMsg; 
+        return this.birthdayMsg;
     }
 
-    public boolean isValidated() { 
+    public boolean isValidated() {
         return this.isValidated;
     }
 
@@ -113,13 +112,13 @@ public class Validate {
         return this.debugMsg;
     }
 
-    public String getAllValidationErrors() { 
+    public String getAllValidationErrors() {
         String allMessages = "userEmail error: " + this.userEmailMsg
-                + ", userPw error: " + this.userPwMsg
-                + ", userPw2 error: " + this.userPw2Msg
-                + ", membershipFee error: " + this.membershipFeeMsg
-                + ", userRoleMsg error: " + this.userRoleMsg
-                + ", dateAdded error: " + this.birthdayMsg;
+                             + ", userPw error: " + this.userPwMsg
+                             + ", userPw2 error: " + this.userPw2Msg
+                             + ", membershipFee error: " + this.membershipFeeMsg
+                             + ", userRoleMsg error: " + this.userRoleMsg
+                             + ", dateAdded error: " + this.birthdayMsg;
         return allMessages;
     }
 } // class

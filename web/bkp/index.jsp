@@ -13,7 +13,7 @@
         <script src="js/myscript.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SCUBA</title>
-      
+
     </head>
     <body onload="setSelectedTab('log')">
         <div class="container">
@@ -24,7 +24,7 @@
                 <div id="sites" class="tab"><a href="tab2page.html">Tab 2</a></div>
                 <div id="divers"  class="tab"><a href="tab3page.html">Tab 3</a></div>
                 <div id="log"  class="tab"><a href="tab4page.html">Tab 4</a></div>
-<!--                TODO re: css challenge move log tab under divers -->
+                <!--                TODO re: css challenge move log tab under divers -->
                 <div class="newLine"></div>
             </div>  <!-- finishes off the title div -->
             <div class="content selected">

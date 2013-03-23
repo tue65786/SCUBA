@@ -15,20 +15,21 @@ public class ValidateString {
     public ValidateString(String val, int maxlen, boolean required) {
 
         this.convertedString = "";
-        if (val == null) {
+        if(val == null) {
             this.error = "Null not accepted as String Input";
             return;
         }
-        if (val.length() == 0) {
-            if (required) {
+        if(val.length() == 0) {
+            if(required) {
                 this.error = "Input is required";
                 return;
-            } else {
+            }
+            else {
                 this.error = ""; // Empty string OK if fld not req'd.
                 return;
             }
         }
-        if (val.length() > maxlen) {
+        if(val.length() > maxlen) {
             this.convertedString = val.substring(0, maxlen);
             this.error = "Please shorten to [" + convertedString + "]";
             return;
@@ -37,8 +38,6 @@ public class ValidateString {
         this.error = "";  // any other input is OK
     }
 
-    
-    
     public String getError() {
         return this.error;
     }

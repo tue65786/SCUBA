@@ -34,28 +34,28 @@
                 <p><label class="lbl" for="email">Your Email</label><input type="text" class="field-300" name="email"/></p>
                 <p><label class="lbl" for=""></label><input type="text" class="field-300" name=""/></p>
                 <p>
-                  <label class="field-multi-choice-input" for="US-SoEa">Where do you do most of your diving?</label>
+                    <label class="field-multi-choice-input" for="US-SoEa">Where do you do most of your diving?</label>
                     <span class="form-group">
-                    <span class="multichoice"><input type="checkbox" name="US-SoEa" value=""/> South Eastern US</span>
-                    <span class="multichoice"><input type="checkbox" name="US-West" value="US-West"/>West Coast US</span>
-                    <span class="multichoice"><input type="checkbox" name="US-Inland" value="US-Inlind"/>Inlandt US</span>
-                </span>
+                        <span class="multichoice"><input type="checkbox" name="US-SoEa" value=""/> South Eastern US</span>
+                        <span class="multichoice"><input type="checkbox" name="US-West" value="US-West"/>West Coast US</span>
+                        <span class="multichoice"><input type="checkbox" name="US-Inland" value="US-Inlind"/>Inlandt US</span>
+                    </span>
                 </p>
                 <p>
                     <label class="field-multi-choice-input" for="howoften">How often do you dive?</label>
 
-<!--                    TODO: Switch Multichoice fiekds to table-->
+                    <!--                    TODO: Switch Multichoice fiekds to table-->
 
                 <div class="form-group">
-                     <span class="multichoice"><input type="radio" name="Never" group="howoften" value="Never been" /><label  for="Never">Never been</label></span>
-                     <span class="multichoice"><input type="radio" name="Never" group="howoften" value="Less than once a year" /><label for="InsertRecordInternal_Comments1">Less 
-                        than once a year</label></span>
-                     <span class="multichoice"><input type="radio" name="Yearly" group="howoften"  value="Atleast Once A Year" /><label for="InsertRecordInternal_Comments2">Atleast 
-                        Once A Year</label></span>
-                     <span class="multichoice"><input type="radio" name="Often" group="howoften" value="Couple times a year" /><label for="InsertRecordInternal_Comments3">Couple 
-                        times a year</label></span>
-                     <span class="multichoice"><input type="radio" name="Regularly" group="howoften" value="Couple times a month" /><label for="Regularly">Couple 
-                             times a month</label></span>
+                    <span class="multichoice"><input type="radio" name="Never" group="howoften" value="Never been" /><label  for="Never">Never been</label></span>
+                    <span class="multichoice"><input type="radio" name="Never" group="howoften" value="Less than once a year" /><label for="InsertRecordInternal_Comments1">Less 
+                            than once a year</label></span>
+                    <span class="multichoice"><input type="radio" name="Yearly" group="howoften"  value="Atleast Once A Year" /><label for="InsertRecordInternal_Comments2">Atleast 
+                            Once A Year</label></span>
+                    <span class="multichoice"><input type="radio" name="Often" group="howoften" value="Couple times a year" /><label for="InsertRecordInternal_Comments3">Couple 
+                            times a year</label></span>
+                    <span class="multichoice"><input type="radio" name="Regularly" group="howoften" value="Couple times a month" /><label for="Regularly">Couple 
+                            times a month</label></span>
                 </div>
                 </p>
                 <p>
@@ -65,9 +65,9 @@
                 </p>
                 <p><label for="comments">Comments</label>
                     <textarea type="textarea" class="field-300"  
-                     rows="4" maxlength="4000" name="comments"  />
+                              rows="4" maxlength="4000" name="comments"  />
                     >
-                 
+
                     <input type="checkbox" name="InsertRecordNewsletter" value="PADI" />PADI
                 <td colspan="2" class="cbFormFieldCell">
                     <span class="cbFormData">

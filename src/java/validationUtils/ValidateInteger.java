@@ -12,11 +12,11 @@ public class ValidateInteger {
      */
     public ValidateInteger(String val, boolean required) {
         this.convertedInteger = null;
-        if (val == null) {
+        if(val == null) {
             this.error = "Programmer error: should not be trying to validate null in ValidateInteger constructor";
             return;
         }
-        if ((val.length() == 0) && !required) {
+        if((val.length() == 0) && !required) {
             //System.out.println("******************ValidateInteger: Null is OK.");
             this.error = "";  // Since this field is not required, empty string is a valid user entry.
             return;
@@ -25,7 +25,8 @@ public class ValidateInteger {
             this.convertedInteger = new Integer(val);
             this.error = "";
             //System.out.println("******************ValidateInteger: "+val+ " is a good integer.");
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             this.error = "Please enter an integer";
         }
     }

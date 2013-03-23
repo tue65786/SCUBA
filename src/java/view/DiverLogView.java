@@ -1,4 +1,5 @@
 package view;
+
 import SQL.DbConn;
 import SQL.FormatUtils;
 import java.sql.PreparedStatement;
@@ -11,17 +12,19 @@ import java.sql.ResultSet;
 public class DiverLogView {
 
     private static String tdCSS(boolean row) {
-        if (row) {
+        if(row) {
             return "row-odd";
-        } else {
+        }
+        else {
             return "row-even";
         }
     }
 
     private static String tdCSSops(String ops, boolean row) {
-        if (row) {
+        if(row) {
             return "row-odd " + ops;
-        } else {
+        }
+        else {
             return "row-even " + ops;
         }
     }
@@ -83,24 +86,25 @@ public class DiverLogView {
             results.close();
             stmt.close();
             return sb.toString();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return "Exception thrown in DiverLogView.listAllUsers(): " + e.getMessage()
-                    + "<br/> partial output: <br/>" + sb.toString();
+                   + "<br/> partial output: <br/>" + sb.toString();
         }
     }
 
     public static String listAllUsers(String cssClassForResultSetTable, String delFn, String delIcon,
-            String bgColor, DbConn dbc) {
+                                      String bgColor, DbConn dbc) {
         boolean oddRow = true;
 
 
 
         // Prepare some HTML that will be used repeatedly for the delete icon that
         // calls a delete javascript function (see below).
-        if ((delIcon == null) || (delIcon.length() == 0)) {
+        if((delIcon == null) || (delIcon.length() == 0)) {
             return " DiveLog.listAllUsers() error: delete Icon file name (String input parameter) is null or empty.";
         }
-        if ((delFn == null) || (delFn.length() == 0)) {
+        if((delFn == null) || (delFn.length() == 0)) {
             return " DiveLog.listAllUsers() error: delete javascript function name (String input parameter) is null or empty.";
         }
 
@@ -127,8 +131,8 @@ public class DiverLogView {
 
             sb.append("<table class='" + cssClassForResultSetTable + "'>");
             sb.append("<tr>");
-            sb.append("<td style='vertical-align:middle;text-align:right; border:none; padding-right:2px; background-color:" 
-                    + bgColor + "'>&nbsp;</td>");// extra column at left for delete icon
+            sb.append("<td style='vertical-align:middle;text-align:right; border:none; padding-right:2px; background-color:"
+                      + bgColor + "'>&nbsp;</td>");// extra column at left for delete icon
             sb.append("<th style='text-align:left'>Email</th>");
             sb.append("<th style='text-align:left'>Role</th>");
             sb.append("<th style='text-align:left'>Location</th>");
@@ -179,9 +183,10 @@ public class DiverLogView {
             rst.close();
             stmt.close();
             return sb.toString();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return "Exception thrown in  DiveLog.listAllUsers(): " + e.getMessage()
-                    + "<br/> partial output: <br/>" + sb.toString();
+                   + "<br/> partial output: <br/>" + sb.toString();
         }
     }
 }

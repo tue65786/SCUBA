@@ -10,16 +10,15 @@ public class ValidateDate {
      *
      * error holds "" if value passes validation.
      */
-
     public ValidateDate(String val, boolean required) {
         // System.out.println("*************trying to convert ["+val+"] to date");
         this.convertedDate = null;
-        if (val == null) {
+        if(val == null) {
             this.error = "Programmer error: trying to validate null in ValidateDate constructor";
             return;
         }
-        if ((val.length() == 0) && !required) {
-            this.error =  "";  // Since this field is not required, empty string is valid user entry.
+        if((val.length() == 0) && !required) {
+            this.error = "";  // Since this field is not required, empty string is valid user entry.
             return;
         }
         try {
@@ -28,8 +27,9 @@ public class ValidateDate {
             java.util.Date myDate = dateformat.parse(val);
             convertedDate = new java.sql.Date(myDate.getTime());
             //return d.toString(); // debugging...
-            this.error =  ""; // means date is good
-        } catch (Exception e) {
+            this.error = ""; // means date is good
+        }
+        catch (Exception e) {
             this.error = "Please enter a valid date (format: MM/DD/YYYY)";  // can also add (to debug) + e.getMessage();
         }
     }

@@ -12,11 +12,11 @@ public class ValidateDecimal {
      */
     public ValidateDecimal(String val, boolean required) {
         this.convertedDecimal = null;
-        if (val == null) {
+        if(val == null) {
             this.error = "Programmer error: should not be trying to validate null in ValidateDecimal constructor";
             return;
         }
-        if ((val.length() == 0) && !required) {
+        if((val.length() == 0) && !required) {
             //System.out.println("******************ValidateDecimal: Null is OK.");
             this.error = "";  // Since this field is not required, empty string is valid user entry.
             return;
@@ -25,7 +25,8 @@ public class ValidateDecimal {
             this.convertedDecimal = new java.math.BigDecimal(val);
             this.error = "";
             //System.out.println("******************ValidateDecimal: "+val+ " is a good decimal.");
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             this.error = "Please enter an dollar amount";
         }
     }

@@ -12,7 +12,7 @@ public class TypedData {
     private java.math.BigDecimal membershipFee = null;
     private Integer userRoleId = null;
     private java.sql.Date birthday = null;
-    
+
     public String displayHTML() {
         return buildDisplay("<br>");
     }
@@ -24,26 +24,26 @@ public class TypedData {
     // pass in "\n" for newline, "<br/>" if to be displayed on jsp page.
     public String buildDisplay(String newLineString) {
         return newLineString
-                + "WebUser record" + newLineString
-                + "==============" + newLineString
-                + "webUserId: " + myToString(this.getWebUserId()) + newLineString
-                + "userEmail: " + myToString(this.getUserEmail()) + newLineString
-                + "userPw: " + myToString(this.getUserPw()) + newLineString
-                + "userPw2: " + myToString(this.getUserPw2()) + newLineString
-                + "membershipFee: " + myToString(this.getMembershipFee()) + newLineString
-                + "userRoleId: " + myToString(this.getUserRoleId()) + newLineString
-                + "birthday: " + myToString(this.getBirthday()) + newLineString;
+               + "WebUser record" + newLineString
+               + "==============" + newLineString
+               + "webUserId: " + myToString(this.getWebUserId()) + newLineString
+               + "userEmail: " + myToString(this.getUserEmail()) + newLineString
+               + "userPw: " + myToString(this.getUserPw()) + newLineString
+               + "userPw2: " + myToString(this.getUserPw2()) + newLineString
+               + "membershipFee: " + myToString(this.getMembershipFee()) + newLineString
+               + "userRoleId: " + myToString(this.getUserRoleId()) + newLineString
+               + "birthday: " + myToString(this.getBirthday()) + newLineString;
     }
 
     private String myToString(Object obj) {
-        if (obj == null) {
+        if(obj == null) {
             return "null";
-        } else {
+        }
+        else {
             return obj.toString();
         }
     }
 
-    
     /**
      * @return the webUserId
      */
@@ -57,7 +57,7 @@ public class TypedData {
     public void setWebUserId(Integer webUserId) {
         this.webUserId = webUserId;
     }
-    
+
     /**
      * @return the userEmail
      */

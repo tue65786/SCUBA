@@ -217,15 +217,15 @@ root {
     border-left:2px solid rgb(22, 94, 169);
     border-right:2px solid rgb(22, 94, 169);
     border-bottom:2px solid rgb(22, 94, 169);
-    
-   
-/*    font-weight: bold;
-  color: white;   the font color 
-  border: 2px solid DarkBlue;
-  text-align: center;
-  width: 10em;                                 "em" is a measurement which means the size of a capital letter M
-  width:22%;
-  background-color: DarkBlue */
+
+
+    /*    font-weight: bold;
+      color: white;   the font color 
+      border: 2px solid DarkBlue;
+      text-align: center;
+      width: 10em;                                 "em" is a measurement which means the size of a capital letter M
+      width:22%;
+      background-color: DarkBlue */
     border-top: thin solid rgb(20,112,156);
     border-left: thin solid rgb(20,112,156);
     border-right: thin solid rgb(20,112,156);
@@ -249,15 +249,15 @@ root {
 
 .menu:hover a  /* style for any <a> link element in a html element with class="menu" that's being hovered over (with the mouse) */
 { display: block;
-          border-left:2px solid rgb(22, 94, 169);
-    border-right:2px solid rgb(22, 94, 169);
-    border-bottom:2px solid rgb(22, 94, 169);
- }                              /* display: block means visible */
+  border-left:2px solid rgb(22, 94, 169);
+  border-right:2px solid rgb(22, 94, 169);
+  border-bottom:2px solid rgb(22, 94, 169);
+}                              /* display: block means visible */
 
 .menu a            /* style for any <a> link element that's inside a html element with class="menu" */
 { 
     display: none;                               /* display: none means invisible */
-     text-decoration: none;
+    text-decoration: none;
     background-color: rgba(80, 44, 87, 0.96);   
     opacity:0.92;
     color: black;
@@ -271,11 +271,11 @@ root {
 
 .menu a:hover    /* changes the bg color when user hovers over a <a> link element in a html element with class="menu" */
 { background-color: white ;
-      text-decoration: none;
-    background-color: rgba(80, 44, 87, 0.96);   
-    opacity:0.92;
-    color: black;
-    filter:alpha(opacity=92);
+  text-decoration: none;
+  background-color: rgba(80, 44, 87, 0.96);   
+  opacity:0.92;
+  color: black;
+  filter:alpha(opacity=92);
 }
 
 
@@ -288,7 +288,7 @@ root {
 }
 
 .footer {
-background-color:white;
+    background-color:white;
     border:thin dashed  #bdd8e9;
 }
 

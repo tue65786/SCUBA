@@ -1,26 +1,30 @@
 
-            function deleteRow (primaryKey) {
-                if (confirm("Do you really want to delete item "+primaryKey+"?")) {
-                    document.updateDelete.deletePK.value=primaryKey;
-                    document.updateDelete.submit();
-                }
-            }
+function deleteRow (primaryKey) {
+    if (confirm("Do you really want to delete item "+primaryKey+"?")) {
+        document.updateDelete.deletePK.value=primaryKey;
+        document.updateDelete.submit();
+    }
+}
 
-            function deleteRowPretty (display, primaryKey) {
-                if (confirm("Do you really want to delete item "+display+"?")) {
-                    document.updateDelete.deletePK.value=primaryKey;
-                    document.updateDelete.submit();
-                }
-            }
+function deleteRowPretty (display, primaryKey) {
+    if (confirm("Do you really want to delete item "+display+"?")) {
+        document.updateDelete.deletePK.value=primaryKey;
+        document.updateDelete.submit();
+    }
+}
 /* x
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 function setSelectedTab(elementId) {
     //Breadcrumbs
-    if (elementId == "Labs")
+    if (elementId == "Lab4" || elementId == "Lab5" )
     {
-        document.getElementById(elementId).className = "tab menu selected";
+        document.getElementById("Labs").className = "tab menu selected";
+    }
+    else  if (elementId=="UserInsert" || elementId=="UserList")
+    {
+        document.getElementById("UserList").className = "tab menu selected";
     }
     else
     {
@@ -34,17 +38,18 @@ function setSelectedTab(elementId) {
         case "Home" :
             htmlCrumbs = '> Home';
             break;
-        //diver will be a drop down menu. so will need to append breadcrumbs.
-//        case "Contact" :
-//            htmlCrumbs = refHome +  " >" +  elementId + "Contact Us" ;            
-//            break; 
-        case "UserList" :
-            htmlCrumbs = refHome +  " >" +  elementId + "Members" ;            
+        case 'UserList' :
+            htmlCrumbs = refHome +  " >" +  "Members" ;
+            break;
+        case 'UserInsert' :
+            htmlCrumbs = refHome +  " > <a href='user.jsp'> Menbers </a> >" + "Register"; 
+            break;
         default:
             htmlCrumbs = refHome +  " >" +  elementId;
+            break;
     }//eo switch
+    //Set break crumbs
     document.getElementById("crumbs").innerHTML =  htmlCrumbs;
-    
     //Set CSS File
     var style;
     style = readCookie("cssFile");
@@ -92,6 +97,7 @@ function showCookie(name) {
     }
 }
 
+//CSS
 function changeStyle(choice) {
     eraseCookie("cssFile");
     createCookie("cssFile",choice,30);
@@ -110,3 +116,22 @@ function changeStyle(choice) {
                 
     }
 }
+function setDDLSelectionUserRole() {
+    //                                 
+    //                                       document.cssChanger.cssValueCooke.value)
+                                   
+    var val =  document.myForm.role.value;
+    document.myForm.userRoleid.value = val;
+             
+}
+                                
+function setDDLFromTBUR() {                                
+    alert('ghg');
+    var val =  document.myForm.userRoleid.value;                                   
+    if ((val != null) && (!isNaN(val))  ) {
+    
+        var nameval = 'role_' + val; 
+        document.getElementById(nameval).selected = true;
+    }
+}
+                             

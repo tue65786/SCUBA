@@ -1,12 +1,13 @@
 package model.WebUser;
+
 import SQL.DbConn;
 import SQL.DbEncodeUtils;
 import java.sql.*;
-/** 
- * This class contains all code that modifies records in a table in the database. 
- * So, Insert, Update, and Delete code will be in this class (eventually). Right now, 
- * it's just doing DELETE.
- * 
+
+/**
+ * This class contains all code that modifies records in a table in the database. So, Insert,
+ * Update, and Delete code will be in this class (eventually). Right now, it's just doing DELETE.
+ * <p/>
  * This class requires an open database connection for its constructor method.
  */
 public class WebUserMods {
@@ -29,62 +30,64 @@ public class WebUserMods {
     }
 
     public String delete(String primaryKey) {
-        this.errorMsg =SQL.DbConn.SQL_ERROR_DIV_TAG;  // clear any error message from before.
-        
+        this.errorMsg = SQL.DbConn.SQL_ERROR_DIV_TAG;  // clear any error message from before.
+
         String sql = "DELETE FROM web_user where web_user_id=?";
         try {
             PreparedStatement sqlSt = dbc.getConn().prepareStatement(sql);
             sqlSt.setString(1, primaryKey);
 
             int numRows = sqlSt.executeUpdate();
-            if (numRows == 1) {
+            if(numRows == 1) {
                 this.errorMsg = "";
                 return ""; // all is GOOD
-            } else {
-                this.errorMsg +=  new Integer(numRows).toString()
-                        + " records were deleted when only 1 expected for delete."; // probably never get here
+            }
+            else {
+                this.errorMsg += new Integer(numRows).toString()
+                                 + " records were deleted when only 1 expected for delete."; // probably never get here
                 return this.errorMsg + "</div>";
             }
         } // try
         catch (SQLException e) {
             //this.errorMsg =
-                  if (e.getSQLState().equalsIgnoreCase(SQL.DbConn.SQL_ERROR_CODE_FK_VIOLATION)) {
-                this.errorMsg +=  "<b>ERROR: This row is referenced by rows in other tables. Deleting foreign references will resolve this error. <span style=\"font-size:7pt; font-style:italic;\">Details: [" + e.getMessage() + "]</span>";
-                return this.errorMsg+ "</div>";
+            if(e.getSQLState().equalsIgnoreCase(SQL.DbConn.SQL_ERROR_CODE_FK_VIOLATION)) {
+                this.errorMsg += "<b>ERROR: This row is referenced by rows in other tables. Deleting foreign references will resolve this error. <span style=\"font-size:7pt; font-style:italic;\">Details: [" + e.getMessage() + "]</span>";
+                return this.errorMsg + "</div>";
             }
-            if (e.getSQLState().equalsIgnoreCase("S1000")) {
+            if(e.getSQLState().equalsIgnoreCase("S1000")) {
                 this.errorMsg += "Could not delete.";
             }
 
             this.errorMsg += "Problem with SQL in WebUserSql.delete: "
-                    + "SQLState [" + e.getSQLState()
-                    + "], error message [" + e.getMessage() + "]";
+                             + "SQLState [" + e.getSQLState()
+                             + "], error message [" + e.getMessage() + "]";
             System.out.println(this.errorMsg);
             //e.printStackTrace();
             return this.errorMsg + "</div>";
         } // catch
         catch (Exception e) {
             this.errorMsg += "General Error in WebUserSql.delete: "
-                    + e.getMessage();
+                             + e.getMessage();
             System.out.println(this.errorMsg);
             //e.printStackTrace();
             return this.errorMsg + "</div>";
         } // catch
     }// method delete
+
     public String insert(Validate wuValidate) {
 
         this.errorMsg = "";// empty error message means it worked.
         this.debugMsg = "";
 
         // dont even try to insert if the user data didnt pass validation.
-        if (!wuValidate.isValidated()) {
+        if(!wuValidate.isValidated()) {
             this.errorMsg = "Please edit record and resubmit before inserting";
             return this.errorMsg;
         }
 
         TypedData wuTypedData = (TypedData) wuValidate.getTypedData();
         String sql = "INSERT INTO web_user (user_email, user_password, membership_fee, user_role_id, birthday"
-                + ") VALUES (?,?,?,?,?)";
+                     + ") VALUES (?,?,?,?,?)";
         try {
             PreparedStatement pStatement = dbc.getConn().prepareStatement(sql);
             this.debugMsg += DbEncodeUtils.encodeString(pStatement, 1, wuTypedData.getUserEmail());
@@ -96,26 +99,30 @@ public class WebUserMods {
             //System.out.println("************* got past encoding");
             try {
                 int numRows = pStatement.executeUpdate();
-                if (numRows == 1) {
+                if(numRows == 1) {
                     return ""; // all is GOOD, one record inserted is what we expect
-                } else {
+                }
+                else {
                     this.errorMsg = "Error: " + new Integer(numRows).toString()
-                            + " records were inserted where only 1 expected."; // probably never get here, bulk sql insert
+                                    + " records were inserted where only 1 expected."; // probably never get here, bulk sql insert
                     return this.errorMsg;
                 }
             } // try execute the statement
             catch (SQLException e) {
-                if (e.getSQLState().equalsIgnoreCase("S1000")) {
+                if(e.getSQLState().equalsIgnoreCase("S1000")) {
                     // this error would only be possible for a non-auto-increment primary key.
                     this.errorMsg = "Cannot insert: a record with that ID already exists.";
-                } else if (e.getMessage().toLowerCase().contains("duplicate entry")) {
+                }
+                else if(e.getMessage().toLowerCase().contains("duplicate entry")) {
                     this.errorMsg = "Cannot insert: duplicate entry."; // for example a unique key constraint.
-                } else if (e.getMessage().toLowerCase().contains("foreign key")) {
+                }
+                else if(e.getMessage().toLowerCase().contains("foreign key")) {
                     this.errorMsg = "Cannot insert: invalid reference (bad foreign key value)."; // for example a unique key constraint.
-                } else {
+                }
+                else {
                     this.errorMsg = "WebUserMods.insert: SQL Exception while attempting insert. "
-                            + "SQLState:" + e.getSQLState()
-                            + ", Error message: " + e.getMessage();
+                                    + "SQLState:" + e.getSQLState()
+                                    + ", Error message: " + e.getMessage();
                     // this message would show up in the NetBeans log window (below the editor)
                     System.out.println("************* " + this.errorMsg);
                 }

@@ -14,12 +14,16 @@
         <copy file="${deploy.ant.docbase.dir}/WEB-INF/sun-web.xml" tofile="${temp.sun.web}"/>
         <!-- The doctype triggers resolution which can fail -->
         <replace file="${temp.sun.web}">
-            <replacetoken><![CDATA[<!DOCTYPE]]></replacetoken>
-            <replacevalue><![CDATA[<!-- <!DOCTYPE]]></replacevalue>
+            <replacetoken><![CDATA[<!DOCTYPE]]>
+            </replacetoken>
+            <replacevalue><![CDATA[<!-- <!DOCTYPE]]>
+            </replacevalue>
         </replace>
         <replace file="${temp.sun.web}">
-            <replacetoken><![CDATA[<sun-web-app]]></replacetoken>
-            <replacevalue><![CDATA[--> <sun-web-app]]></replacevalue>
+            <replacetoken><![CDATA[<sun-web-app]]>
+            </replacetoken>
+            <replacevalue><![CDATA[--> <sun-web-app]]>
+            </replacevalue>
         </replace>
         <xmlproperty file="${temp.sun.web}" validate="false">
         </xmlproperty>    
@@ -36,12 +40,16 @@
         <copy file="${deploy.ant.docbase.dir}/WEB-INF/glassfish-web.xml" tofile="${temp.gf.web}"/>
         <!-- The doctype triggers resolution which can fail -->
         <replace file="${temp.gf.web}">
-            <replacetoken><![CDATA[<!DOCTYPE]]></replacetoken>
-            <replacevalue><![CDATA[<!-- <!DOCTYPE]]></replacevalue>
+            <replacetoken><![CDATA[<!DOCTYPE]]>
+            </replacetoken>
+            <replacevalue><![CDATA[<!-- <!DOCTYPE]]>
+            </replacevalue>
         </replace>
         <replace file="${temp.gf.web}">
-            <replacetoken><![CDATA[<glassfish-web-app]]></replacetoken>
-            <replacevalue><![CDATA[--> <glassfish-web-app]]></replacevalue>
+            <replacetoken><![CDATA[<glassfish-web-app]]>
+            </replacetoken>
+            <replacevalue><![CDATA[--> <glassfish-web-app]]>
+            </replacevalue>
         </replace>
         <xmlproperty file="${temp.gf.web}" validate="false">
         </xmlproperty>
@@ -78,7 +86,7 @@
         <tempfile prefix="gfv3" property="gfv3.results.file" destdir="${java.io.tmpdir}"/>  <!-- do not forget to delete this! -->
         <property name="full.deploy.ant.archive" location="${deploy.ant.archive}"/>
         <get src="${gfv3.admin.url}/__asadmin/deploy?path=${full.deploy.ant.archive}${deploy.context.root.argument}&amp;force=true&amp;name=${ant.project.name}"
-            dest="${gfv3.results.file}"/>
+             dest="${gfv3.results.file}"/>
         <delete file="${gfv3.results.file}"/>    
     </target>
     <target name="-deploy-with-pw" if="gfv3.password">
@@ -86,7 +94,7 @@
         <tempfile prefix="gfv3" property="gfv3.results.file" destdir="${java.io.tmpdir}"/>  <!-- do not forget to delete this! -->
         <property name="full.deploy.ant.archive" location="${deploy.ant.archive}"/>
         <get username="${gfv3.username}" password="${gfv3.password}" src="${gfv3.admin.url}/__asadmin/deploy?path=${full.deploy.ant.archive}${deploy.context.root.argument}&amp;force=true&amp;name=${ant.project.name}"
-            dest="${gfv3.results.file}"/>
+             dest="${gfv3.results.file}"/>
         <delete file="${gfv3.results.file}"/>
     </target>
     <target name="-undeploy-ant" depends="-init-cl-deployment-env" if="deploy.ant.enabled">
@@ -98,14 +106,14 @@
         <echo message="Undeploying ${deploy.ant.archive}"/>
         <tempfile prefix="gfv3" property="gfv3.results.file" destdir="${java.io.tmpdir}"/>  <!-- do not forget to delete this! -->
         <get src="${gfv3.admin.url}/__asadmin/undeploy?name=${ant.project.name}"
-            dest="${gfv3.results.file}"/>
+             dest="${gfv3.results.file}"/>
         <delete file="${gfv3.results.file}"/>    
     </target>
     <target name="-undeploy-with-pw" if="gfv3.password">
         <echo message="Undeploying ${deploy.ant.archive}"/>
         <tempfile prefix="gfv3" property="gfv3.results.file" destdir="${java.io.tmpdir}"/>  <!-- do not forget to delete this! -->
         <get username="${gfv3.username}" password="${gfv3.password}" src="${gfv3.admin.url}/__asadmin/undeploy?name=${ant.project.name}"
-            dest="${gfv3.results.file}"/>
+             dest="${gfv3.results.file}"/>
         <delete file="${gfv3.results.file}"/>
     </target>
 </project>

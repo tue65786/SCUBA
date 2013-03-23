@@ -13,13 +13,12 @@
         <script src="js/myscript.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SCUBA</title>
-      
+
     </head>
     <body onload="setSelectedTab('[XXXXXX] ');">
-       <%@ include file= "pre-content.html" %> 
-       
-       
-       
+        <%@ include file= "pre-content.html" %> 
+
+
+
         <%@ include file= "post-content.html" %> 
         <!-- Master page contains div tags: JUST ENTER CONTENT!-->
-        

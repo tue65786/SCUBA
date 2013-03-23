@@ -13,7 +13,7 @@
             .resultSetFormat {
             }
             .resultSetFormat table { 
-                   max-width: 95%;
+                max-width: 95%;
                 border-collapse:collapse;
                 margin: auto;
                 font-family: Arial Verdana Sans-serf;
@@ -43,17 +43,17 @@
 
             }
         </style>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
-</script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+        </script>
 
     </head>
     <body onload="setSelectedTab('UserList');">
         <%@ include file= "pre-content.html" %> 
         <div style="margin:auto ; padding-bottom:50px;">
-        <h1>Web Users</h1>
-        <div class="newLine"></div>
+            <h1>Web Users</h1>
+            <div class="newLine"></div>
             <table style="margin: auto; border: black solid 0px"><tr><Td>
-                             <input type="hidden" name="s">
+                        <input type="hidden" name="s">
                         <form name="updateDelete" action="user.jsp" method="get">
                             <input type="hidden" name="deletePK">
                         </form>
@@ -63,20 +63,21 @@
                             // Get database connection and check if you got it.
                             DbConn dbc = new DbConn();
                             String dbError = dbc.getErr();
-                            if (dbError.length() == 0) {
+                            if(dbError.length() == 0) {
 
                                 // got open connection, check to see if the user wants to delete a row.
                                 String delKey = request.getParameter("deletePK");
-                                if (delKey != null && delKey.length() > 0) {
+                                if(delKey != null && delKey.length() > 0) {
 
                                     // yep, they want to delete a row, instantiate objects needed to do the delete.
                                     WebUserMods sqlMods = new WebUserMods(dbc);
 
                                     // try to delete the row that has PK = delKey
                                     String delMsg = sqlMods.delete(delKey);
-                                    if (delMsg.length() == 0) {
+                                    if(delMsg.length() == 0) {
                                         out.println("<h3>Web User " + delKey + " has been deleted</h3>");
-                                    } else {
+                                    }
+                                    else {
                                         out.println("<h3>Unable to delete Web User " + delKey + ". " + sqlMods.getErrorMsg() + "</h3>");
                                     }
                                 }
@@ -84,13 +85,14 @@
 
                                 // now print out the whole table
                                 dbDataOrError = WebUserView.listAllUsers("resultSetFormat", "javascript:deleteRowPretty", "./images/icons/delete.png", "#bcd8e9", dbc);
-                                if (!dbc.getConn().isClosed()) {
+                                if(!dbc.getConn().isClosed()) {
                                     dbc.close();
                                 }
-                            } else {
+                            }
+                            else {
                                 dbDataOrError = dbError;
                             }
-                            if (!dbc.getConn().isClosed()) {
+                            if(!dbc.getConn().isClosed()) {
                                 dbc.close();
                             }
                             out.print(dbDataOrError);
