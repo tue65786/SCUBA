@@ -1,5 +1,9 @@
 package validationUtils;
 
+/**
+ *
+ * @author Dan Kauffman
+ */
 public class ValidateInteger {
 
     private Integer convertedInteger = null;
@@ -9,6 +13,11 @@ public class ValidateInteger {
      * if required is false, "" (empty string is OK), convertedInteger => null.
      *
      * error holds "" if value passes validation.
+     */
+    /**
+     *
+     * @param val
+     * @param required
      */
     public ValidateInteger(String val, boolean required) {
         this.convertedInteger = null;
@@ -31,10 +40,18 @@ public class ValidateInteger {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String getError() {
         return this.error;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getConvertedInteger() {
         return this.convertedInteger;
     }

@@ -36,6 +36,12 @@ public class DiverLogView {
      * @return
      */
 
+    /**
+     *
+     * @param cssClassForResultSetTable
+     * @param dbc
+     * @return
+     */
     public static String listAllUsers(String cssClassForResultSetTable, DbConn dbc) {
         StringBuilder sb = new StringBuilder("");
         PreparedStatement stmt = null;
@@ -93,6 +99,15 @@ public class DiverLogView {
         }
     }
 
+    /**
+     *
+     * @param cssClassForResultSetTable
+     * @param delFn
+     * @param delIcon
+     * @param bgColor
+     * @param dbc
+     * @return
+     */
     public static String listAllUsers(String cssClassForResultSetTable, String delFn, String delIcon,
                                       String bgColor, DbConn dbc) {
         boolean oddRow = true;

@@ -18,7 +18,7 @@ function deleteRowPretty (display, primaryKey) {
  */
 function setSelectedTab(elementId) {
     //Breadcrumbs
-    if (elementId == "Lab4" || elementId == "Lab5" )
+    if (elementId == "Lab4" || elementId == "Lab5" || elementId == "TestSelect" )
     {
         document.getElementById("Labs").className = "tab menu selected";
     }
@@ -43,6 +43,9 @@ function setSelectedTab(elementId) {
             break;
         case 'UserInsert' :
             htmlCrumbs = refHome +  " > <a href='user.jsp'> Menbers </a> >" + "Register"; 
+            break;
+            case 'TestSelect' :
+            htmlCrumbs = refHome +  " > <a href='labs.jsp'> Labs </a> >" + "Test Select"; 
             break;
         default:
             htmlCrumbs = refHome +  " >" +  elementId;
@@ -117,21 +120,17 @@ function changeStyle(choice) {
     }
 }
 function setDDLSelectionUserRole() {
-    //                                 
-    //                                       document.cssChanger.cssValueCooke.value)
-                                   
     var val =  document.myForm.role.value;
-    document.myForm.userRoleid.value = val;
-             
+    document.myForm.userRoleid.value = val;           
 }
                                 
-function setDDLFromTBUR() {                                
-    alert('ghg');
-    var val =  document.myForm.userRoleid.value;                                   
-    if ((val != null) && (!isNaN(val))  ) {
-    
-        var nameval = 'role_' + val; 
-        document.getElementById(nameval).selected = true;
-    }
-}
+//function setDDLFromTBUR() {                                
+//    alert('ghg');
+//    var val =  document.myForm.userRoleid.value;                                   
+//    if ((val != null) && (!isNaN(val))  ) {
+//    
+//        var nameval = 'role_' + val; 
+//        document.getElementById(nameval).selected = true;
+//    }
+//}
                              

@@ -2,6 +2,14 @@ package model.WebUser;
 
 /* This class just bundles together all the pre-validated String values that a 
  * user might enter as part of a Web_User record. 
+ * o	TypedData.java: a simple class that has all the fields of a web user record, but after validation/conversion so the fields are typed appropriately, e.g., birthday is a date and membership fee is a bigdecimal.
+o	
+o	
+
+ */
+/**
+ *
+ * @author Dan Kauffman
  */
 public class TypedData {
 
@@ -13,15 +21,28 @@ public class TypedData {
     private Integer userRoleId = null;
     private java.sql.Date birthday = null;
 
+    /**
+     *
+     * @return
+     */
     public String displayHTML() {
         return buildDisplay("<br>");
     }
 
+    /**
+     *
+     * @return
+     */
     public String displayLog() {
         return buildDisplay("\n");
     }
 
     // pass in "\n" for newline, "<br/>" if to be displayed on jsp page.
+    /**
+     *
+     * @param newLineString
+     * @return
+     */
     public String buildDisplay(String newLineString) {
         return newLineString
                + "WebUser record" + newLineString

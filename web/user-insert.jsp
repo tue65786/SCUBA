@@ -121,9 +121,12 @@
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="password" name="userPw" class="field2" size="45" value="<%= wuData.userPw%>" /></td><td class="error"><%=wuValidate.getUserPwMsg()%></td>
+                        <td><input type="password" name="userPw" class="field2" size="45" value="<%= wuData.userPw%>" /></td>
+                        <td class="error"><%=wuValidate.getUserPwMsg()%></td>
                     </tr>
-                    <tr><td>Re-type Password</td><td><input type="password" class="field2" size="45" name="userPw2" value="<%= wuData.userPw%>" /></td>
+                    <tr>
+                        <td>Re-type Password</td>
+                        <td><input type="password" class="field2" size="45" name="userPw2" value="<%= wuData.userPw%>" /></td>
                         <td class="error"><%=wuValidate.getUserPw2Msg()%></td>
                     </tr>
                     <tr>

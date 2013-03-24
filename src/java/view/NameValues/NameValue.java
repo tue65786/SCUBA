@@ -20,23 +20,45 @@ package view.NameValues;
  */
 public class NameValue {
 
+    /**
+     *
+     */
     public String name = "";
+    /**
+     *
+     */
     public int id;
 
+    /**
+     *
+     */
     public NameValue() {
     }
 
+    /**
+     *
+     * @param ur
+     */
     public NameValue(NameValue ur) {
         this.id = ur.id;
         this.name = ur.name;
 
     }
 
+    /**
+     *
+     * @param id
+     * @param name
+     */
     public NameValue(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public NameValue(String name) {
         this.id = 0;
         this.name = name;
@@ -63,6 +85,10 @@ public class NameValue {
         return id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getIdStr() {
         return Integer.toString(id);
 

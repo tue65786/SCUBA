@@ -1,5 +1,9 @@
 package validationUtils;
 
+/**
+ *
+ * @author Dan Kauffman
+ */
 public class ValidateDate {
 
     private java.sql.Date convertedDate = null;
@@ -9,6 +13,11 @@ public class ValidateDate {
      * if required is false, "" (empty string is OK), convertedInteger => null.
      *
      * error holds "" if value passes validation.
+     */
+    /**
+     *
+     * @param val
+     * @param required
      */
     public ValidateDate(String val, boolean required) {
         // System.out.println("*************trying to convert ["+val+"] to date");
@@ -34,10 +43,18 @@ public class ValidateDate {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String getError() {
         return this.error;
     }
 
+    /**
+     *
+     * @return
+     */
     public java.sql.Date getConvertedDate() {
         return this.convertedDate;
     }

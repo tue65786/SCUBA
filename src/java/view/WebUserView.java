@@ -26,6 +26,12 @@ public class WebUserView {
         }
     }
 
+    /**
+     *
+     * @param cssClassForResultSetTable
+     * @param dbc
+     * @return
+     */
     public static String listAllUsers(String cssClassForResultSetTable, DbConn dbc) {
         StringBuilder sb = new StringBuilder("");
         PreparedStatement stmt = null;
@@ -77,6 +83,15 @@ public class WebUserView {
      *   input parameter (String) which is the id of the web_user record to be deleted.
      * delIcon: the name of the file that holds the delete icon (to be repeated for each web_user record).
      * dbc: an open database connection.
+     */
+    /**
+     *
+     * @param cssClassForResultSetTable
+     * @param delFn
+     * @param delIcon
+     * @param bgColor
+     * @param dbc
+     * @return
      */
     public static String listAllUsers(String cssClassForResultSetTable, String delFn, String delIcon,
                                       String bgColor, DbConn dbc) {
@@ -164,6 +179,17 @@ public class WebUserView {
         }
     } // eo method
 
+    /**
+     *
+     * @param type
+     * @param name
+     * @param onchangeJS
+     * @param selectedValue
+     * @param includeDefault
+     * @param dbc
+     * @return
+     * @throws SQLException
+     */
     public static String listAllUserRoles(String type, String name, String onchangeJS, String selectedValue, boolean includeDefault, DbConn dbc) throws SQLException {
         final String TYPE_OPTION = "<option  value=\"[[[value]]]\" id=\"[[[id]]]\"  [[[selected]]]/>[[[name]]]</option>";
         final String WRAPPER_OPTION_PRE = "<select class=\"field-300\"  name=\"" + name + "\" onchange=\"" + onchangeJS + "\">";

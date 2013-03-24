@@ -1,14 +1,44 @@
 package model.WebUser;
 
+/**
+ *
+ * @author Dan Kauffman
+ * o	StringData.java: a simple class that has all the fields the user might type in when they insert or update a WebUser record.  Every field is string even, a field like birthday or membership fee, since form input is always string.
+
+ */
 public class StringData {
 
+    /**
+     *
+     */
     public String webUserId = "";
+    /**
+     *
+     */
     public String userEmail = "";
+    /**
+     *
+     */
     public String userPw = "";
+    /**
+     *
+     */
     public String userPw2 = "";
+    /**
+     *
+     */
     public String membershipFee = "";
+    /**
+     *
+     */
     public String userRoleId = "";
+    /**
+     *
+     */
     public String birthday = "";
+    /**
+     *
+     */
     public String recordStatus = "default";
 
     /**
@@ -33,7 +63,7 @@ public class StringData {
     }
 
     /**
-     * @param userPassword the userPassword to set
+     * @param userPw 
      */
     public void setUserPw(String userPw) {
         this.userPw = userPw;
@@ -61,7 +91,7 @@ public class StringData {
     }
 
     /**
-     * @param dateAdded the dateAdded to set
+     * @param birthday 
      */
     public void setBirthday(String birthday) {
         this.birthday = birthday;
@@ -138,6 +168,10 @@ public class StringData {
         return in;
     }
 
+    /**
+     *
+     * @return
+     */
     public String toJSON() {
         return "({ webUserId: '" + valueOrNull(webUserId) + "', userEmail: '" + valueOrNull(userEmail)
                + "', userPw: '" + valueOrNull(userPw) + "', userPw2: '" + valueOrNull(userPw2)

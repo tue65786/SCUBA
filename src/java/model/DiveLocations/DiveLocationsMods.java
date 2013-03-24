@@ -20,18 +20,35 @@ public class DiveLocationsMods {
     private String debugMsg = "";
 
     // all methods of this class require an open database connection.
+    /**
+     *
+     * @param dbc
+     */
     public DiveLocationsMods(DbConn dbc) {
         this.dbc = dbc;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDebugMsg() {
         return this.debugMsg;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getErrorMsg() {
         return this.errorMsg;
     }
 
+    /**
+     *
+     * @param primaryKey
+     * @return
+     */
     public String delete(String primaryKey) {
         this.errorMsg = SQL.DbConn.SQL_ERROR_DIV_TAG;  // clear any error message from before.
 

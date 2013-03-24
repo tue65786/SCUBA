@@ -7,6 +7,11 @@ import validationUtils.*;
  * This class provides one error message per field in a WebUser object.
  * This class demonstrates the use of "object composition" and
  * "Single Responsibility" software design principles.
+ * Validate.java: a class that takes StringData and creates TypedData providing a set of validation errors. This helps the JSP page to be very small and the java class code is very organized.
+ */
+/**
+ *
+ * @author Dan Kauffman
  */
 public class Validate {
 
@@ -26,9 +31,16 @@ public class Validate {
 
     // default constructor is good for first rendering 
     //   -- all error messages are set to "" (empty string).
+    /**
+     *
+     */
     public Validate() {
     }
 
+    /**
+     *
+     * @param wu
+     */
     public Validate(StringData wu) {
         // validationUtils method validates each user input (String even if destined for other type) from WebUser object
         // side effect of validationUtils method puts validated, converted typed value into TypedData object
@@ -72,46 +84,90 @@ public class Validate {
         isValidated = (allMessages.length() == 0);
     }
 
+    /**
+     *
+     * @return
+     */
     public StringData getStringData() {
         return this.wu;
     }
 
+    /**
+     *
+     * @return
+     */
     public TypedData getTypedData() {
         return this.wut;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUserEmailMsg() {
         return this.userEmailMsg;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUserPwMsg() {
         return this.userPwMsg;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUserPw2Msg() {
         return this.userPw2Msg;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMembershipFeeMsg() {
         return this.membershipFeeMsg;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUserRoleMsg() {
         return this.userRoleMsg;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBirthdayMsg() {
         return this.birthdayMsg;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isValidated() {
         return this.isValidated;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDebugMsg() {
         return this.debugMsg;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAllValidationErrors() {
         String allMessages = "userEmail error: " + this.userEmailMsg
                              + ", userPw error: " + this.userPwMsg

@@ -9,7 +9,13 @@ import java.sql.DriverManager;
  */
 public class DbConn {
 
+    /**
+     *
+     */
     public static final String SQL_ERROR_CODE_FK_VIOLATION = "23000";
+    /**
+     *
+     */
     public static final String SQL_ERROR_DIV_TAG = "<div style=\"color:red; background-color:white; max-width: 300px; margin-right:\"10px\"\">";
     private String errMsg = ""; // will remain "" unless error getting connection
     private String connectionMsg = "Connection Error-Uninitialized."; // log of getting connection
@@ -27,6 +33,7 @@ public class DbConn {
     /**
      * Constructor - opens database connection to database, This version uses boolean input
      * parameter to determine if the app is running locally or not
+     * @param isTemple 
      */
     public DbConn(boolean isTemple) {
         this.connect(isTemple);
@@ -75,6 +82,7 @@ public class DbConn {
 
     /**
      * Returns database connection for use in SQL classes.
+     * @return 
      */
     public Connection getConn() {
         return this.conn;
@@ -82,6 +90,7 @@ public class DbConn {
 
     /**
      * Returns database connection error message or "" if there is none.
+     * @return 
      */
     public String getErr() {
         return this.errMsg;
@@ -89,6 +98,7 @@ public class DbConn {
 
     /**
      * Returns debugging message or database connection error message if there is one.
+     * @return 
      */
     public String getConnectionMsg() {
         return this.connectionMsg;  // will have messages even if OK.

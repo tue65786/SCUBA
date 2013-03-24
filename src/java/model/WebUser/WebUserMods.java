@@ -9,6 +9,7 @@ import java.sql.*;
  * Update, and Delete code will be in this class (eventually). Right now, it's just doing DELETE.
  * <p/>
  * This class requires an open database connection for its constructor method.
+ * WebUserMods.java: in this version, a new method: insert is added (to the delete method that was there from before).  The insert method takes a Validate object (with the typed data), creates the PreparedStatement and executes the insert.
  */
 public class WebUserMods {
 
@@ -17,18 +18,35 @@ public class WebUserMods {
     private String debugMsg = "";
 
     // all methods of this class require an open database connection.
+    /**
+     *
+     * @param dbc
+     */
     public WebUserMods(DbConn dbc) {
         this.dbc = dbc;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDebugMsg() {
         return this.debugMsg;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getErrorMsg() {
         return this.errorMsg;
     }
 
+    /**
+     *
+     * @param primaryKey
+     * @return
+     */
     public String delete(String primaryKey) {
         this.errorMsg = SQL.DbConn.SQL_ERROR_DIV_TAG;  // clear any error message from before.
 
@@ -74,6 +92,11 @@ public class WebUserMods {
         } // catch
     }// method delete
 
+    /**
+     *
+     * @param wuValidate
+     * @return
+     */
     public String insert(Validate wuValidate) {
 
         this.errorMsg = "";// empty error message means it worked.

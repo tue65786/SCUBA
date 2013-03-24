@@ -1,5 +1,9 @@
 package validationUtils;
 
+/**
+ *
+ * @author Dan Kauffman
+ */
 public class ValidateString {
 
     private String convertedString = "";
@@ -11,6 +15,12 @@ public class ValidateString {
      * error will provide the validation error for the user.
      * convertedString will be the truncated string (if necessary) or
      * empty string (if original value was null).
+     */
+    /**
+     *
+     * @param val
+     * @param maxlen
+     * @param required
      */
     public ValidateString(String val, int maxlen, boolean required) {
 
@@ -38,10 +48,18 @@ public class ValidateString {
         this.error = "";  // any other input is OK
     }
 
+    /**
+     *
+     * @return
+     */
     public String getError() {
         return this.error;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getConvertedString() {
         return this.convertedString;
     }

@@ -1,5 +1,9 @@
 package validationUtils;
 
+/**
+ *
+ * @author Dan Kauffman
+ */
 public class ValidateDecimal {
 
     private java.math.BigDecimal convertedDecimal = null;
@@ -9,6 +13,11 @@ public class ValidateDecimal {
      * if required is false, "" (empty string is OK), convertedInteger => null.
      *
      * error holds "" if value passes validation.
+     */
+    /**
+     *
+     * @param val
+     * @param required
      */
     public ValidateDecimal(String val, boolean required) {
         this.convertedDecimal = null;
@@ -31,10 +40,18 @@ public class ValidateDecimal {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String getError() {
         return this.error;
     }
 
+    /**
+     *
+     * @return
+     */
     public java.math.BigDecimal getConvertedDecimal() {
         return this.convertedDecimal;
     }
