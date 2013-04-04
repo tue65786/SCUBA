@@ -13,7 +13,7 @@
         <title>SCUBA - Login</title> 
     </head>
     <body onload="setSelectedTab('Login')">
-        <%@ include file= "pre-content.html" %> 
+        <jsp:include page="pre-content.jsp" /> 
 
 
         <%
@@ -25,22 +25,31 @@
             DbConn dbc = new DbConn();
             String dbError = dbc.getErr();
 
-            if (user_Name == null) {
+            if(user_Name == null) {
                 user_Name = ""; // surpress "NULL" (first display) from showing up in the username text field.
             } // postback, check username and password
             else {
                 String passW = request.getParameter("pw");
-                if (dbError.length() == 0) {
+                if(dbError.length() == 0) {
                     WebUserMods userMods = new WebUserMods(dbc);
                     userData = userMods.findLogonUser(dbc, user_Name, passW);
-                    if (userData != null && userData.userEmail != null) {
-                        switch(Integer.parseInt(userData.userRoleId)){
-                            case 1: user_Role = "admin";break;
-                            case 2: user_Role = "editor";break;
-                            case 3: user_Role = "view";break;
-                            default:user_Role = "view";break;
+                    if(userData != null && userData.userEmail != null) {
+                        switch (Integer.parseInt(userData.userRoleId)) {
+                            case 1:
+                                user_Role = "admin";
+                                break;
+                            case 2:
+                                user_Role = "editor";
+                                break;
+                            case 3:
+                                user_Role = "view";
+                                break;
+                            default:
+                                user_Role = "view";
+                                break;
                         }
-                    } else {
+                    }
+                    else {
                         msg = "That username and password were not found in our database."; // log on not sucessful
                     }
                 } // bad password (in this contrived example) is when user name <> password.
@@ -49,14 +58,14 @@
                 }
 
                 // if username/password is OK, user_Role will have received a value.
-                if (user_Role.length() > 0) {
+                if(user_Role.length() > 0) {
                     session.setAttribute("userName", user_Name);
                     session.setAttribute("userRole", user_Role);
                 } // successful log in
 
                 // pwEncrypted = Encrypt.encryptPw(passW);
             } // postback
-%>
+        %>
         <br/>
         <br/>
 

@@ -15,7 +15,7 @@
         <title>SCUBA - Home</title> 
     </head>
     <body onload="setSelectedTab(' [[RECTRACT]]')">
-        <%@ include file= "pre-content.html" %> 
+        <jsp:include page="pre-content.jsp" /> 
 
         <%@ include file= "css-chooser.html" %> 
         <jsp:include page="post-content.jsp" />    

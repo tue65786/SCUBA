@@ -16,7 +16,7 @@
 
     </head>
     <body onload="setSelectedTab('Contact');">
-        <%@ include file= "pre-content.html" %> 
+        <jsp:include page="pre-content.jsp" /> 
         <h1>Contact</h1>
         <div class="newLine"></div>
         <form name="contact" method="post" action="http://www.temple.edu/cgi-bin/mail?tue65786@temple.edu">
@@ -69,5 +69,5 @@
 
         </form>
         <%@ include file= "css-chooser.html" %> 
-       <jsp:include page="post-content.jsp" />    
+        <jsp:include page="post-content.jsp" />    
         <!-- Master page contains div tags: JUST ENTER CONTENT!-->

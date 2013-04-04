@@ -16,7 +16,7 @@
 
     </head>
     <body onload="setSelectedTab('[XXXXXX] ');">
-        <%@ include file= "pre-content.html" %> 
+        <jsp:include page="pre-content.jsp" /> 
 
 
 

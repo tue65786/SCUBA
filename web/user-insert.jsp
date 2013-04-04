@@ -37,25 +37,26 @@
         </script>
     </head>
     <body onload="setSelectedTab('UserInsert'); ">
-           <%
+        <%
             String msg = "Don't know who you are.";
             String redirectMsg = "";
             String user_Name = (String) session.getAttribute("userName");
             String user_Role = (String) session.getAttribute("userRole");
-            if (user_Name != null) {
+            if(user_Name != null) {
                 redirectMsg = "You already have an account, ya big dummy!";
-                           }
-            if (redirectMsg.length() != 0) {
+            }
+            if(redirectMsg.length() != 0) {
                 try {
                     response.sendRedirect("deny.jsp?errorMsg=" + redirectMsg);
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     msg += " Exception was thrown: " + e.getMessage();
                 }
             }
             //msg = "Hello " + user_Name + " (your role is " + user_Role + ")";
-            
+
         %>
-        <%@ include file= "pre-content.html" %> 
+        <jsp:include page="pre-content.jsp" /> 
         <div style="margin:auto ; padding-bottom:50px;">
             <h1>Register</h1>
             <div class="newLine"></div>
@@ -127,7 +128,7 @@
                         formMsg = "Please try again."; // user data entry error
                     }
                 } // postback
-%>
+            %>
 
             <form name="myForm"  action="user-insert.jsp" method="GET">
                 <table style="text-align:left; padding:5px; margin-left: 40px;">
@@ -176,5 +177,5 @@
 
         </div>
         <%@ include file= "css-chooser.html" %> 
-       <jsp:include page="post-content.jsp" />    
+        <jsp:include page="post-content.jsp" />    
         <!-- Master page contains div tags: JUST ENTER CONTENT!-->

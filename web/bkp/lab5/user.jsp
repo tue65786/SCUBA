@@ -47,7 +47,7 @@
 
     </head>
     <body onload="setSelectedTab('UserList');">
-        <%@ include file= "pre-content.html" %> 
+        <jsp:include page="pre-content.jsp" /> 
 
         <%
             DbConn dbc = new DbConn();
@@ -72,5 +72,5 @@
             </table>
         </div>
         <%@ include file= "css-chooser.html" %> 
-           <jsp:include page="post-content.jsp" />    
+        <jsp:include page="post-content.jsp" />    
         <!-- Master page contains div tags: JUST ENTER CONTENT!-->

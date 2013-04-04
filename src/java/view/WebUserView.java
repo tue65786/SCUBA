@@ -30,6 +30,7 @@ public class WebUserView {
      *
      * @param cssClassForResultSetTable
      * @param dbc
+     * <p/>
      * @return
      */
     public static String listAllUsers(String cssClassForResultSetTable, DbConn dbc) {
@@ -91,6 +92,7 @@ public class WebUserView {
      * @param delIcon
      * @param bgColor
      * @param dbc
+     * <p/>
      * @return
      */
     public static String listAllUsers(String cssClassForResultSetTable, String delFn, String delIcon,
@@ -187,7 +189,9 @@ public class WebUserView {
      * @param selectedValue
      * @param includeDefault
      * @param dbc
+     * <p/>
      * @return
+     * <p/>
      * @throws SQLException
      */
     public static String listAllUserRoles(String type, String name, String onchangeJS, String selectedValue, boolean includeDefault, DbConn dbc) throws SQLException {

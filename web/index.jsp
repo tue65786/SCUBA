@@ -15,7 +15,7 @@
         <title>SCUBA - Home</title> 
     </head>
     <body onload="setSelectedTab('Home')">
-        <%@ include file= "pre-content.html" %> 
+        <jsp:include page="pre-content.jsp" /> 
         <p>
         <h2>Welcome to the SCUBA Dive Log web site!</h2>
         Here you can:
@@ -61,7 +61,7 @@
                            
                         </div>  ends the columns  -->
         <%@ include file= "css-chooser.html" %> 
-         <jsp:include page="post-content.jsp" />     
+        <jsp:include page="post-content.jsp" />     
 
 
         <!-- http://localhost:8080/Kauffman_Lab3/index.jsp 

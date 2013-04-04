@@ -67,27 +67,37 @@
 
     </head>
     <body onload="setSelectedTab('Log');">
-       <%
+        <%
+            DbConn dbc = new DbConn();
             String msg = "Don't know who you are.";
             String redirectMsg = "";
             String user_Name = (String) session.getAttribute("userName");
             String user_Role = (String) session.getAttribute("userRole");
-            if (user_Name == null) {
-                redirectMsg = "Sorry you cannot access page because you are not logged in.";
-            } else if (!user_Role.equalsIgnoreCase("admin") ||!user_Role.equalsIgnoreCase("editor")  ) {
+
+            if(user_Name == null) {
                 redirectMsg = "Sorry you cannot access page because you are not logged in.";
             }
-            if (redirectMsg.length() != 0) {
+            else if(!user_Role.equalsIgnoreCase("admin") && !user_Role.equalsIgnoreCase("editor")) {
+//                if(!user_Role.equalsIgnoreCase("editor")) {
+                System.out.println("*****" + user_Role);
+                redirectMsg = "Sorry you cannot access page because do not have permission.";
+            }
+//            }
+
+
+
+            if(redirectMsg.length() != 0) {
                 try {
                     response.sendRedirect("deny.jsp?errorMsg=" + redirectMsg);
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     msg += " Exception was thrown: " + e.getMessage();
                 }
             }
             //msg = "Hello " + user_Name + " (your role is " + user_Role + ")";
-            
+
         %>
-        <%@ include file= "pre-content.html" %> 
+        <jsp:include page="pre-content.jsp" /> 
         <h1>Dive Log</h1>
 
         <form name="updateDelete" action="assoc.jsp" method="get">
@@ -96,22 +106,23 @@
 
         <%
             String dbDataOrError = "";
-            DbConn dbc = new DbConn();
+//            DbConn dbc = new DbConn();
             String dbError = dbc.getErr();
-            if (dbError.length() == 0) {
+            if(dbError.length() == 0) {
 
                 // got open connection, check to see if the user wants to delete a row.
                 String delKey = request.getParameter("deletePK");
-                if (delKey != null && delKey.length() > 0) {
+                if(delKey != null && delKey.length() > 0) {
 
                     // yep, they want to delete a row, instantiate objects needed to do the delete.
                     DiveLogMods sqlMods = new DiveLogMods(dbc);
 
                     // try to delete the row that has PK = delKey
                     String delMsg = sqlMods.delete(delKey);
-                    if (delMsg.length() == 0) {
+                    if(delMsg.length() == 0) {
                         out.println("<h3>Dive Log " + delKey + " has been deleted</h3>");
-                    } else {
+                    }
+                    else {
                         out.println("<h3>Unable to delete Dive Log " + delKey + ". " + sqlMods.getErrorMsg() + "</h3>");
                     }
                 }
@@ -119,13 +130,14 @@
 
                 // now print out the whole table
                 dbDataOrError = DiverLogView.listAllUsers("resultSetFormat", "javascript:deleteRow", "./images/icons/delete.png", "#bcd8e9", dbc);
-                if (!dbc.getConn().isClosed()) {
+                if(!dbc.getConn().isClosed()) {
                     dbc.close();
                 }
 
 
-            } else {
-                if (!dbc.getConn().isClosed()) {
+            }
+            else {
+                if(!dbc.getConn().isClosed()) {
                     dbc.close();
                 }
                 dbDataOrError = dbError;

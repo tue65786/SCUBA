@@ -19,7 +19,7 @@
 
     </head>
     <body onload="setSelectedTab('Contact');">
-        <%@ include file= "pre-content.html" %> 
+        <jsp:include page="pre-content.jsp" /> 
 
 
 
@@ -148,5 +148,5 @@
         </form>
     </div>
 
-        <jsp:include page="post-content.jsp" />    
+    <jsp:include page="post-content.jsp" />    
     <!-- Master page contains div tags: JUST ENTER CONTENT!-->

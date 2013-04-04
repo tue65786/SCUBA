@@ -11,8 +11,6 @@
  */
 package view.NameValues;
 
-
-
 /**
  *
  * @author Dan Kauffman

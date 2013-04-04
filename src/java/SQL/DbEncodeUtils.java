@@ -16,10 +16,12 @@ public class DbEncodeUtils {
     /**
      * convert encode val (a date) into the (Integer)-th position of Prepared statement. mostly
      * checking if null, need to encode that specially.
-     * @param ps 
+     * <p/>
+     * @param ps
      * @param val
      * @param position
-     * @return  
+     * <p/>
+     * @return
      */
     public static String encodeDate(PreparedStatement ps, int position, java.sql.Date val) {
         String msg = "EncodeForDbUtils.encodeDate ";
@@ -56,10 +58,12 @@ public class DbEncodeUtils {
 
     /**
      * convert encode val into (Integer) position of Prepared statement
-     * @param ps 
+     * <p/>
+     * @param ps
      * @param position
      * @param val
-     * @return  
+     * <p/>
+     * @return
      */
     public static String encodeInteger(PreparedStatement ps, int position, Integer val) {
         String msg = "EncodeForDbUtils.encodeInteger ";
@@ -96,10 +100,12 @@ public class DbEncodeUtils {
 
     /**
      * convert encode val into (Decimal) position of Prepared statement
-     * @param ps 
-     * @param position 
-     * @param val 
-     * @return 
+     * <p/>
+     * @param ps
+     * @param position
+     * @param val
+     * <p/>
+     * @return
      */
     public static String encodeDecimal(PreparedStatement ps, int position, BigDecimal val) {
         String msg = "EncodeForDbUtils.encodeDecimal ";
@@ -134,10 +140,12 @@ public class DbEncodeUtils {
 
     /**
      * convert encode val into (String) position of Prepared statement
-     * @param ps 
-     * @param position 
+     * <p/>
+     * @param ps
+     * @param position
      * @param val
-     * @return  
+     * <p/>
+     * @return
      */
     public static String encodeString(PreparedStatement ps, int position, String val) {
         String msg = "EncodeForDbUtils.encodeString ";

@@ -10,14 +10,15 @@
 
         <!--head-content cottains css and js links common to most pages-->
         <%@ include file= "head-content.html" %> 
-        <title>SCUBA - Lgoout</title> 
+        <title>SCUBA - Logout</title> 
     </head>
     <body onload="setSelectedTab('Logout')">
-        <%@ include file= "pre-content.html" %> 
+        <jsp:include page="pre-content.jsp" /> 
 
 
         <%
             String msg = "You are now logged off!"; // first display will show nothing on screen.
+            msg += "<p/><p/>Click <a class=\"field8\" href=\"logon.jsp\">here</a> to log back in";
             try {
                 session.invalidate();
             } catch (Exception e) {
@@ -30,7 +31,7 @@
 
 
 
-            <h3>  <%=msg%></h3>
+        <h3>  <%=msg%></h3>
 
         <%@ include file= "css-chooser.html" %> 
         <jsp:include page="post-content.jsp" />   

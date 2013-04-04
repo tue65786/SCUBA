@@ -44,7 +44,7 @@ function setSelectedTab(elementId) {
         case 'UserInsert' :
             htmlCrumbs = refHome +  " > <a href='user.jsp'> Menbers </a> >" + "Register"; 
             break;
-            case 'TestSelect' :
+        case 'TestSelect' :
             htmlCrumbs = refHome +  " > <a href='labs.jsp'> Labs </a> >" + "Test Select"; 
             break;
         default:

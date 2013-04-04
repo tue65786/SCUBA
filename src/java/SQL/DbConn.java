@@ -33,7 +33,8 @@ public class DbConn {
     /**
      * Constructor - opens database connection to database, This version uses boolean input
      * parameter to determine if the app is running locally or not
-     * @param isTemple 
+     * <p/>
+     * @param isTemple
      */
     public DbConn(boolean isTemple) {
         this.connect(isTemple);
@@ -65,7 +66,7 @@ public class DbConn {
                 else {
                     // cis2308 is the name of my database/schema on my PC at home...
                     String url = "jdbc:mysql://localhost:3307/SP13_2308_tue65786?user=tue65786&password=fohvahni";
-                    
+
                     //String url = "jdbc:mysql://localhost/sp13_2308_tue65786?user=root";
                     this.conn = DriverManager.getConnection(url);
                     this.connectionMsg += "got the db connection on localhost" + "<br/>";
@@ -84,7 +85,8 @@ public class DbConn {
 
     /**
      * Returns database connection for use in SQL classes.
-     * @return 
+     * <p/>
+     * @return
      */
     public Connection getConn() {
         return this.conn;
@@ -92,7 +94,8 @@ public class DbConn {
 
     /**
      * Returns database connection error message or "" if there is none.
-     * @return 
+     * <p/>
+     * @return
      */
     public String getErr() {
         return this.errMsg;
@@ -100,7 +103,8 @@ public class DbConn {
 
     /**
      * Returns debugging message or database connection error message if there is one.
-     * @return 
+     * <p/>
+     * @return
      */
     public String getConnectionMsg() {
         return this.connectionMsg;  // will have messages even if OK.

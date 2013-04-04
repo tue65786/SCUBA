@@ -95,26 +95,32 @@
 
     </head>
     <body onload="setSelectedTab('Locations');">
-        <%@ include file= "pre-content.html" %> 
-            <%
+        <jsp:include page="pre-content.jsp" /> 
+        <%
+            boolean redirect = false;
             String msg = "Don't know who you are.";
             String redirectMsg = "";
             String user_Name = (String) session.getAttribute("userName");
             String user_Role = (String) session.getAttribute("userRole");
-            if (user_Name == null) {
-                redirectMsg = "Sorry you cannot access page because you are not logged in.";
-            } else if (!user_Role.equalsIgnoreCase("admin") ||!user_Role.equalsIgnoreCase("editor")  ) {
+            if(user_Name == null) {
                 redirectMsg = "Sorry you cannot access page because you are not logged in.";
             }
-            if (redirectMsg.length() != 0) {
+            else if(!user_Role.equalsIgnoreCase("admin") && !user_Role.equalsIgnoreCase("editor")) {
+//                if(!user_Role.equalsIgnoreCase("editor")) {
+                System.out.println("*****" + user_Role);
+                redirectMsg = "Sorry you cannot access page because do not have permission.";
+            }
+            if(redirectMsg.length() != 0) {
                 try {
                     response.sendRedirect("deny.jsp?errorMsg=" + redirectMsg);
-                } catch (Exception e) {
-                    msg += " Exception was thrown: " + e.getMessage();
+                }
+                catch (Exception e) {
+                    msg += " *****Exception was thrown: " + e.getMessage();
+                    System.out.println(msg);
                 }
             }
             //msg = "Hello " + user_Name + " (your role is " + user_Role + ")";
-            
+
         %>
         <h1>Dive Locations</h1>
         <div class="newLine"></div> 
@@ -125,47 +131,49 @@
         <div style="padding-left:240px; padding-bottom:150px;">
 
             <%
-                String dbDataOrError = "";
-                // Get database connection and check if you got it.
-                DbConn dbc = new DbConn();
-                String dbError = dbc.getErr();
-                if(dbError.length() == 0) {
+                if(!redirect) {
+                    String dbDataOrError = "";
+                    // Get database connection and check if you got it.
+                    DbConn dbc = new DbConn();
+                    String dbError = dbc.getErr();
+                    if(dbError.length() == 0) {
 
-                    // got open connection, check to see if the user wants to delete a row.
-                    String delKey = request.getParameter("deletePK");
-                    if(delKey != null && delKey.length() > 0) {
+                        // got open connection, check to see if the user wants to delete a row.
+                        String delKey = request.getParameter("deletePK");
+                        if(delKey != null && delKey.length() > 0) {
 
-                        // yep, they want to delete a row, instantiate objects needed to do the delete.
-                        DiveLocationsMods sqlMods = new DiveLocationsMods(dbc);
+                            // yep, they want to delete a row, instantiate objects needed to do the delete.
+                            DiveLocationsMods sqlMods = new DiveLocationsMods(dbc);
 
-                        // try to delete the row that has PK = delKey
-                        String delMsg = sqlMods.delete(delKey);
-                        if(delMsg.length() == 0) {
-                            out.println("<h3>Dive Location " + delKey + " has been deleted</h3>");
+                            // try to delete the row that has PK = delKey
+                            String delMsg = sqlMods.delete(delKey);
+                            if(delMsg.length() == 0) {
+                                out.println("<h3>Dive Location " + delKey + " has been deleted</h3>");
+                            }
+                            else {
+                                out.println("<h5>Unable to delete Dive Location " + delKey + ".</h5>" + sqlMods.getErrorMsg());
+                            }
                         }
-                        else {
-                            out.println("<h5>Unable to delete Dive Location " + delKey + ".</h5>" + sqlMods.getErrorMsg());
+                        // delete processed (if necessary)
+
+                        // now print out the whole table
+                        dbDataOrError = DiveLocations.listAllUsers("resultSetFormat", "javascript:deleteRow", "./images/icons/delete.png", "#bcd8e9", dbc);
+                        if(!dbc.getConn().isClosed()) {
+                            dbc.close();
                         }
                     }
-                    // delete processed (if necessary)
-
-                    // now print out the whole table
-                    dbDataOrError = DiveLocations.listAllUsers("resultSetFormat", "javascript:deleteRow", "./images/icons/delete.png", "#bcd8e9", dbc);
+                    else {
+                        dbDataOrError = dbError;
+                    }
                     if(!dbc.getConn().isClosed()) {
                         dbc.close();
                     }
+                    out.print(dbDataOrError);
                 }
-                else {
-                    dbDataOrError = dbError;
-                }
-                if(!dbc.getConn().isClosed()) {
-                    dbc.close();
-                }
-                out.print(dbDataOrError);
             %>
 
 
         </div>
         <%@ include file= "css-chooser.html" %> 
-           <jsp:include page="post-content.jsp" />    
+        <jsp:include page="post-content.jsp" />    
         <!-- Master page contains div tags: JUST ENTER CONTENT!-->
