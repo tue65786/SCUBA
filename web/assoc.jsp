@@ -67,6 +67,26 @@
 
     </head>
     <body onload="setSelectedTab('Log');">
+       <%
+            String msg = "Don't know who you are.";
+            String redirectMsg = "";
+            String user_Name = (String) session.getAttribute("userName");
+            String user_Role = (String) session.getAttribute("userRole");
+            if (user_Name == null) {
+                redirectMsg = "Sorry you cannot access page because you are not logged in.";
+            } else if (!user_Role.equalsIgnoreCase("admin") ||!user_Role.equalsIgnoreCase("editor")  ) {
+                redirectMsg = "Sorry you cannot access page because you are not logged in.";
+            }
+            if (redirectMsg.length() != 0) {
+                try {
+                    response.sendRedirect("deny.jsp?errorMsg=" + redirectMsg);
+                } catch (Exception e) {
+                    msg += " Exception was thrown: " + e.getMessage();
+                }
+            }
+            //msg = "Hello " + user_Name + " (your role is " + user_Role + ")";
+            
+        %>
         <%@ include file= "pre-content.html" %> 
         <h1>Dive Log</h1>
 

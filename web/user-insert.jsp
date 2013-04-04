@@ -37,6 +37,24 @@
         </script>
     </head>
     <body onload="setSelectedTab('UserInsert'); ">
+           <%
+            String msg = "Don't know who you are.";
+            String redirectMsg = "";
+            String user_Name = (String) session.getAttribute("userName");
+            String user_Role = (String) session.getAttribute("userRole");
+            if (user_Name != null) {
+                redirectMsg = "You already have an account, ya big dummy!";
+                           }
+            if (redirectMsg.length() != 0) {
+                try {
+                    response.sendRedirect("deny.jsp?errorMsg=" + redirectMsg);
+                } catch (Exception e) {
+                    msg += " Exception was thrown: " + e.getMessage();
+                }
+            }
+            //msg = "Hello " + user_Name + " (your role is " + user_Role + ")";
+            
+        %>
         <%@ include file= "pre-content.html" %> 
         <div style="margin:auto ; padding-bottom:50px;">
             <h1>Register</h1>
