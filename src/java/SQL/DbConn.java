@@ -64,7 +64,9 @@ public class DbConn {
                 }
                 else {
                     // cis2308 is the name of my database/schema on my PC at home...
-                    String url = "jdbc:mysql://localhost/sp13_2308_tue65786?user=root";
+                    String url = "jdbc:mysql://localhost:3307/SP13_2308_tue65786?user=tue65786&password=fohvahni";
+                    
+                    //String url = "jdbc:mysql://localhost/sp13_2308_tue65786?user=root";
                     this.conn = DriverManager.getConnection(url);
                     this.connectionMsg += "got the db connection on localhost" + "<br/>";
                 }

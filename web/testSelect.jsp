@@ -69,4 +69,4 @@ display:none;
             <div id="flip">Click to slide the panel down or up</div>
 <div id="panel">Hello world!</div>
         <%@ include file= "css-chooser.html" %> 
-        <%@ include file= "post-content.html" %>         
+          <jsp:include page="post-content.jsp" />          

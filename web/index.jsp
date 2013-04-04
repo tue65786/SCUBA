@@ -61,7 +61,7 @@
                            
                         </div>  ends the columns  -->
         <%@ include file= "css-chooser.html" %> 
-        <%@ include file= "post-content.html" %>         
+         <jsp:include page="post-content.jsp" />     
 
 
         <!-- http://localhost:8080/Kauffman_Lab3/index.jsp 

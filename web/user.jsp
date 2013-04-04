@@ -104,5 +104,5 @@
             </table>
         </div>
         <%@ include file= "css-chooser.html" %> 
-        <%@ include file= "post-content.html" %> 
+       <jsp:include page="post-content.jsp" />    
         <!-- Master page contains div tags: JUST ENTER CONTENT!-->

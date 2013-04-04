@@ -207,9 +207,9 @@ public class WebUserView {
             return new String("error");
         } //no data
         else {
-            switch (type) //</editor-fold>
+            switch (type.charAt(0)) //</editor-fold>
             {
-                case "option":
+                case 'o':
                     template = TYPE_OPTION;
                     break;
 
