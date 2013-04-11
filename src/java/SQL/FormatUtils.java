@@ -56,6 +56,24 @@ public class FormatUtils {
         return out;
     } // formatDate
 
+     public static String formatDateNoHTML(Object obj) {
+        if (obj == null) {
+            return "";
+        }
+        String out = "";
+        try {
+            java.util.Date dateval = (java.util.Date) obj;
+            if (dateval != null) {
+                SimpleDateFormat dateformat = new SimpleDateFormat("MM/dd/yyyy");
+                dateformat.setLenient(false);
+                out = dateformat.format(dateval);
+            }
+        } catch (Exception e) {
+            out = "bad date in FormatUtils.formatDateNoHTML: " + obj.toString() + " error: " + e.getMessage();
+        }
+        return out;
+    } // formatDate
+    
     /**
      *
      * @param css

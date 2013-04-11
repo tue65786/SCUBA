@@ -1,14 +1,15 @@
-<%-- 6
-637647
-
+<%-- 
     Document   : Contact Us
     Created on : Feb 6, 2013, 11:21:10 AM
     Author     : tue65786 
+ @TODO: autofill namen
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
+ 
         <%@ include file= "head-content.html" %> 
         <script src="js/datetimepicker_css.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -35,6 +36,7 @@
                     <tr><td align="right">
                             <label class="lbl" for="US-SoEa">Where do you do most of your diving?</label>
                         </td><td><span class="form-group">
+<!--                                XXX : autofill namen-->
                                 <span class="multichoice"><input type="checkbox" name="US-SoEa" value=""/> South Eastern US</span>
                                 <span class="multichoice"><input type="checkbox" name="US-West" value="US-West"/>West Coast US</span>
                                 <span class="multichoice"><input type="checkbox" name="US-Inland" value="US-Inlind"/>Inland US</span>

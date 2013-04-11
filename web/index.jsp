@@ -16,8 +16,17 @@
     </head>
     <body onload="setSelectedTab('Home')">
         <jsp:include page="pre-content.jsp" /> 
+        <%
+            String welMsg = request.getParameter("wm");
+            if(welMsg == null) {
+                welMsg = "Welcome to the SCUBA Dive Log web site!";
+            }
+           
+                      
+        %>
+
         <p>
-        <h2>Welcome to the SCUBA Dive Log web site!</h2>
+        <h2><%=welMsg%></h2>
         Here you can:
         <ul>
             <li>keep track of your dives</li>

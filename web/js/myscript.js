@@ -123,7 +123,13 @@ function setDDLSelectionUserRole() {
     var val =  document.myForm.role.value;
     document.myForm.userRoleid.value = val;           
 }
-                                
+function setDDLSelectionUser(){
+    var val =  document.myForm.buddy.value;
+  //  var it = document.getElementById("diveBuddyId");
+  ////  it.value = val;
+  //alert("dd" + val);
+    document.myForm.diveBuddyId.value = val;  
+}                                
 //function setDDLFromTBUR() {                                
 //    alert('ghg');
 //    var val =  document.myForm.userRoleid.value;                                   

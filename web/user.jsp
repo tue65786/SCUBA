@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
-<%@page language="java" import="model.WebUser.WebUserMods" %>
-<%@page language="java" import="SQL.DbConn" %>
+<%@page language="java" import="model.WebUser.*" %>
+<%@page language="java" import="SQL.*" %>
 <%@page language="java" import="view.WebUserView" %>
 
 <!DOCTYPE HTML>
@@ -9,6 +9,109 @@
         <%@ include file= "head-content.html" %> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SCUBA - Users</title>
+        
+        
+<style type="text/css">
+/* popup_box DIV-Styles*/
+#popup_box { 
+	display:none; /* Hide the DIV */
+	position:fixed;  
+	_position:absolute; /* hack for internet explorer 6 */  
+	height:400px;  
+	width:700px;  
+	background:#FFFFFF;  
+	left: 300px;
+	top: 150px;
+	z-index:104; /* Layering ( on-top of others), if you have lots of layers: I just maximized, you can change it yourself */
+	margin-left: 15px;  
+	
+	/* additional features, can be omitted */
+	border:2px solid #ff0000;  	
+	padding:15px;  
+	font-size:15px;  
+	-moz-box-shadow: 0 0 5px #ff0000;
+	-webkit-box-shadow: 0 0 5px #ff0000;
+	box-shadow: 0 0 5px #ff0000;
+	
+}
+
+#outcontainer {
+       position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #000000;
+            opacity: .15;
+            filter: alpha(opacity=15);
+            -moz-opacity: .15;
+            z-index: 101;
+            display: none;
+
+}
+/*
+a{  
+cursor: pointer;  
+text-decoration:none;  
+} */
+
+/* This is for the positioning of the Close Link */
+#popupBoxClose {
+	font-size:20px;  
+	line-height:15px;  
+	right:5px;  
+	top:5px;  
+	position:absolute;  
+	color:#6fa5e2;  
+	font-weight:500;  	
+      border: 1px;
+}
+</style>
+<script src="http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	
+	$(document).ready( function() {
+	
+		// When site loaded, load the Popupbox First
+		//loadPopupBox();
+	
+		$('#popupBoxClose').click( function() {			
+			unloadPopupBox();
+		});
+		
+		$('#load').click( function() {
+			loadPopupBox();
+		});
+            
+		$('.updateImg').click( function() {
+			loadPopupBox();
+		});
+
+		function unloadPopupBox() {	// TO Unload the Popupbox
+			$('#popup_box').fadeOut("slow");
+//			$("#outcontainer").css({ // this is just for style		
+//				"opacity": "1"
+//			}); 
+                $('#outcontainer').hide();  
+		}	
+		
+		function loadPopupBox() {	// To Load the Popupbox
+			$('#popup_box').fadeIn("slow");
+			$('#outcontainer').show();  
+//                  $("#outcontainer").css({ // this is just for style
+//				"opacity": ".3"  
+			
+//              });              
+		}
+		/**********************************************************/
+		
+	});
+</script>
         <style>        
             .resultSetFormat {
             }
@@ -43,8 +146,6 @@
 
             }
         </style>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
-        </script>
 
     </head>
     <body onload="setSelectedTab('UserList');">
@@ -83,18 +184,54 @@
                         </form>
 
                         <%
+
+                            String formMsg = "";
+
+                            // All properties of a new webUserStringData object are "" (empty string).
+                            // This is good for first display.
+                            StringData webUserStringData = new StringData();
+
+                            // All error mesages in the new Validate object are "" (empty string)  
+                            // This is good for first display.
+                            Validate webUserValidate = new Validate();
+
+                            // This parameter controls whether the user input area is displayed or hidden.
+                            String strShowInputArea = request.getParameter("showInputArea");
+                            if(strShowInputArea == null) {
+                                strShowInputArea = "NO"; // body onload javascript event will initialize things properly
+                            }
+
+                            String strOperation = ""; // will be insert or update or none or null. 
+
                             String dbDataOrError = "";
+                            String dbErrorOrData2 = "";
                             // Get database connection and check if you got it.
                             DbConn dbc = new DbConn();
                             String dbError = dbc.getErr();
                             if(dbError.length() == 0) {
+                                DbConn dbc2 = new DbConn();
+                                dbErrorOrData2 = dbc2.getErr();
+                                String selectedVal;
+                                if(dbErrorOrData2.length() == 0) { // got open connection
 
+                                    // this returns a string that contains a HTML table with the data in it
+
+                                    selectedVal = (request.getParameter("userRoleId") == null || request.getParameter("userRoleId").length() == 0 ? "0" : request.getParameter("userRoleId"));
+                                    // selectedVal = request.getParameter("userRoleId");
+                                    // selValInt ? "selected" : ""
+                                    dbErrorOrData2 = WebUserView.listAllUserRoles("option", "role", "setDDLSelectionUserRoleForUpdate()", selectedVal, true, dbc2);
+
+                                    // PREVENT DB connection leaks:
+                                    //    EVERY code path that opens a db connection, must also close it.
+                                    dbc2.close();
+                                }
+                                WebUserMods sqlMods = new WebUserMods(dbc);
                                 // got open connection, check to see if the user wants to delete a row.
                                 String delKey = request.getParameter("deletePK");
                                 if(delKey != null && delKey.length() > 0) {
 
                                     // yep, they want to delete a row, instantiate objects needed to do the delete.
-                                    WebUserMods sqlMods = new WebUserMods(dbc);
+
 
                                     // try to delete the row that has PK = delKey
                                     String delMsg = sqlMods.delete(delKey);
@@ -104,11 +241,56 @@
                                     else {
                                         out.println("<h3>Unable to delete Web User " + delKey + ". " + sqlMods.getErrorMsg() + "</h3>");
                                     }
+                                } // delete processed (if necessary)
+
+
+
+                                // This parameter indicates if the user is trying to do an "insert" or "update"
+                                strOperation = request.getParameter("operation");
+                                if(strOperation != null) {
+                                    if(strOperation.equalsIgnoreCase("insert")
+                                       || strOperation.equalsIgnoreCase("update")) {
+
+                                        // postback -- fill WebUserData object with form data.
+                                        webUserStringData.webUserId = request.getParameter("webUserId");
+                                        webUserStringData.userEmail = request.getParameter("userEmail");
+                                        webUserStringData.userPw = request.getParameter("userPw");
+                                        webUserStringData.userPw2 = request.getParameter("userPw2");
+                                        webUserStringData.membershipFee = request.getParameter("membershipFee");
+                                        webUserStringData.birthday = request.getParameter("birthday");
+                                        webUserStringData.userRoleId = request.getParameter("userRoleId");
+
+                                        webUserValidate = new Validate(webUserStringData); // populate error messages from user inputs
+
+                                        if(strOperation.equalsIgnoreCase("insert")) {
+                                            // try to insert the Web User record. returns error message or empty string
+                                            formMsg = sqlMods.insert(webUserValidate); // empty string means went in OK.
+                                            if(formMsg.length() == 0) { //trying to insert from a web user validation object.
+                                                formMsg = "Record " + webUserStringData.userEmail + " inserted. ";
+                                            }
+                                            strOperation = "insert"; // Let them try again or continue inserting
+                                        }
+                                        else if(strOperation.equalsIgnoreCase("update")) {
+                                            // try to update the Web User record. returns error message or empty string
+                                            formMsg = sqlMods.update(webUserValidate); // empty string means went in OK.
+                                            if(formMsg.length() == 0) { //trying to insert from a web user validation object.
+                                                formMsg = "Record " + webUserStringData.userEmail + " updated. ";
+                                                strOperation = "none"; //once sucessful, done with update
+                                            }
+                                            else {
+                                                strOperation = "update"; // give another try to pass validation tests.
+                                            }
+                                        }
+                                    } // if the user was trying to update or insert.
                                 }
-                                // delete processed (if necessary)
+
+
 
                                 // now print out the whole table
-                                dbDataOrError = WebUserView.listAllUsers("resultSetFormat", "javascript:deleteRowPretty", "./images/icons/delete.png", "#bcd8e9", dbc);
+                                // dbDataOrError = WebUserView.listAllUsers("resultSetFormat", "javascript:deleteRowPretty", "./images/icons/delete.png", "#bcd8e9", dbc);
+                                dbDataOrError = WebUserView.listAllUsers("resultSetFormat", "javascript:deleteRowPretty", "./images/icons/delete.png",
+                                                                         "javascript:updateRow", "./images/icons/update.png",
+                                                                         "#bcd8e9", dbc);
                                 if(!dbc.getConn().isClosed()) {
                                     dbc.close();
                                 }
@@ -119,13 +301,207 @@
                             if(!dbc.getConn().isClosed()) {
                                 dbc.close();
                             }
-                            out.print(dbDataOrError);
+                            //out.print(dbDataOrError);
                         %>
+                        <div id="popup_box">
+                        <form name="insertUpdate" action="user.jsp" method="get">
+                             <input type="text" id="operation" name="operation" value="<%=strOperation%>"/> 
+                            
+                             <input name="recordStatus" type="hidden" disabled="disabled"/>
+                            <input type="button" id="insertButton" value="Insert" onclick="clickInsert();"/>     
+                            <input type="hidden" id="showInputArea" name="showInputArea" value="<%=strShowInputArea%>"/> 
+                            <div id="inputArea">
+                               <input type="hidden"  name="webUserId" value="<%= webUserStringData.webUserId%>" /> 
+                                <table style="text-align:left; border:thin solid gray; padding:5px;">
+                                    <tr>
+                                        <td>User Email</td>
+                                        <td><input type="text" name="userEmail" value="<%= webUserStringData.userEmail%>" /></td>
+                                        <td class="error"><%=webUserValidate.getUserEmailMsg()%></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Password</td>
+                                        <td><input type="password" name="userPw" value="<%= webUserStringData.userPw%>" /></td>
+                                        <td class="error"><%=webUserValidate.getUserPwMsg()%></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Re-type Password</td>
+                                        <td><input type="password" name="userPw2" value="<%= webUserStringData.userPw%>" /></td>
+                                        <td class="error"><%=webUserValidate.getUserPw2Msg()%></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Membership Fee</td>
+                                        <td><input type="text" name="membershipFee" value="<%= webUserStringData.membershipFee%>" /></td>
+                                        <td class="error"><%=webUserValidate.getMembershipFeeMsg()%></td>   
+                                    <tr>
+                                        <td>User Role</td>
+                                        <td> <% out.print(dbErrorOrData2);%>
+                                            <input type="hidden" name="userRoleId" value="<%= webUserStringData.userRoleId%>" /></td>
+                                        <td class="error"><%=webUserValidate.getUserRoleMsg()%></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Birthday</td>
+                                        <td><input type="text" name="birthday" value="<%= webUserStringData.birthday%>" /></td>
+                                        <td class="error"><%=webUserValidate.getBirthdayMsg()%></td>                    
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><input type="submit" value="Submit" /></td>
+                                        <td><input type="button" value="Cancel" onclick="cancel()"/></td>
+                                    </tr>
+                                </table>
+<!--                                <input type="button" value="Hide Input Area" onclick="inputAreaHide();"/>     -->
+                            </div>
+                        </form>
 
+                        
+<a href="#" onclick="clearMsg()" id="popupBoxClose">Close Window</a>	
 
+                        </div>
+    
+<div id="frmMsg"><%=formMsg%>&nbsp;</div>
+                        <%=dbDataOrError%>
+<a id="load" href="#" onclick="clickInsert()">Add User</a>
                     </td>
                 </tr>
             </table>
+                        <div id="outcontainer"></div>
+            <script type="text/javascript">
+
+                //Note: These next 9 lines of javascript
+                //      are global (not in a funtion).
+                //Make the XMLHttpRequest Object
+                var httpReq;
+                if(window.XMLHttpRequest) {
+                    httpReq = new XMLHttpRequest();  //For Firefox, Safari, Opera
+                }
+                else if(window.ActiveXObject){
+                    httpReq = new ActiveXObject("Microsoft.XMLHTTP");         //For IE 5+
+                } else {
+                    alert ('ajax not supported');
+                }
+                function setDDLSelectionUserRoleForUpdate() {
+                    var val =  document.insertUpdate.role.value;
+                   // document.insertUpdate.userRoleid.value = val;   
+                    document.insertUpdate.userRoleId.value = val;
+                }
+                function sendRequest(primaryKey) {
+                    alert ('sending request for web user '+primaryKey);
+                    httpReq.open("GET","get_webUser_JSON.jsp?primaryKey=" + primaryKey);
+                    httpReq.onreadystatechange = handleResponse;
+                    httpReq.send(null);
+                }
+                function handleResponse() {
+                    //alert('handling response');
+                    if(httpReq.readyState == 4 && httpReq.status == 200) {
+                        //alert('handling response ready 4 status 200');
+                        var response = httpReq.responseText;
+                        alert ("response is " + response);
+
+                        // be careful -- field names on the document are case sensative
+                        // field names extracted from the JSON response are also case sensative.
+                        var webUserObj = eval(response);
+                    
+                        //alert ("webUserId is "+webUserObj.webUserId);
+                        document.insertUpdate.webUserId.value=webUserObj.webUserId;
+                                                         
+                        //alert ("userEmail is "+webUserObj.userEmail);
+                        document.insertUpdate.userEmail.value=webUserObj.userEmail;
+                    
+                        //alert ("userPw is "+webUserObj.userPw);
+                        document.insertUpdate.userPw.value=webUserObj.userPw;
+                    
+                        //alert ("userPw2 is "+webUserObj.userPw2);
+                        document.insertUpdate.userPw2.value=webUserObj.userPw2;
+                    
+                        //alert ("membershipFee is "+webUserObj.membershipFee);
+                        document.insertUpdate.membershipFee.value=webUserObj.membershipFee;
+                    
+                        //alert ("userRoleId is "+webUserObj.userRoleId);
+                        document.insertUpdate.userRoleId.value=webUserObj.userRoleId;
+                        document.getElementById("role").value = document.insertUpdate.userRoleId.value;
+                        //var selRole = document.getElementById("role");
+                     //   var selRole = $('role');
+                       // alert("sel" + selRole.value);
+                        //   setRole.selected = true;       
+                        //  var dd = document.getElementById(optionId);
+//                        for (var i = 0; i < selRole.options.length; i++) 
+//                        {
+//                            if (selRole.options[i].value ==  document.insertUpdate.userRoleId.value)
+//                            {
+//alert(selRole.options[i].value);
+//                              //  selRole.options[i].defaultSelected = true;
+//
+//                                selRole.selectedIndex = i;
+//                                break;
+//                            }
+//                        }
+//                        var sel = $('country');
+
+// Loop through and look for value match, then break
+//for(i=0;i<selRole.length;i++) { if(selRole.value==document.insertUpdate.userRoleId.value) { break; } }
+
+// Select index 
+//selRole.options.selectedIndex = i;
+                        //alert ("birthday is "+webUserObj.birthday);
+                        document.insertUpdate.birthday.value=webUserObj.birthday;
+
+                        //alert ("record status is "+webUserObj.recordStatus);
+                        document.insertUpdate.recordStatus.value=webUserObj.recordStatus;
+                    }
+                }
+                function clearMsg(){
+                    document.getElementById("frmMsg").innerHTML="";
+                }
+                function updateRow (primaryKey) {
+                    document.getElementById("operation").value = "update";
+                    inputAreaShow();
+                    sendRequest(primaryKey);
+                }
+                function cancel() {
+                    document.getElementById("operation").value = "none";
+ 
+                    document.insertUpdate.webUserId.value="";
+                    document.insertUpdate.userEmail.value="";
+                    document.insertUpdate.userPw.value="";
+                    document.insertUpdate.userPw2.value="";
+                    document.insertUpdate.membershipFee.value="";
+                    document.insertUpdate.userRoleId.value="";
+                    document.insertUpdate.birthday.value="";
+
+                    document.insertUpdate.recordStatus.value="Insert/Update Operation Cancelled";
+                }
+       
+
+                function hideOrShowInputArea() {
+                    // called from body onload, shows or hides based on saved parameter.
+                    if (document.getElementById("showInputArea").value == "YES") {
+                        inputAreaShow();
+                    } else {
+                        inputAreaHide();                                            
+                    }
+                }
+                function inputAreaHide() {
+                    document.getElementById("inputArea").style.display = "none";
+                    document.getElementById("showInputArea").value = "NO";
+                    cancel();
+                }
+                function inputAreaShow() {
+                    document.getElementById("inputArea").style.display = "block";
+                    document.getElementById("showInputArea").value = "YES";
+                }
+                function clickInsert() {
+                   document.insertUpdate.webUserId.value="";
+                    document.insertUpdate.userEmail.value="";
+                    document.insertUpdate.userPw.value="";
+                    document.insertUpdate.userPw2.value="";
+                    document.insertUpdate.membershipFee.value="";
+                    document.insertUpdate.userRoleId.value="";
+                    document.insertUpdate.birthday.value="";
+                  document.getElementById("operation").value = "insert";
+                  
+                  //  inputAreaShow();
+                }
+            </script>
         </div>
         <%@ include file= "css-chooser.html" %> 
         <jsp:include page="post-content.jsp" />    

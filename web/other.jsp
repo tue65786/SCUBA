@@ -4,6 +4,7 @@
 <%@page language="java" import="view.DiveLocations" %>
 
 <!DOCTYPE HTML>
+<!--TODO : hide actions when not logged in-->
 <html>
     <head>
         <%@ include file= "head-content.html" %> 
@@ -102,23 +103,23 @@
             String redirectMsg = "";
             String user_Name = (String) session.getAttribute("userName");
             String user_Role = (String) session.getAttribute("userRole");
-            if(user_Name == null) {
-                redirectMsg = "Sorry you cannot access page because you are not logged in.";
-            }
-            else if(!user_Role.equalsIgnoreCase("admin") && !user_Role.equalsIgnoreCase("editor")) {
-//                if(!user_Role.equalsIgnoreCase("editor")) {
-                System.out.println("*****" + user_Role);
-                redirectMsg = "Sorry you cannot access page because do not have permission.";
-            }
-            if(redirectMsg.length() != 0) {
-                try {
-                    response.sendRedirect("deny.jsp?errorMsg=" + redirectMsg);
-                }
-                catch (Exception e) {
-                    msg += " *****Exception was thrown: " + e.getMessage();
-                    System.out.println(msg);
-                }
-            }
+//            if(user_Name == null) {
+//                redirectMsg = "Sorry you cannot access page because you are not logged in.";
+//            }
+//            else if(!user_Role.equalsIgnoreCase("admin") && !user_Role.equalsIgnoreCase("editor")) {
+////                if(!user_Role.equalsIgnoreCase("editor")) {
+//                System.out.println("*****" + user_Role);
+//                redirectMsg = "Sorry you cannot access page because do not have permission.";
+//            }
+//            if(redirectMsg.length() != 0) {
+//                try {
+//                    response.sendRedirect("deny.jsp?errorMsg=" + redirectMsg);
+//                }
+//                catch (Exception e) {
+//                    msg += " *****Exception was thrown: " + e.getMessage();
+//                    System.out.println(msg);
+//                }
+//            }
             //msg = "Hello " + user_Name + " (your role is " + user_Role + ")";
 
         %>
@@ -157,7 +158,12 @@
                         // delete processed (if necessary)
 
                         // now print out the whole table
-                        dbDataOrError = DiveLocations.listAllUsers("resultSetFormat", "javascript:deleteRow", "./images/icons/delete.png", "#bcd8e9", dbc);
+                        
+                        
+                        
+                        //dbDataOrError = DiveLocations.listAllUsers("resultSetFormat", "javascript:deleteRow", "./images/icons/delete.png", "#bcd8e9", dbc);
+                        dbDataOrError = DiveLocations.listAllUsers("resultSetFormat", "javascript:deleteRow", "./images/icons/delete.png",user_Name,"./images/icons/log-dive-sm.png",  "#bcd8e9", dbc);
+                        //DiveLocations.listAllUsers(cssClassForResultSetTable, delFn, delIcon, userName, insAssocIcon, bgColor, dbc)
                         if(!dbc.getConn().isClosed()) {
                             dbc.close();
                         }

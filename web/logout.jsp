@@ -20,7 +20,9 @@
             String msg = "You are now logged off!"; // first display will show nothing on screen.
             msg += "<p/><p/>Click <a class=\"field8\" href=\"logon.jsp\">here</a> to log back in";
             try {
-                session.invalidate();
+                session.removeAttribute("userName");
+                session.removeAttribute("userRole");
+                session.removeAttribute("userId");
             } catch (Exception e) {
                 msg += " ... but an exception was thrown: " + e.getMessage();
             }

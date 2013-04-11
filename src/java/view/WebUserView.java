@@ -29,7 +29,7 @@ public class WebUserView {
     /**
      *
      * @param cssClassForResultSetTable
-     * @param dbc
+     * @param dbc < p/>
      * <p/>
      * @return
      */
@@ -91,7 +91,7 @@ public class WebUserView {
      * @param delFn
      * @param delIcon
      * @param bgColor
-     * @param dbc
+     * @param dbc < p/>
      * <p/>
      * @return
      */
@@ -181,6 +181,110 @@ public class WebUserView {
         }
     } // eo method
 
+    public static String listAllUsers(String cssClassForResultSetTable,
+                                      String delFn, String delIcon,
+                                      String updateFn, String updateIcon,
+                                      String bgColor, DbConn dbc) {
+
+        boolean oddRow = true;
+
+
+
+        // Prepare some HTML that will be used repeatedly for the delete icon that
+        // calls a delete javascript function (see below).
+        if((delIcon == null) || (delIcon.length() == 0)) {
+            return "WebUserSql.listAllUsers() error: delete Icon file name (String input parameter) is null or empty.";
+        }
+        if((delFn == null) || (delFn.length() == 0)) {
+            return "WebUserSql.listAllUsers() error: delete javascript function name (String input parameter) is null or empty.";
+        }
+        if((updateIcon == null) || (updateIcon.length() == 0)) {
+            return "WebUserSql.listAllUsers() error: update Icon file name (String input parameter) is null or empty.";
+        }
+        if((updateFn == null) || (updateFn.length() == 0)) {
+            return "WebUserSql.listAllUsers() error: update javascript function name (String input parameter) is null or empty.";
+        }
+
+        // This is the first half of the HTML that defines a table cell that will hold the update
+        // icon which will be linked to a javascript function for updating the current row.
+        //String updateStart = "<td style='border:none; text-align:center;'><a href='" + updateFn + "(";
+        String updateStart = "<a title=\"Update\" href='" + updateFn + "(";
+        // This is the HTML for the second half of that same HTML
+        // In between the first half and the second half will be the actual PK of the current row
+        // (input parameter to the javascript function).
+        // String updateEnd = ")'><img src='" + updateIcon + "'></a></td>"; // after PK value/input parameter to js fn.
+        String updateEnd = ")'><img border=\"0\" class=\"updateImg\" src='" + updateIcon + "'></a></td>"; // after PK value/input parameter to js fn.
+        // This is the first half of the HTML that defines a table cell that will hold the delete
+        // icon which will be linked to a javascript function for deleting the current row.
+        String delStart = "<td style='border:none; text-align:center; background-color:" + bgColor + "'><a title=\"Delete\" href='" + delFn + "(";
+        // This is the HTML for the second half of that same HTML
+        // In between the first half and the second half will be the actual PK of the current row
+        // (input parameter to the javascript function).
+        String delEnd = ")'><img src='" + delIcon + "'></a>"; // after PK value/input parameter to js fn.
+
+        // use StringBuilder object instead of plain String because it is more efficient
+        // (with all the appending that we are doing here).
+        StringBuilder sb = new StringBuilder("");
+
+        PreparedStatement stmt = null;
+        ResultSet rst = null;
+        try {
+            //sb.append("ready to create the statement & execute query " + "<br/>");
+            String sql = "select web_user_id, user_email, user_password, membership_fee,  "
+                         + " user_role_id, birthday from web_user order by user_email";
+            stmt = dbc.getConn().prepareStatement(sql);
+            rst = stmt.executeQuery();
+            //sb.append("executed the query " + "<br/><br/>");
+
+            sb.append("<table class='" + cssClassForResultSetTable + "'>");
+            sb.append("<tr>");
+            sb.append("<td style='border:none; background-color:" + bgColor + "'>&nbsp;</td>");// extra column at left for delete icon
+            sb.append("<th>User Id</th>");
+            sb.append("<th>User Email</th>");
+            sb.append("<th>User Password</th>");
+            sb.append("<th>Membership Fee</th>");
+            sb.append("<th>User Role</th>");
+            sb.append("<th>Birthday</th>");
+            sb.append("</tr>");
+
+            while (rst.next()) {
+                // I'm pretty sure that you must call the getObject methods from the result
+                // set in the same order as the columns you selected in your SQL SELECT.
+                // And, you cannot read (do a getObject) on the same column more than once.
+                // The result set is like sequential text file which you can only
+                // read in order and you only get one shot reading each item.
+
+                // since we want to use the primary key value several times, 
+                // we save this object so we reuse it.
+                Object primaryKeyObj = rst.getObject(1);
+                Integer primaryKeyInt = (Integer) primaryKeyObj;
+                String em = rst.getObject(2).toString();
+                sb.append("<tr>");
+
+                // this is the column with a delete icon that has a link to a javascript function.
+                // the input parameter to the delete javascript function is the PK of the user in this row.
+                sb.append(delStart + "\"" + em + "\"" + "," + primaryKeyInt.toString() + delEnd);
+                sb.append(updateStart + primaryKeyInt.toString() + updateEnd);
+                sb.append(FormatUtils.formatIntegerTd(tdCSS(oddRow), primaryKeyObj));
+                sb.append(FormatUtils.formatStringTd(tdCSS(oddRow), em));
+                sb.append(FormatUtils.formatStringTd(tdCSS(oddRow), rst.getObject(3)));
+                sb.append(FormatUtils.formatDollarTd(tdCSS(oddRow), rst.getObject(4)));
+                sb.append(FormatUtils.formatIntegerTd(tdCSS(oddRow), rst.getObject(5)));
+                sb.append(FormatUtils.formatDateTd(tdCSS(oddRow), rst.getObject(6)));
+                sb.append("</tr>\n");
+                oddRow = !oddRow;
+            }//while loop
+            sb.append("</table>");
+            rst.close();
+            stmt.close();
+            return sb.toString();
+        }
+        catch (Exception e) {
+            return "Exception thrown in WebUserSql.listAllUsers(): " + e.getMessage()
+                   + "<br/> partial output: <br/>" + sb.toString();
+        }
+    } // eo method
+
     /**
      *
      * @param type
@@ -188,15 +292,15 @@ public class WebUserView {
      * @param onchangeJS
      * @param selectedValue
      * @param includeDefault
-     * @param dbc
+     * @param dbc < p/>
      * <p/>
-     * @return
+     * @return < p/>
      * <p/>
      * @throws SQLException
      */
     public static String listAllUserRoles(String type, String name, String onchangeJS, String selectedValue, boolean includeDefault, DbConn dbc) throws SQLException {
         final String TYPE_OPTION = "<option  value=\"[[[value]]]\" id=\"[[[id]]]\"  [[[selected]]]/>[[[name]]]</option>";
-        final String WRAPPER_OPTION_PRE = "<select class=\"field-300\"  name=\"" + name + "\" onchange=\"" + onchangeJS + "\">";
+        final String WRAPPER_OPTION_PRE = "<select class=\"field-300\" id=\""+ name +"\" " +  "name=\"" + name + "\" onchange=\"" + onchangeJS + "\">";
         final String WRAPPER_OPTION_POST = "</select>";
 
         ArrayList<NameValue> ur = buildAllUserRoles(false, dbc);

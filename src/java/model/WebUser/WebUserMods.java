@@ -1,7 +1,6 @@
 package model.WebUser;
 
-import SQL.DbConn;
-import SQL.DbEncodeUtils;
+import SQL.*;
 import java.sql.*;
 
 /**
@@ -18,6 +17,7 @@ public class WebUserMods {
     private DbConn dbc;  // Open, live database connection
     private String errorMsg = "";
     private String debugMsg = "";
+    private String updateStatementError = "";
 
     // all methods of this class require an open database connection.
     /**
@@ -60,6 +60,7 @@ public class WebUserMods {
                 System.out.println("****asdfjklshfsjlaf");
                 return null;
             }
+            user.webUserId = results.getObject("web_user_id").toString();
             user.userEmail = results.getObject("user_email").toString();
             user.userPw = results.getObject("user_password").toString();
             user.membershipFee = results.getObject("membership_fee").toString();
@@ -74,10 +75,44 @@ public class WebUserMods {
 
     }
 
+    public model.WebUser.StringData findByUserId(DbConn dbc, String pk) {
+
+        StringData user = new StringData();
+        String sql = "select web_user_id, user_email, user_password, membership_fee, user_role_id, birthday from web_user WHERE web_user_id='" 
+                     + pk
+                     + "'";
+        System.out.println("*****" + sql);
+        PreparedStatement stmt = null;
+        ResultSet results = null;
+        try {
+            stmt = dbc.getConn().prepareStatement(sql);
+            results = stmt.executeQuery();
+
+            if(!results.next()) {
+                System.out.println("****asdfjklshfsjlaf");
+                return null;
+            }
+            user.webUserId = results.getObject("web_user_id").toString();
+            user.userEmail = results.getObject("user_email").toString();
+            user.userPw = results.getObject("user_password").toString();
+            user.userPw2 = user.userPw;
+            user.membershipFee = results.getObject("membership_fee").toString();
+            user.userRoleId = results.getObject("user_role_id").toString();
+            user.birthday = FormatUtils.formatDateNoHTML(results.getObject("birthday"));
+        }
+        catch (Exception ex) {
+            System.out.println("****Exception thrown in WebUserSql.findUserLogon(): " + ex.getMessage());
+            return null;
+        }
+        return user;
+
+    }
+
     /**
      *
      * @param primaryKey
-     * <p/>
+     * <
+     * p/>
      * @return
      */
     public String delete(String primaryKey) {
@@ -128,7 +163,8 @@ public class WebUserMods {
     /**
      *
      * @param wuValidate
-     * <p/>
+     * <
+     * p/>
      * @return
      */
     public String insert(Validate wuValidate) {
@@ -138,7 +174,7 @@ public class WebUserMods {
 
         // dont even try to insert if the user data didnt pass validation.
         if(!wuValidate.isValidated()) {
-            this.errorMsg = "Please edit record and resubmit before inserting";
+            this.errorMsg = "Please edit record and resubmit before inserting" + wuValidate.getAllValidationErrors();
             return this.errorMsg;
         }
 
@@ -198,4 +234,91 @@ public class WebUserMods {
             return this.errorMsg;
         }
     }// method
+
+    public PreparedStatement makeUpdateStatement(DbConn dbc, Validate wuValidate) {
+
+        TypedData wuTypedData = (TypedData) wuValidate.getTypedData();
+
+        this.setUpdateStatementError("");
+        this.debugMsg = "";
+
+        String sql = "UPDATE web_user SET user_email=? "
+                     + ", user_password=?, membership_fee=?, user_role_id=? "
+                     + ", birthday=? where web_user_id = ?";
+
+        try {
+            PreparedStatement sqlSt = dbc.getConn().prepareStatement(sql);
+            debugMsg += "<br/>Sql was: " + sql;
+            debugMsg += "<br/>" + DbEncodeUtils.encodeString(sqlSt, 1, wuTypedData.getUserEmail());
+            debugMsg += "<br/>" + DbEncodeUtils.encodeString(sqlSt, 2, wuTypedData.getUserPw());
+            debugMsg += "<br/>" + DbEncodeUtils.encodeDecimal(sqlSt, 3, wuTypedData.getMembershipFee());
+            debugMsg += "<br/>" + DbEncodeUtils.encodeInteger(sqlSt, 4, wuTypedData.getUserRoleId());
+            debugMsg += "<br/>" + DbEncodeUtils.encodeDate(sqlSt, 5, wuTypedData.getBirthday());
+            debugMsg += "<br/>" + DbEncodeUtils.encodeInteger(sqlSt, 6, wuTypedData.getWebUserId());
+            //System.out.println("******* Trying to update Web User with id: ["+ wu.getwebUserId() + "]");
+            return sqlSt;
+        }
+        catch (Exception e) {
+            this.setUpdateStatementError("Problem creating the UPDATE prepared statement in WebUserValidate.encodeForUpdate()."
+                                         + " Error message: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public String getUpdateStatementError() {
+        return this.updateStatementError;
+    }
+
+    public String update(Validate validate) {
+        this.errorMsg = "";
+
+        // dont even try to insert if the user data didnt pass validation.
+        if(!validate.isValidated()) {
+            this.errorMsg = "Please edit record and resubmit";
+            return this.errorMsg;
+        }
+
+        PreparedStatement sqlSt = makeUpdateStatement(dbc, validate);
+        if(sqlSt == null) {
+            return "WebUserMods.update: Problem encoding the UPDATE prepared statement: " + getUpdateStatementError();
+        }
+        //System.out.println("******* Trying to update Web User with id: ["+ wu.getIdWebUser() + "]");
+        try {
+            int numRows = sqlSt.executeUpdate();
+            if(numRows == 1) {
+                this.errorMsg = "";
+                return this.errorMsg; // all is GOOD, one record was updated like we expected.
+            }
+            else {
+                // we could be here (numRows==0) if record was not found.
+                // we could be here (numRows>1) if we forgot where clause -- would update all recs.
+                // In either case, it would probalby be a programmer error.
+                this.errorMsg = "Error: " + new Integer(numRows).toString()
+                                + " records were updated (when only 1 record expected for update).";
+                return this.errorMsg;
+            }
+        } // try
+        catch (SQLException e) {
+            this.errorMsg = "WebUserMods.update: SQL error. "
+                            + "SQLState [" + e.getSQLState()
+                            + "], error message [" + e.getMessage() + "]";
+            System.out.println(this.errorMsg);
+            //e.printStackTrace();
+            return this.errorMsg;
+        } // catch
+        catch (Exception e) {
+            this.errorMsg = "SqlMods.update: General Error. "
+                            + e.getMessage();
+            System.out.println(this.errorMsg);
+            //e.printStackTrace();
+            return this.errorMsg;
+        } // catch
+    }// method
+
+    /**
+     * @param updateStatementError the updateStatementError to set
+     */
+    public void setUpdateStatementError(String updateStatementError) {
+        this.updateStatementError = updateStatementError;
+    }
 } // class

@@ -4,6 +4,9 @@ import SQL.DbConn;
 import SQL.FormatUtils;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import view.NameValues.*;
+import java.util.*;
 
 /**
  *
@@ -206,4 +209,111 @@ public class DiverLogView {
                    + "<br/> partial output: <br/>" + sb.toString();
         }
     }
+    
+       public static String listAllUsersDDL(String type, String name, String onchangeJS, String selectedValue, boolean includeDefault, DbConn dbc, String web_user_id) throws SQLException {
+        final String TYPE_OPTION = "<option  value=\"[[[value]]]\" id=\"[[[id]]]\"  [[[selected]]]/>[[[name]]]</option>";
+        final String WRAPPER_OPTION_PRE = "<select class=\"field-300\"  name=\"" + name + "\" onchange=\"" + onchangeJS + "\">";
+        final String WRAPPER_OPTION_POST = "</select>";
+
+        ArrayList<NameValue> ur = buildAllUsers(false, dbc);
+
+
+
+        String template = TYPE_OPTION;
+        String temp = "", retVal = "";
+
+
+        if(ur == null) {
+            return new String("error");
+        } //no data
+        else {
+            switch (type.charAt(0)) //</editor-fold>
+            {
+                case 'o':
+                    template = TYPE_OPTION;
+                    break;
+
+                default:
+                    template = TYPE_OPTION;
+                    break;
+
+
+            }//switch
+            if(includeDefault) {
+                temp = template;
+                temp = temp.replace("[[[value]]]", "");
+                temp = temp.replace("[[[id]]]", name + "_0");
+                temp = temp.replace("[[[name]]]", "Choose...");
+                temp = temp.replace("[[[selected]]]", "");
+                retVal += temp;
+            }
+
+
+            for(NameValue aUR : ur) {
+                Integer selValInt = Integer.parseInt(selectedValue);
+                temp = template;
+                temp = temp.replace("[[[value]]]", aUR.getIdStr());
+                temp = temp.replace("[[[id]]]", name + "_" + aUR.getIdStr());
+                temp = temp.replace("[[[name]]]", aUR.getName());
+
+                temp = temp.replace("[[[selected]]]", aUR.id == selValInt ? "selected" : "");
+                retVal += temp;
+            }//for
+            return WRAPPER_OPTION_PRE + retVal + WRAPPER_OPTION_POST;
+        }//builddata
+    }
+
+    private static ArrayList<NameValue> buildAllUsers(boolean includeNullValue, DbConn dbc) throws SQLException {
+        ArrayList<NameValue> dataSet = new ArrayList<NameValue>();
+        NameValue aUserRole;
+        Object id;
+        Object name;
+
+        PreparedStatement stmt = null;
+        ResultSet rst = null;
+        try {
+            String sql = "SELECT web_user_id AS id , user_email AS name FROM web_user ORDER BY user_email";
+            stmt = dbc.getConn().prepareStatement(sql);
+            rst = stmt.executeQuery();
+
+            if(includeNullValue) {
+                dataSet.add(new NameValue("Select..."));
+            }
+            while (rst.next()) {
+                id = rst.getObject("id");
+                name = rst.getObject("name");
+                aUserRole = new NameValue((Integer) id, name.toString());
+                dataSet.add(aUserRole);
+            }//EO Wwhile 
+
+            rst.close();
+            stmt.close();
+            return dataSet;
+        }//try
+        catch (Exception e) {
+            System.err.println(e.getMessage().toString());
+            if(!stmt.isClosed()) {
+                stmt.close();
+            }
+            if(!rst.isClosed()) {
+                rst.close();
+            }
+            if(dataSet == null) {
+                if(includeNullValue) {
+                    dataSet.add(new NameValue("Select..."));
+                    return dataSet;
+                }//return empty DS with item
+                else {
+                    return null;
+                }//return empty DS
+
+            } //eo if dataSet is null
+            else {
+                return dataSet;
+            }//dataset != null
+        }//eo catch
+
+
+    }
+
 }
