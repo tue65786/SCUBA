@@ -23,6 +23,7 @@
                 session.removeAttribute("userName");
                 session.removeAttribute("userRole");
                 session.removeAttribute("userId");
+                session.removeAttribute("userid");
             } catch (Exception e) {
                 msg += " ... but an exception was thrown: " + e.getMessage();
             }

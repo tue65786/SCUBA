@@ -7,6 +7,42 @@
 */
 
 
+
+#outcontainer {
+       position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #000;
+            opacity: .15;
+            filter: alpha(opacity=15);
+            -moz-opacity: .15;
+            z-index: 101;
+            display: none;
+
+}
+/*
+a{  
+cursor: pointer;  
+text-decoration:none;  
+} */
+
+/* This is for the positioning of the Close Link */
+#popupBoxClose {
+	font-size:20px;  
+	line-height:15px;  
+	right:5px;  
+	top:5px;  
+	position:absolute;  
+	color:#6fa5e2;  
+	font-weight:500;  	
+      border: 1px;
+}
 .error {
     color:red; 
     font-weight: bold
@@ -200,7 +236,7 @@ root {
     text-shadow:  3px 4px #FF0000;
     text-align: right;
     line-height: 1.2em;
-    font-size: 29pt;
+    font-size: 34pt;
     padding-right: 60px;
     font-variant: small-caps ;
 

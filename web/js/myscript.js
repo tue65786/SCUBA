@@ -26,6 +26,10 @@ function setSelectedTab(elementId) {
     {
         document.getElementById("UserList").className = "tab menu selected";
     }
+    else if (elementId=="InsertLog") {
+         document.getElementById("Log").className = "tab selected";
+        
+    }
     else
     {
         document.getElementById(elementId).className = "tab selected";
@@ -46,6 +50,9 @@ function setSelectedTab(elementId) {
             break;
         case 'TestSelect' :
             htmlCrumbs = refHome +  " > <a href='labs.jsp'> Labs </a> >" + "Test Select"; 
+            break;
+        case 'InsertLog' :
+            htmlCrumbs = refHome +  " > <a href='assoc.jsp'> Log </a> >" + "Insert Log"; 
             break;
         default:
             htmlCrumbs = refHome +  " >" +  elementId;

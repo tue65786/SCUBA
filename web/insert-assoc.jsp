@@ -10,16 +10,47 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SCUBA -Insert Dive Log</title>
 
+        <script src="http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+	
+            $(document).ready( function() {
 
 
+                $("input").focus(function () {
+                    $(this).css("background-color", "#FFFFCC");
+                });
+                $("input").blur(function () {
+                    $(this).css("background-color", "#FFF");
+                });
+                $("textarea").focus(function () {
+                    $(this).css("background-color", "#FFFFCC");
+                });
+                $("textarea").blur(function () {
+                    $(this).css("background-color", "#FFF");
+                });
+                $("select").focus(function () {
+                    $(this).css("background-color", "#FFFFCC");
+                });
+                $("select").blur(function () {
+                    $(this).css("background-color", "#FFF");
+                });
+            });
+        </script>
     </head>
-    <body onload="setSelectedTab('Log');">
+    <body onload="setSelectedTab('InsertLog');">
         <jsp:include page="pre-content.jsp" /> 
         <%
-            DbConn dbc2 = new DbConn();
+              String userId = (String) session.getAttribute("userid");
+          //   System.out.println("!*!*!*!**!"+ userId);
+              if( userId == null || userId.length() <1) // || (((String)session.getAttribute("id")).length()==0) || ((String)session.getAttribute("userid")).length() == 0  )
+            {
+                response.sendRedirect("deny.jsp?errorMsg=Error. Your session expired. Please make sure you are logged in and try again");
+                return;
+            }
+             DbConn dbc2 = new DbConn();
             String dbErrorOrData = dbc2.getErr();
             String diveBuddyId = "";
-            String userId = (String) session.getAttribute("userid");
+          
             if(request.getParameter("diveBuddyId") != null) {
                 diveBuddyId = request.getParameter("diveBuddyId");
             }
@@ -33,10 +64,7 @@
         %>
         <% //out.print("id " + ((((String)session.getAttribute("id")))));
             //out.print("userid " + ((((String)session.getAttribute("userid")))));
-            //  if ((((String)session.getAttribute("id")).length()==0) || ((String)session.getAttribute("userid")).length() == 0)
-            //                            {
-            //                response.sendRedirect("deny.jsp?errorMsg=A problem was encountered. Please make sure you are logged in and try again");
-            //                        }
+
             String formMsg = "";
             String locationStr = "";
             //  String uid = (String) session.getAttribute("userid");
@@ -52,6 +80,8 @@
                 logData.web_user_id = userId;
                 //session.setAttribute("userid") = (String) request.getParameter("id");
             }
+            String sesId = (String) session.getAttribute("id");
+            
             model.DiveLog.Validate logValidate;
             if(request.getParameter("DiveDate") == null) {
                 // first display.  All form fields are null, if and only iff any one form field is null.
@@ -189,7 +219,7 @@
                     </td>
                     <td class="error">                        <input  type="hidden" name="DiveLocation" value="<%= logData.dive_location_id%>" />
                         <input type="hidden" name="WebUser" value="<%= logData.web_user_id%>" />
-                      <%=logValidate.getNotesMsg()%>
+                        <%=logValidate.getNotesMsg()%>
                     </td>
                 </tr>
                 <tr>

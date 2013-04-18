@@ -44,9 +44,11 @@ boolean loggedIn = false;
 %>
 <div id="wrap" class="container">
     <div class="title">
-        <div style="float: right; border:8px dashed white;
-             outline:5px solid red;
+        <div style="float: right; font-weight:  900; font-size:  34pt; 
              outline-offset:3px 2px; margin-bottom:20px;">
+<!--        <div style="float: right; border:8px dashed white;
+             outline:5px solid red;
+             outline-offset:3px 2px; margin-bottom:20px;">-->
             <h1>SCUBA Diver Log</h1></div>
         <div class="newLine"></div>
         <div style=" white-space:  nowrap; ">
@@ -54,6 +56,7 @@ boolean loggedIn = false;
             <div id="Locations" class="tab"><a href="other.jsp">Locations</a></div>
             <div id="Log" class="tab"><a href="assoc.jsp">Log</a></div>
             <div id="Contact"  class="tab"><a href="contact.jsp">Contact Us</a></div>
+            <div id="Search"  class="tab"><a href="search.jsp">Search</a></div>
             <!--            <div id="UserList"  class="tab menu">Users
                             <a  id="UserList" style="color: red;" href="user.jsp">List</a>
                             <a id="serInsert" style="color: red;" href="user-insert.jsp">Register</a>

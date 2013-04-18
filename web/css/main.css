@@ -8,9 +8,9 @@ body {
 
 .container {
     /*border:medium solid green;*/
-    min-width: 600px;
+    min-width: 900px;
     max-width: 1200px;
-    width:85%;
+    /*width:85%;*/
     margin:auto;  /* this means center the container div (itself, not its contents) */
     /* opacity: 1.0;
      filter:alpha(opacity=99);*/

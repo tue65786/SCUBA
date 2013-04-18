@@ -274,7 +274,7 @@ public class WebUserMods {
 
         // dont even try to insert if the user data didnt pass validation.
         if(!validate.isValidated()) {
-            this.errorMsg = "Please edit record and resubmit";
+            this.errorMsg = "Please edit record and resubmit. Click <a href=\"#\" id=\"tryagain\" > here </a> open the form and correct the errors.";
             return this.errorMsg;
         }
 

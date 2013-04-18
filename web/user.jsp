@@ -7,111 +7,112 @@
 <html>
     <head>
         <%@ include file= "head-content.html" %> 
+          <script src="js/datetimepicker_css.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SCUBA - Users</title>
+        <style type="text/css">
+
+
+            /* popup_box DIV-Styles*/
+            #popup_box { 
+                display:none; /* Hide the DIV */
+                position:fixed;  
+                _position:absolute; /* hack for internet explorer 6 */  
+                height:370px;  
+                width:700px;  
+                background:#FFFFFF;  
+                left: 300px;
+                top: 150px;
+                z-index:104; /* Layering ( on-top of others), if you have lots of layers: I just maximized, you can change it yourself */
+                margin-left: 15px;  
+                /* additional features, can be omitted */
+                border:2px solid #ff0000;  	
+                padding:15px;  
+                font-size:15px;  
+                -moz-box-shadow: 0 0 5px #ff0000;
+                -webkit-box-shadow: 0 0 5px #ff0000;
+                box-shadow: 0 0 5px #ff0000;
+
+            }
+        </style>  
+        <script src="http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+	
+            $(document).ready( function() {
+//                
+//$("").submit(function() {
+//  if ($("").val() == "correct") {
+//    $("span").text("Validated...").show();
+//    return true;
+//  }
+//  $("span").text("Not valid!").show().fadeOut(1000);
+//  return false;
+//});
+//checkPopup();
+
+//var n = $('input#showInputArea').val();
+
+
+
+                $("input").focus(function () {
+                    $(this).css("background-color", "#FFFFCC");
+                });
+                $("input").blur(function () {
+                    $(this).css("background-color", "#FFF");
+                });
         
-        
-<style type="text/css">
-/* popup_box DIV-Styles*/
-#popup_box { 
-	display:none; /* Hide the DIV */
-	position:fixed;  
-	_position:absolute; /* hack for internet explorer 6 */  
-	height:400px;  
-	width:700px;  
-	background:#FFFFFF;  
-	left: 300px;
-	top: 150px;
-	z-index:104; /* Layering ( on-top of others), if you have lots of layers: I just maximized, you can change it yourself */
-	margin-left: 15px;  
+                $("select").focus(function () {
+                    $(this).css("background-color", "#FFFFCC");
+                });
+                $("select").blur(function () {
+                    $(this).css("background-color", "#FFF");
+                });
+                // When site loaded, load the Popupbox First
+                //loadPopupBox();
 	
-	/* additional features, can be omitted */
-	border:2px solid #ff0000;  	
-	padding:15px;  
-	font-size:15px;  
-	-moz-box-shadow: 0 0 5px #ff0000;
-	-webkit-box-shadow: 0 0 5px #ff0000;
-	box-shadow: 0 0 5px #ff0000;
-	
-}
-
-#outcontainer {
-       position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            background: #000000;
-            opacity: .15;
-            filter: alpha(opacity=15);
-            -moz-opacity: .15;
-            z-index: 101;
-            display: none;
-
-}
-/*
-a{  
-cursor: pointer;  
-text-decoration:none;  
-} */
-
-/* This is for the positioning of the Close Link */
-#popupBoxClose {
-	font-size:20px;  
-	line-height:15px;  
-	right:5px;  
-	top:5px;  
-	position:absolute;  
-	color:#6fa5e2;  
-	font-weight:500;  	
-      border: 1px;
-}
-</style>
-<script src="http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-	
-	$(document).ready( function() {
-	
-		// When site loaded, load the Popupbox First
-		//loadPopupBox();
-	
-		$('#popupBoxClose').click( function() {			
-			unloadPopupBox();
-		});
+                $('#popupBoxClose').click( function() {			
+                    unloadPopupBox();
+                });
 		
-		$('#load').click( function() {
-			loadPopupBox();
-		});
+                $('#load').click( function() {
+                    loadPopupBox();
+                });
+                $('#tryagain').click( function() {
+                    loadPopupBox();
+                });
             
-		$('.updateImg').click( function() {
-			loadPopupBox();
-		});
+                $('.updateImg').click( function() {
+                    loadPopupBox();
+                });
 
-		function unloadPopupBox() {	// TO Unload the Popupbox
-			$('#popup_box').fadeOut("slow");
-//			$("#outcontainer").css({ // this is just for style		
-//				"opacity": "1"
-//			}); 
-                $('#outcontainer').hide();  
-		}	
+//                function checkPopUpBox() {
+//                    if (document.getElementById("showInputArea").value == "YES")
+//                        {
+//                            loadPopUpBox();
+//                        }
+//                    
+//                }
+                function unloadPopupBox() {	// TO Unload the Popupbox
+                    $('#popup_box').fadeOut("slow");
+                    //			$("#outcontainer").css({ // this is just for style		
+                    //				"opacity": "1"
+                    //			}); 
+                    $('#outcontainer').hide();  
+                }	
 		
-		function loadPopupBox() {	// To Load the Popupbox
-			$('#popup_box').fadeIn("slow");
-			$('#outcontainer').show();  
-//                  $("#outcontainer").css({ // this is just for style
-//				"opacity": ".3"  
+                function loadPopupBox() {	// To Load the Popupbox
+                    $('#popup_box').fadeIn("slow");
+                    $('#outcontainer').show();  
+                    //                  $("#outcontainer").css({ // this is just for style
+                    //				"opacity": ".3"  
 			
-//              });              
-		}
-		/**********************************************************/
+                    //              });              
+                }
+                /**********************************************************/
 		
-	});
-</script>
+            });
+        </script>
         <style>        
             .resultSetFormat {
             }
@@ -302,69 +303,73 @@ text-decoration:none;
                                 dbc.close();
                             }
                             //out.print(dbDataOrError);
-                        %>
+%>
                         <div id="popup_box">
-                        <form name="insertUpdate" action="user.jsp" method="get">
-                             <input type="text" id="operation" name="operation" value="<%=strOperation%>"/> 
-                            
-                             <input name="recordStatus" type="hidden" disabled="disabled"/>
-                            <input type="button" id="insertButton" value="Insert" onclick="clickInsert();"/>     
-                            <input type="hidden" id="showInputArea" name="showInputArea" value="<%=strShowInputArea%>"/> 
-                            <div id="inputArea">
-                               <input type="hidden"  name="webUserId" value="<%= webUserStringData.webUserId%>" /> 
-                                <table style="text-align:left; border:thin solid gray; padding:5px;">
-                                    <tr>
-                                        <td>User Email</td>
-                                        <td><input type="text" name="userEmail" value="<%= webUserStringData.userEmail%>" /></td>
-                                        <td class="error"><%=webUserValidate.getUserEmailMsg()%></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Password</td>
-                                        <td><input type="password" name="userPw" value="<%= webUserStringData.userPw%>" /></td>
-                                        <td class="error"><%=webUserValidate.getUserPwMsg()%></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Re-type Password</td>
-                                        <td><input type="password" name="userPw2" value="<%= webUserStringData.userPw%>" /></td>
-                                        <td class="error"><%=webUserValidate.getUserPw2Msg()%></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Membership Fee</td>
-                                        <td><input type="text" name="membershipFee" value="<%= webUserStringData.membershipFee%>" /></td>
-                                        <td class="error"><%=webUserValidate.getMembershipFeeMsg()%></td>   
-                                    <tr>
-                                        <td>User Role</td>
-                                        <td> <% out.print(dbErrorOrData2);%>
-                                            <input type="hidden" name="userRoleId" value="<%= webUserStringData.userRoleId%>" /></td>
-                                        <td class="error"><%=webUserValidate.getUserRoleMsg()%></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Birthday</td>
-                                        <td><input type="text" name="birthday" value="<%= webUserStringData.birthday%>" /></td>
-                                        <td class="error"><%=webUserValidate.getBirthdayMsg()%></td>                    
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td><input type="submit" value="Submit" /></td>
-                                        <td><input type="button" value="Cancel" onclick="cancel()"/></td>
-                                    </tr>
-                                </table>
-<!--                                <input type="button" value="Hide Input Area" onclick="inputAreaHide();"/>     -->
-                            </div>
-                        </form>
+                            <div style="margin:auto;">
+                            <form name="insertUpdate" action="user.jsp" method="get">
+                                <input type="hidden" id="operation" name="operation" value="<%=strOperation%>"/> 
 
-                        
-<a href="#" onclick="clearMsg()" id="popupBoxClose">Close Window</a>	
+                                <input name="recordStatus" type="hidden" disabled="disabled"/>
+                                <!--                            <input type="button" id="insertButton" value="Insert" onclick="clickInsert();"/>     -->
+                                <input type="hidden" id="showInputArea" name="showInputArea" value="<%=strShowInputArea%>"/> 
+                                <div id="inputArea">
+                                    <input type="hidden"  name="webUserId" value="<%= webUserStringData.webUserId%>" /> 
+                                    <table style="text-align:left; border:thin solid gray; padding:5px;">
+                                        <tr>
+                                            <td>User Email</td>
+                                            <td><input type="text" class="field2" name="userEmail" value="<%= webUserStringData.userEmail%>" /></td>
+                                            <td class="error"><%=webUserValidate.getUserEmailMsg()%></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Password</td>
+                                            <td><input type="password"  class="field2" name="userPw" value="<%= webUserStringData.userPw%>" /></td>
+                                            <td class="error"><%=webUserValidate.getUserPwMsg()%></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Re-type Password</td>
+                                            <td><input type="password" name="userPw2"  class="field2" value="<%= webUserStringData.userPw%>" /></td>
+                                            <td class="error"><%=webUserValidate.getUserPw2Msg()%></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Membership Fee</td>
+                                            <td><input type="text" name="membershipFee"  class="field2" value="<%= webUserStringData.membershipFee%>" /></td>
+                                            <td class="error"><%=webUserValidate.getMembershipFeeMsg()%></td>   
+                                        <tr>
+                                            <td>User Role</td>
+                                            <td> <% out.print(dbErrorOrData2);%>
+                                                <input type="hidden" name="userRoleId" value="<%= webUserStringData.userRoleId%>" /></td>
+                                            <td class="error"><%=webUserValidate.getUserRoleMsg()%></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Birthday</td>
+                                            <td>
+                                                <input type="text" id="birthday" name="birthday"  class="field2" value="<%= webUserStringData.birthday%>" />
+                                            </td>
+                                            <td class="error"><%=webUserValidate.getBirthdayMsg()%></td>                    
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td><input type="submit"  class="field2" value="Submit" /></td>
+                                            <td><input type="button"  class="field2" value="Reset" onclick="cancel()"/></td>
+                                        </tr>
+                                    </table>
+                                    <!--                                <input type="button" value="Hide Input Area" onclick="inputAreaHide();"/>     -->
+                                </div>
+                            </form>
+
+
+                            <a href="#" onclick="clearMsg()" class="LinkButton" id="popupBoxClose">Close Window</a>	
 
                         </div>
-    
-<div id="frmMsg"><%=formMsg%>&nbsp;</div>
+                        </div>
+
+                        <div id="frmMsg"><%=formMsg%>&nbsp;</div>
                         <%=dbDataOrError%>
-<a id="load" href="#" onclick="clickInsert()">Add User</a>
+                        <a id="load" href="#" onclick="clickInsert()">Add User</a>
                     </td>
                 </tr>
             </table>
-                        <div id="outcontainer"></div>
+            <div id="outcontainer"></div>
             <script type="text/javascript">
 
                 //Note: These next 9 lines of javascript
@@ -381,11 +386,11 @@ text-decoration:none;
                 }
                 function setDDLSelectionUserRoleForUpdate() {
                     var val =  document.insertUpdate.role.value;
-                   // document.insertUpdate.userRoleid.value = val;   
+                    // document.insertUpdate.userRoleid.value = val;   
                     document.insertUpdate.userRoleId.value = val;
                 }
                 function sendRequest(primaryKey) {
-                    alert ('sending request for web user '+primaryKey);
+                    //alert ('sending request for web user '+primaryKey);
                     httpReq.open("GET","get_webUser_JSON.jsp?primaryKey=" + primaryKey);
                     httpReq.onreadystatechange = handleResponse;
                     httpReq.send(null);
@@ -395,8 +400,8 @@ text-decoration:none;
                     if(httpReq.readyState == 4 && httpReq.status == 200) {
                         //alert('handling response ready 4 status 200');
                         var response = httpReq.responseText;
-                        alert ("response is " + response);
-
+               //         alert ("response is " + response);
+                      //  document.write(response);
                         // be careful -- field names on the document are case sensative
                         // field names extracted from the JSON response are also case sensative.
                         var webUserObj = eval(response);
@@ -419,30 +424,7 @@ text-decoration:none;
                         //alert ("userRoleId is "+webUserObj.userRoleId);
                         document.insertUpdate.userRoleId.value=webUserObj.userRoleId;
                         document.getElementById("role").value = document.insertUpdate.userRoleId.value;
-                        //var selRole = document.getElementById("role");
-                     //   var selRole = $('role');
-                       // alert("sel" + selRole.value);
-                        //   setRole.selected = true;       
-                        //  var dd = document.getElementById(optionId);
-//                        for (var i = 0; i < selRole.options.length; i++) 
-//                        {
-//                            if (selRole.options[i].value ==  document.insertUpdate.userRoleId.value)
-//                            {
-//alert(selRole.options[i].value);
-//                              //  selRole.options[i].defaultSelected = true;
-//
-//                                selRole.selectedIndex = i;
-//                                break;
-//                            }
-//                        }
-//                        var sel = $('country');
-
-// Loop through and look for value match, then break
-//for(i=0;i<selRole.length;i++) { if(selRole.value==document.insertUpdate.userRoleId.value) { break; } }
-
-// Select index 
-//selRole.options.selectedIndex = i;
-                        //alert ("birthday is "+webUserObj.birthday);
+                  
                         document.insertUpdate.birthday.value=webUserObj.birthday;
 
                         //alert ("record status is "+webUserObj.recordStatus);
@@ -450,7 +432,20 @@ text-decoration:none;
                     }
                 }
                 function clearMsg(){
+                                    document.getElementById("operation").value = "none";
+ 
+                    document.insertUpdate.webUserId.value="";
+                    document.insertUpdate.userEmail.value="";
+                    document.insertUpdate.userPw.value="";
+                    document.insertUpdate.userPw2.value="";
+                    document.insertUpdate.membershipFee.value="";
+                    document.insertUpdate.userRoleId.value="";
+                    document.insertUpdate.birthday.value="";
+
+                    document.insertUpdate.recordStatus.value="Insert/Update Operation Cancelled";
                     document.getElementById("frmMsg").innerHTML="";
+                    document.insertUpdate.submit();
+                    
                 }
                 function updateRow (primaryKey) {
                     document.getElementById("operation").value = "update";
@@ -490,16 +485,16 @@ text-decoration:none;
                     document.getElementById("showInputArea").value = "YES";
                 }
                 function clickInsert() {
-                   document.insertUpdate.webUserId.value="";
+                    document.insertUpdate.webUserId.value="";
                     document.insertUpdate.userEmail.value="";
                     document.insertUpdate.userPw.value="";
                     document.insertUpdate.userPw2.value="";
                     document.insertUpdate.membershipFee.value="";
                     document.insertUpdate.userRoleId.value="";
                     document.insertUpdate.birthday.value="";
-                  document.getElementById("operation").value = "insert";
+                    document.getElementById("operation").value = "insert";
                   
-                  //  inputAreaShow();
+                    //  inputAreaShow();
                 }
             </script>
         </div>

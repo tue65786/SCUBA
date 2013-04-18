@@ -180,3 +180,5 @@ public class StringData {
                + "', birthday: '" + valueOrNull(birthday) + "', recordStatus: '" + valueOrNull(recordStatus) + "' })";
     }
 } // class
+
+
